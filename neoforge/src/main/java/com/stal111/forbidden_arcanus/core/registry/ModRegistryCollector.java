@@ -48,7 +48,6 @@ public class ModRegistryCollector extends RegistryCollector {
         this.addMappedHelper(Registries.SOUND_EVENT, ModSounds.class);
         this.addMappedHelper(Registries.PARTICLE_TYPE, ModParticles.class);
         this.addMappedHelper(Registries.MEMORY_MODULE_TYPE, ModMemoryModules.class);
-        this.addMappedHelper(Registries.ACTIVITY, ModActivities.class);
         this.addMappedHelper(Registries.CREATIVE_MODE_TAB, ModCreativeModeTabs.class);
         this.addMappedHelper(Registries.MENU, ModMenuTypes.class);
         this.addMappedHelper(Registries.POINT_OF_INTEREST_TYPE, ModPOITypes.class);

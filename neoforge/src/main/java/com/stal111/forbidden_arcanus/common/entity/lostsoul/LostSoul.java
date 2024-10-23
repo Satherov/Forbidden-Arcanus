@@ -6,7 +6,6 @@ import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.core.init.ModEntities;
 import com.stal111.forbidden_arcanus.core.init.ModItems;
 import com.stal111.forbidden_arcanus.core.init.ModMemoryModules;
-import com.stal111.forbidden_arcanus.core.init.other.ModActivities;
 import com.stal111.forbidden_arcanus.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -32,11 +31,9 @@ import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.sensing.Sensor;
 import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -57,7 +54,7 @@ import java.util.function.Function;
  * @author stal111
  * @since 2022-09-14
  */
-public class LostSoul extends PathfinderMob implements SoulExtractable {
+public class LostSoul extends PathfinderMob {
 
     protected static final ImmutableList<MemoryModuleType<?>> MEMORY_TYPES = ImmutableList.of(MemoryModuleType.LOOK_TARGET, MemoryModuleType.NEAREST_LIVING_ENTITIES, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.HURT_BY, MemoryModuleType.HURT_BY_ENTITY, MemoryModuleType.IS_IN_WATER, MemoryModuleType.IS_PANICKING, ModMemoryModules.SCARED_TIME.get());
     protected static final ImmutableList<SensorType<? extends Sensor<? super LostSoul>>> SENSOR_TYPES = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.HURT_BY, SensorType.IS_IN_WATER);
@@ -66,9 +63,6 @@ public class LostSoul extends PathfinderMob implements SoulExtractable {
     public static final EntityDataAccessor<Boolean> DATA_SCARED = SynchedEntityData.defineId(LostSoul.class, EntityDataSerializers.BOOLEAN);
 
     public static final double ENCHANTED_CHANCE = 0.04D;
-
-    private static final int EXTRACT_STUNNED_TIME = 30;
-    private static final float EXTRACT_DAMAGE = 2.0F;
 
     private int extractCounter = 0;
 
@@ -302,35 +296,14 @@ public class LostSoul extends PathfinderMob implements SoulExtractable {
         return this.entityData.get(DATA_SCARED);
     }
 
-    @Override
-    public ItemStack getSoulItem() {
-        return new ItemStack(this.getVariant().getSoulItem());
-    }
-
-    @Override
-    public void setExtracting() {
-        if (!this.getBrain().getActiveActivities().contains(ModActivities.SOUL_EXTRACTING.get())) {
-            this.getBrain().setActiveActivityIfPossible(ModActivities.SOUL_EXTRACTING.get());
-        }
-    }
-
-    @Override
-    public void extractTick(Player player) {
-        this.extractCounter = EXTRACT_STUNNED_TIME;
-
-        if (this.isDeadOrDying()) {
-            this.level().addFreshEntity(new ItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), this.getSoulItem()));
-        }
-    }
-
     public boolean isExtracting() {
         return this.extractCounter > 0;
     }
 
     public enum Variant {
-        LOST_SOUL(0, "lost_soul", ModItems.SOUL.get(), 228 << 16 | 231 << 8 | 248),
-        CORRUPT_LOST_SOUL(1, "corrupt_lost_soul", ModItems.CORRUPT_SOUL.get(), 68 << 16 | 83 << 8 | 149),
-        ENCHANTED_LOST_SOUL(2, "enchanted_lost_soul", ModItems.ENCHANTED_SOUL.get(), 253 << 16 | 225 << 8 | 238);
+        LOST_SOUL(0, "lost_soul", 228 << 16 | 231 << 8 | 248),
+        CORRUPT_LOST_SOUL(1, "corrupt_lost_soul", 68 << 16 | 83 << 8 | 149),
+        ENCHANTED_LOST_SOUL(2, "enchanted_lost_soul", 253 << 16 | 225 << 8 | 238);
 
         public static final Function<Integer, Variant> FROM_ID = integer -> {
             return Arrays.stream(Variant.values()).filter(variant -> variant.id == integer).findFirst().orElse(LOST_SOUL);
@@ -338,13 +311,11 @@ public class LostSoul extends PathfinderMob implements SoulExtractable {
 
         private final int id;
         private final String name;
-        private final Item soulItem;
         private final Vector3f trailColor;
 
-        Variant(int id, String name, Item soulItem, int trailColor) {
+        Variant(int id, String name, int trailColor) {
             this.id = id;
             this.name = name;
-            this.soulItem = soulItem;
             this.trailColor = Vec3.fromRGB24(trailColor).toVector3f();
         }
 
@@ -354,10 +325,6 @@ public class LostSoul extends PathfinderMob implements SoulExtractable {
 
         public String getName() {
             return this.name;
-        }
-
-        public Item getSoulItem() {
-            return this.soulItem;
         }
 
         public Vector3f getTrailColor() {

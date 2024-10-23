@@ -1,7 +1,6 @@
 package com.stal111.forbidden_arcanus.common.item;
 
 import com.stal111.forbidden_arcanus.ForbiddenArcanus;
-import com.stal111.forbidden_arcanus.common.entity.lostsoul.SoulExtractable;
 import com.stal111.forbidden_arcanus.core.init.ModBlocks;
 import com.stal111.forbidden_arcanus.core.init.ModItems;
 import com.stal111.forbidden_arcanus.core.init.ModParticles;
@@ -10,7 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -41,8 +39,6 @@ import java.util.List;
 public class SoulExtractorItem extends Item {
 
     private static final int USE_DURATION = 35;
-
-    private static final String KEY_EXTRACTING_FROM_ENTITY = "ExtractingFromEntity";
 
     public SoulExtractorItem(Item.Properties properties) {
         super(properties);
@@ -117,24 +113,7 @@ public class SoulExtractorItem extends Item {
 
         if (this.isValidBlock(level, pos, player) && player.getRandom().nextInt(6) == 1) {
             level.levelEvent(player, 2001, pos, Block.getId(level.getBlockState(pos)));
-
-            return;
         }
-    }
-
-    @Nonnull
-    @Override
-    public InteractionResult interactLivingEntity(@Nonnull ItemStack stack, @Nonnull Player player, @Nonnull LivingEntity entity, @Nonnull InteractionHand usedHand) {
-        Level level = player.level();
-
-        if (entity instanceof SoulExtractable soulExtractable && !level.isClientSide() && level.getGameTime() % 3 == 0) {
-            soulExtractable.setExtracting();
-
-            if (!player.isUsingItem()) {
-                soulExtractable.extractTick(player, entity);
-            }
-        }
-        return super.interactLivingEntity(stack, player, entity, usedHand);
     }
 
     @Override
