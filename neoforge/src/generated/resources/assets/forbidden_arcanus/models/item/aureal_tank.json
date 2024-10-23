@@ -2,67 +2,121 @@
   "parent": "minecraft:item/generated",
   "overrides": [
     {
-      "model": "forbidden_arcanus:item/aureal_tank/aureal_tank_0",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.25,
-        "forbidden_arcanus:max": 0.0
-      }
+      "model": "forbidden_arcanus:item/aureal_tank_0",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.25
+        },
+        {
+          "name": "forbidden_arcanus:max",
+          "value": 0.0
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/aureal_tank/aureal_tank_1",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.5,
-        "forbidden_arcanus:max": 0.0
-      }
+      "model": "forbidden_arcanus:item/aureal_tank_1",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.5
+        },
+        {
+          "name": "forbidden_arcanus:max",
+          "value": 0.0
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/aureal_tank/aureal_tank_2",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.75,
-        "forbidden_arcanus:max": 0.0
-      }
+      "model": "forbidden_arcanus:item/aureal_tank_2",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.75
+        },
+        {
+          "name": "forbidden_arcanus:max",
+          "value": 0.0
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/aureal_tank/aureal_tank_3",
-      "predicate": {
-        "forbidden_arcanus:amount": 1.0,
-        "forbidden_arcanus:max": 0.0
-      }
+      "model": "forbidden_arcanus:item/aureal_tank_3",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 1.0
+        },
+        {
+          "name": "forbidden_arcanus:max",
+          "value": 0.0
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/aureal_tank/aureal_tank_max",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.0,
-        "forbidden_arcanus:max": 1.0
-      }
+      "model": "forbidden_arcanus:item/aureal_tank_max",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.0
+        },
+        {
+          "name": "forbidden_arcanus:max",
+          "value": 1.0
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/aureal_tank/aureal_tank_max_0",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.25,
-        "forbidden_arcanus:max": 1.0
-      }
+      "model": "forbidden_arcanus:item/aureal_tank_max_0",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.25
+        },
+        {
+          "name": "forbidden_arcanus:max",
+          "value": 1.0
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/aureal_tank/aureal_tank_max_1",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.5,
-        "forbidden_arcanus:max": 1.0
-      }
+      "model": "forbidden_arcanus:item/aureal_tank_max_1",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.5
+        },
+        {
+          "name": "forbidden_arcanus:max",
+          "value": 1.0
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/aureal_tank/aureal_tank_max_2",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.75,
-        "forbidden_arcanus:max": 1.0
-      }
+      "model": "forbidden_arcanus:item/aureal_tank_max_2",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.75
+        },
+        {
+          "name": "forbidden_arcanus:max",
+          "value": 1.0
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/aureal_tank/aureal_tank_max_3",
-      "predicate": {
-        "forbidden_arcanus:amount": 1.0,
-        "forbidden_arcanus:max": 1.0
-      }
+      "model": "forbidden_arcanus:item/aureal_tank_max_3",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 1.0
+        },
+        {
+          "name": "forbidden_arcanus:max",
+          "value": 1.0
+        }
+      ]
     }
   ],
   "textures": {

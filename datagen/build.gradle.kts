@@ -4,7 +4,7 @@ plugins {
     id("eclipse")
     id("idea")
     id("maven-publish")
-    id("net.neoforged.moddev") version "2.0.17-beta"
+    id("net.neoforged.moddev") version "2.0.36-beta"
 }
 
 val mod_id: String by project
@@ -20,6 +20,10 @@ evaluationDependsOn(mainProject.path)
 repositories {
     flatDir {
         dirs("libs")
+    }
+    maven {
+        name = "Kotlin for Forge"
+        setUrl("https://thedarkcolour.github.io/KotlinForForge/")
     }
     maven {
         name = "DataForge"
@@ -70,6 +74,7 @@ dependencies {
     compileOnly(mainProject)
 
     implementation("net.valhelsia:valhelsia_core-neoforge-${minecraft_version}:${valhelsia_core_version}")
+    implementation("thedarkcolour:kotlinforforge-neoforge:5.5.0")
 
     implementation(interfaceInjectionData("net.valhelsia:dataforge:${dataforge_version}")!!)
 }

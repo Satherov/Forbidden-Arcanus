@@ -2,40 +2,58 @@
   "parent": "minecraft:item/generated",
   "overrides": [
     {
-      "model": "forbidden_arcanus:item/blood_test_tube/blood_test_tube_0",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.1
-      }
+      "model": "forbidden_arcanus:item/blood_test_tube_0",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.1
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/blood_test_tube/blood_test_tube_1",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.25
-      }
+      "model": "forbidden_arcanus:item/blood_test_tube_1",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.25
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/blood_test_tube/blood_test_tube_2",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.5
-      }
+      "model": "forbidden_arcanus:item/blood_test_tube_2",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.5
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/blood_test_tube/blood_test_tube_3",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.75
-      }
+      "model": "forbidden_arcanus:item/blood_test_tube_3",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.75
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/blood_test_tube/blood_test_tube_4",
-      "predicate": {
-        "forbidden_arcanus:amount": 0.9
-      }
+      "model": "forbidden_arcanus:item/blood_test_tube_4",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 0.9
+        }
+      ]
     },
     {
-      "model": "forbidden_arcanus:item/blood_test_tube/blood_test_tube_5",
-      "predicate": {
-        "forbidden_arcanus:amount": 1.0
-      }
+      "model": "forbidden_arcanus:item/blood_test_tube_5",
+      "predicate": [
+        {
+          "name": "forbidden_arcanus:amount",
+          "value": 1.0
+        }
+      ]
     }
   ],
   "textures": {

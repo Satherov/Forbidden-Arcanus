@@ -31,7 +31,7 @@ public class ModLocationUtils {
         return ForbiddenArcanus.location("block/" + name);
     }
 
-    public static ResourceLocation getItem(String folder, Holder<Item> item, String suffix) {
+    public static ResourceLocation getItem(String folder, Holder<? extends Item> item, String suffix) {
         return BuiltInRegistries.ITEM.getKey(item.value()).withPrefix("item/" + folder + "/").withSuffix(suffix);
     }
 

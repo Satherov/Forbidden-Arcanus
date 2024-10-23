@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 public class ModBlockTagsProvider extends ValhelsiaBlockTagsProvider {
 
     public ModBlockTagsProvider(DataProviderContext context) {
-        super(context.output(), context.lookupProvider());
+        super(context);
     }
 
     @Override

@@ -25,7 +25,7 @@ import java.util.concurrent.CompletableFuture;
 public class ModItemTagsProvider extends ValhelsiaItemTagsProvider {
 
     public ModItemTagsProvider(DataProviderContext context, CompletableFuture<TagLookup<Block>> blockTagsLookup) {
-        super(context.output(), context.lookupProvider(), blockTagsLookup);
+        super(context, blockTagsLookup);
     }
 
     @Override
