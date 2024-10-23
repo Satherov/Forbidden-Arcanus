@@ -7,7 +7,6 @@ import com.stal111.forbidden_arcanus.core.init.ModEntities;
 import com.stal111.forbidden_arcanus.core.init.ModItems;
 import com.stal111.forbidden_arcanus.core.init.ModMemoryModules;
 import com.stal111.forbidden_arcanus.core.init.other.ModActivities;
-import com.stal111.forbidden_arcanus.data.ModDamageTypes;
 import com.stal111.forbidden_arcanus.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -318,8 +317,6 @@ public class LostSoul extends PathfinderMob implements SoulExtractable {
     @Override
     public void extractTick(Player player) {
         this.extractCounter = EXTRACT_STUNNED_TIME;
-
-        this.hurt(this.level().damageSources().source(ModDamageTypes.EXTRACT_SOUL), EXTRACT_DAMAGE);
 
         if (this.isDeadOrDying()) {
             this.level().addFreshEntity(new ItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), this.getSoulItem()));

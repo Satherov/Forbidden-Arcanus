@@ -63,7 +63,6 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new ModEnchantmentTagsProvider(context, fileHelper));
         generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(context, fileHelper));
         generator.addProvider(event.includeServer(), new ModBiomeTagsProvider(context, fileHelper));
-        generator.addProvider(event.includeServer(), new ModDamageTypeTagsProvider(context, fileHelper));
 
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Set.of(), List.of(
                 new LootTableProvider.SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK),
