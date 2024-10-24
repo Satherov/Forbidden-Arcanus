@@ -66,6 +66,7 @@ public class DataGenerators {
 
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Set.of(), List.of(
                 new LootTableProvider.SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK),
+                new LootTableProvider.SubProviderEntry(ModEntityLootTables::new, LootContextParamSets.ENTITY),
                 new LootTableProvider.SubProviderEntry(ModChestLootAdditions::new, LootContextParamSets.CHEST),
                 new LootTableProvider.SubProviderEntry(ModBlockLootAdditions::new, LootContextParamSets.BLOCK),
                 new LootTableProvider.SubProviderEntry(ModEntityLootAdditions::new, LootContextParamSets.ENTITY)
