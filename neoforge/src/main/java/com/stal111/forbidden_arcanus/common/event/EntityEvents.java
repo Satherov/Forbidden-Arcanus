@@ -57,14 +57,4 @@ public class EntityEvents {
             player.setData(ModAttachmentTypes.SOULBOUND_INVENTORY, inventory);
         }
     }
-
-    //TODO
-//    @SubscribeEvent
-//    public static void onCheckSpawn(LivingSpawnEvent.CheckSpawn event) {
-//        LivingEntity entity = event.getEntity();
-//
-//        if (AurealHelper.canEntityBeAureal(entity) && entity.getRandom().nextDouble() <= AurealConfig.AUREAL_ENTITY_SPAWN_CHANCE.get()) {
-//            entity.getPersistentData().putBoolean("aureal", true);
-//        }
-//    }
 }

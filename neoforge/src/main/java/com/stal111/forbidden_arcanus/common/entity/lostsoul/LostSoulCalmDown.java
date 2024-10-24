@@ -14,11 +14,11 @@ import java.util.function.Function;
  * @author stal111
  * @since 2022-09-16
  */
-public class LostSoulCalmDown extends Behavior<LostSoul> {
+public class LostSoulCalmDown extends Behavior<AbstractLostSoul> {
 
     private static final int SAFE_DISTANCE_FROM_DANGER = 15;
 
-    private static final Function<LostSoul, Boolean> CLOSE_TO_ENTITY_THAT_HURT = lostSoul -> {
+    private static final Function<AbstractLostSoul, Boolean> CLOSE_TO_ENTITY_THAT_HURT = lostSoul -> {
         return lostSoul.getBrain().getMemory(MemoryModuleType.HURT_BY_ENTITY).filter(entity -> {
             return entity.distanceTo(lostSoul) <= SAFE_DISTANCE_FROM_DANGER;
         }).isPresent();
@@ -29,14 +29,14 @@ public class LostSoulCalmDown extends Behavior<LostSoul> {
     }
 
     @Override
-    protected void start(@Nonnull ServerLevel level, @Nonnull LostSoul entity, long gameTime) {
+    protected void start(@Nonnull ServerLevel level, @Nonnull AbstractLostSoul entity, long gameTime) {
         boolean flag = VillagerPanicTrigger.isHurt(entity) || VillagerPanicTrigger.hasHostile(entity) || CLOSE_TO_ENTITY_THAT_HURT.apply(entity);
 
         if (!flag) {
             entity.getBrain().eraseMemory(MemoryModuleType.HURT_BY);
             entity.getBrain().eraseMemory(MemoryModuleType.HURT_BY_ENTITY);
 
-            entity.getEntityData().set(LostSoul.DATA_SCARED, false);
+            entity.getEntityData().set(AbstractLostSoul.DATA_SCARED, false);
 
             entity.setPathfindingMalus(PathType.BLOCKED, 16.0F);
 

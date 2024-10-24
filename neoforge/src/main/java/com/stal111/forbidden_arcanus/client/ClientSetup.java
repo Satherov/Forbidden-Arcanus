@@ -79,7 +79,9 @@ public class ClientSetup {
         helper.registerEntityRenderer(ModEntities.CRIMSON_LIGHTNING_BOLT, CrimsonLightningBoltRenderer::new);
         helper.registerEntityRenderer(ModEntities.BOAT, context -> new ModBoatRenderer(context, false));
         helper.registerEntityRenderer(ModEntities.CHEST_BOAT, context -> new ModBoatRenderer(context, true));
-        helper.registerEntityRenderer(ModEntities.LOST_SOUL, LostSoulRenderer::new);
+        helper.registerEntityRenderer(ModEntities.LOST_SOUL, context -> new LostSoulRenderer(context, ForbiddenArcanus.location("textures/entity/lost_soul/lost_soul.png")));
+        helper.registerEntityRenderer(ModEntities.CORRUPT_LOST_SOUL, context -> new LostSoulRenderer(context, ForbiddenArcanus.location("textures/entity/lost_soul/corrupt_lost_soul.png")));
+        helper.registerEntityRenderer(ModEntities.ENCHANTED_LOST_SOUL, context -> new LostSoulRenderer(context, ForbiddenArcanus.location("textures/entity/lost_soul/enchanted_lost_soul.png")));
         helper.registerEntityRenderer(ModEntities.AUREAL_BOTTLE, ThrownItemRenderer::new);
         helper.registerEntityRenderer(ModEntities.DARK_TRADER, DarkTraderRenderer::new);
 

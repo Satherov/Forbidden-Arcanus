@@ -17,7 +17,7 @@ import net.minecraft.world.entity.schedule.Activity;
  */
 public class LostSoulAi {
 
-    protected static Brain<LostSoul> makeBrain(Brain<LostSoul> brain) {
+    protected static Brain<AbstractLostSoul> makeBrain(Brain<AbstractLostSoul> brain) {
         initCoreActivity(brain);
         initIdleActivity(brain);
         initPanicActivity(brain);
@@ -29,15 +29,15 @@ public class LostSoulAi {
         return brain;
     }
 
-    private static void initCoreActivity(Brain<LostSoul> brain) {
+    private static void initCoreActivity(Brain<AbstractLostSoul> brain) {
         brain.addActivity(Activity.CORE, 0, ImmutableList.of(new LookAtTargetSink(45, 90), new MoveToTargetSink(), new CountDownCooldownTicks(ModMemoryModules.SCARED_TIME.get())));
     }
 
-    private static void initIdleActivity(Brain<LostSoul> brain) {
+    private static void initIdleActivity(Brain<AbstractLostSoul> brain) {
         brain.addActivityWithConditions(Activity.IDLE, ImmutableList.of(Pair.of(0, SetEntityLookTargetSometimes.create(EntityType.PLAYER, 6.0F, UniformInt.of(30, 60))), Pair.of(1, new RunOne<>(ImmutableList.of(Pair.of(RandomStroll.fly(1.0F), 2), Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 2), Pair.of(new DoNothing(30, 60), 1))))), ImmutableSet.of());
     }
 
-    private static void initPanicActivity(Brain<LostSoul> brain) {
+    private static void initPanicActivity(Brain<AbstractLostSoul> brain) {
         brain.addActivityWithConditions(Activity.PANIC, ImmutableList.of(Pair.of(0, new LostSoulCalmDown()), Pair.of(1, SetWalkTargetAwayFrom.entity(MemoryModuleType.HURT_BY_ENTITY, 1.75F, 15, false)), Pair.of(2, RandomStroll.fly(1.0F))), ImmutableSet.of());
     }
 }

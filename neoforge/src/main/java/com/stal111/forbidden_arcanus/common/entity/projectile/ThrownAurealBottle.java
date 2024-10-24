@@ -2,7 +2,7 @@ package com.stal111.forbidden_arcanus.common.entity.projectile;
 
 import com.stal111.forbidden_arcanus.common.aureal.AurealHelper;
 import com.stal111.forbidden_arcanus.common.block.entity.forge.essence.EssenceType;
-import com.stal111.forbidden_arcanus.common.entity.lostsoul.LostSoul;
+import com.stal111.forbidden_arcanus.common.entity.lostsoul.AbstractLostSoul;
 import com.stal111.forbidden_arcanus.common.essence.EssenceHelper;
 import com.stal111.forbidden_arcanus.common.network.clientbound.SpawnParticlePayload;
 import com.stal111.forbidden_arcanus.core.init.ModEntities;
@@ -82,13 +82,11 @@ public class ThrownAurealBottle extends ThrowableItemProjectile {
                     entity.getPersistentData().putBoolean("aureal", true);
                 }
 
-                if (entity instanceof LostSoul lostSoul) {
-                    LostSoul.Variant variant = lostSoul.getVariant();
-
-                    if (variant == LostSoul.Variant.CORRUPT_LOST_SOUL) {
-                        lostSoul.setVariant(LostSoul.Variant.LOST_SOUL);
-                    } else {
-                        lostSoul.setVariant(LostSoul.Variant.ENCHANTED_LOST_SOUL);
+                if (entity instanceof AbstractLostSoul lostSoul) {
+                    if (lostSoul.getType() == ModEntities.CORRUPT_LOST_SOUL.get()) {
+                        lostSoul.convertTo(ModEntities.LOST_SOUL.get(), true);
+                    } else if (lostSoul.getType() == ModEntities.LOST_SOUL.get()) {
+                        lostSoul.convertTo(ModEntities.ENCHANTED_LOST_SOUL.get(), true);
                     }
                 }
             }

@@ -5,6 +5,8 @@ import com.stal111.forbidden_arcanus.common.entity.CrimsonLightningBoltEntity;
 import com.stal111.forbidden_arcanus.common.entity.ModBoat;
 import com.stal111.forbidden_arcanus.common.entity.ModChestBoat;
 import com.stal111.forbidden_arcanus.common.entity.darktrader.DarkTrader;
+import com.stal111.forbidden_arcanus.common.entity.lostsoul.CorruptLostSoul;
+import com.stal111.forbidden_arcanus.common.entity.lostsoul.EnchantedLostSoul;
 import com.stal111.forbidden_arcanus.common.entity.lostsoul.LostSoul;
 import com.stal111.forbidden_arcanus.common.entity.projectile.BoomArrow;
 import com.stal111.forbidden_arcanus.common.entity.projectile.DracoArcanusArrow;
@@ -34,7 +36,9 @@ public class ModEntities implements RegistryClass {
     public static final RegistryEntry<EntityType<?>, EntityType<CrimsonLightningBoltEntity>> CRIMSON_LIGHTNING_BOLT = HELPER.register("crimson_lightning_bolt", EntityType.Builder.of(CrimsonLightningBoltEntity::new, MobCategory.MISC).sized(0.0F, 0.0F).setTrackingRange(16).updateInterval(Integer.MAX_VALUE));
     public static final RegistryEntry<EntityType<?>, EntityType<ModBoat>> BOAT = HELPER.register("boat", EntityType.Builder.<ModBoat>of(ModBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10));
     public static final RegistryEntry<EntityType<?>, EntityType<ModChestBoat>> CHEST_BOAT = HELPER.register("chest_boat", EntityType.Builder.<ModChestBoat>of(ModChestBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10));
-    public static final RegistryEntry<EntityType<?>, EntityType<LostSoul>> LOST_SOUL = HELPER.register("lost_soul", EntityType.Builder.<LostSoul>of(LostSoul::new, MobCategory.CREATURE).sized(0.35F, 0.6F).clientTrackingRange(8));
+    public static final RegistryEntry<EntityType<?>, EntityType<LostSoul>> LOST_SOUL = HELPER.register("lost_soul", EntityType.Builder.of(LostSoul::new, MobCategory.CREATURE).sized(0.35F, 0.6F).clientTrackingRange(8));
+    public static final RegistryEntry<EntityType<?>, EntityType<CorruptLostSoul>> CORRUPT_LOST_SOUL = HELPER.register("corrupt_lost_soul", EntityType.Builder.of(CorruptLostSoul::new, MobCategory.CREATURE).sized(0.35F, 0.6F).clientTrackingRange(8));
+    public static final RegistryEntry<EntityType<?>, EntityType<EnchantedLostSoul>> ENCHANTED_LOST_SOUL = HELPER.register("enchanted_lost_soul", EntityType.Builder.of(EnchantedLostSoul::new, MobCategory.CREATURE).sized(0.35F, 0.6F).clientTrackingRange(8));
     public static final RegistryEntry<EntityType<?>, EntityType<ThrownAurealBottle>> AUREAL_BOTTLE = HELPER.register("aureal_bottle", EntityType.Builder.<ThrownAurealBottle>of(ThrownAurealBottle::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10));
     public static final RegistryEntry<EntityType<?>, EntityType<DarkTrader>> DARK_TRADER = HELPER.register("dark_trader", EntityType.Builder.of(DarkTrader::new, MobCategory.CREATURE).requiredFeatures().sized(0.35F, 0.6F).clientTrackingRange(8));
 

@@ -63,6 +63,8 @@ public class LangProvider extends LanguageProvider {
         this.add(Util.makeDescriptionId("container", ForbiddenArcanus.location("clibano")), "Clibano");
 
         this.addEntityType(ModEntities.LOST_SOUL, "Lost Soul");
+        this.addEntityType(ModEntities.CORRUPT_LOST_SOUL, "Corrupt Lost Soul");
+        this.addEntityType(ModEntities.ENCHANTED_LOST_SOUL, "Enchanted Lost Soul");
         this.addEntityType(ModEntities.DARK_TRADER, "Dark Trader");
 
        // this.add(ModEnchantments.AUREAL_RESERVOIR.get(), "Aureal Reservoir");

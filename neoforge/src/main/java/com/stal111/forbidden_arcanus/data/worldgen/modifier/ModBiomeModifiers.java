@@ -5,10 +5,8 @@ import com.stal111.forbidden_arcanus.core.init.ModEntities;
 import com.stal111.forbidden_arcanus.data.worldgen.placement.ModOrePlacements;
 import com.stal111.forbidden_arcanus.data.worldgen.placement.ModTreePlacements;
 import com.stal111.forbidden_arcanus.data.worldgen.placement.ModVegetationPlacements;
-import com.stal111.forbidden_arcanus.util.ModTags;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -34,7 +32,6 @@ public class ModBiomeModifiers extends ValhelsiaBiomeModifierProvider {
     public static final ResourceKey<BiomeModifier> ADD_YELLOW_ORCHIDS = HELPER.createKey("add_yellow_orchids");
 
     public static final ResourceKey<BiomeModifier> ADD_LOST_SOUL_OVERWORLD = HELPER.createKey("add_lost_soul_overworld");
-    public static final ResourceKey<BiomeModifier> ADD_LOST_SOUL_NETHER = HELPER.createKey("add_lost_soul_nether");
 
     public ModBiomeModifiers(BootstrapContext<BiomeModifier> context) {
         super(context);
@@ -51,6 +48,5 @@ public class ModBiomeModifiers extends ValhelsiaBiomeModifierProvider {
         this.addFeature(ADD_YELLOW_ORCHIDS, this.directBiome(Biomes.FLOWER_FOREST), this.directFeature(ModVegetationPlacements.YELLOW_ORCHID), GenerationStep.Decoration.VEGETAL_DECORATION);
 
         this.addSpawn(ADD_LOST_SOUL_OVERWORLD, this.isOverworld, new MobSpawnSettings.SpawnerData(ModEntities.LOST_SOUL.get(), 35, 1, 3));
-        this.addNetherSpawn(ADD_LOST_SOUL_NETHER, this.namedBiome(ModTags.Biomes.SPAWNS_CORRUPT_LOST_SOUL), MobCategory.MONSTER, 1.1D, 1.0D, new MobSpawnSettings.SpawnerData(ModEntities.LOST_SOUL.get(), 60, 1, 4));
     }
 }

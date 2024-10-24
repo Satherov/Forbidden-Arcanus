@@ -1,6 +1,6 @@
 package com.stal111.forbidden_arcanus.common.aureal;
 
-import com.stal111.forbidden_arcanus.common.entity.lostsoul.LostSoul;
+import com.stal111.forbidden_arcanus.common.entity.lostsoul.AbstractLostSoul;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 
@@ -17,7 +17,7 @@ public class AurealHelper {
     public static boolean canEntityBeAureal(LivingEntity livingEntity) {
         MobCategory category = livingEntity.getType().getCategory();
 
-        if (livingEntity instanceof LostSoul) {
+        if (livingEntity instanceof AbstractLostSoul) {
             return false;
         }
 

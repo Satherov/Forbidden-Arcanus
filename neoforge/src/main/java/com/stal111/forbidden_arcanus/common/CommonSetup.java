@@ -2,7 +2,7 @@ package com.stal111.forbidden_arcanus.common;
 
 import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.common.entity.darktrader.DarkTrader;
-import com.stal111.forbidden_arcanus.common.entity.lostsoul.LostSoul;
+import com.stal111.forbidden_arcanus.common.entity.lostsoul.AbstractLostSoul;
 import com.stal111.forbidden_arcanus.core.init.ModBlocks;
 import com.stal111.forbidden_arcanus.core.init.ModEntities;
 import com.stal111.forbidden_arcanus.core.init.other.CompostableRegistry;
@@ -50,7 +50,9 @@ public class CommonSetup {
 
     @SubscribeEvent
     public static void onAttributeCreation(EntityAttributeCreationEvent event) {
-        event.put(ModEntities.LOST_SOUL.get(), LostSoul.createAttributes().build());
+        event.put(ModEntities.LOST_SOUL.get(), AbstractLostSoul.createAttributes().build());
+        event.put(ModEntities.CORRUPT_LOST_SOUL.get(), AbstractLostSoul.createAttributes().build());
+        event.put(ModEntities.ENCHANTED_LOST_SOUL.get(), AbstractLostSoul.createAttributes().build());
         event.put(ModEntities.DARK_TRADER.get(), DarkTrader.createAttributes().build());
     }
 }

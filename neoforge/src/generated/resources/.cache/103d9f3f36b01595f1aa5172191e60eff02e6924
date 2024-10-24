@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-23T12:07:12.8253636	Registries
+// 1.21.1	2024-10-23T22:19:41.6358034	Registries
 94ac5c9945617db040611ba809c52fa6bd6581cf data/forbidden_arcanus/enchantment/soul_looting.json
 c58d326e3ebc53e4813a5753575c033eeb5cc909 data/forbidden_arcanus/forbidden_arcanus/enhancer/definition/artisan_relic.json
 4852b696f02e7470be56e62e97c6106737bd808b data/forbidden_arcanus/forbidden_arcanus/enhancer/definition/crescent_moon.json
@@ -48,7 +48,6 @@ fa9a5b435857a5b72fabe0fc833e5f11afb46d00 data/forbidden_arcanus/forbidden_arcanu
 012e6eb0540c55fc7419c64f9b5cc7bb3fee65fa data/forbidden_arcanus/neoforge/biome_modifier/add_arcane_crystal_ore.json
 199a43c0fc767c867e237b79fce2979c6afc6bf6 data/forbidden_arcanus/neoforge/biome_modifier/add_aurum_trees.json
 8dfbd985b68a942905c362fc87576fc6cafc2299 data/forbidden_arcanus/neoforge/biome_modifier/add_darkstone.json
-8799543b303edec3f2cba2d5245f5e3632a7015c data/forbidden_arcanus/neoforge/biome_modifier/add_lost_soul_nether.json
 8aea022bb3f214a66f856bb74687af98c10f5e8c data/forbidden_arcanus/neoforge/biome_modifier/add_lost_soul_overworld.json
 3af8b94261c556981983e2fc3995d1b6b2b2fd88 data/forbidden_arcanus/neoforge/biome_modifier/add_runic_stone.json
 f0a5db4af47389917476ac01a56c506e6f77f08e data/forbidden_arcanus/neoforge/biome_modifier/add_stella_arcanum.json

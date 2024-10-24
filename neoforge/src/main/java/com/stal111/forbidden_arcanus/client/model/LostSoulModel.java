@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.client.animation.LostSoulAnimation;
-import com.stal111.forbidden_arcanus.common.entity.lostsoul.LostSoul;
+import com.stal111.forbidden_arcanus.common.entity.lostsoul.AbstractLostSoul;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -17,7 +17,7 @@ import javax.annotation.Nonnull;
  * @author stal111
  * @since 2022-09-14
  */
-public class LostSoulModel extends HierarchicalModel<LostSoul> {
+public class LostSoulModel extends HierarchicalModel<AbstractLostSoul> {
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ForbiddenArcanus.location("lost_soul"), "main");
 
@@ -53,7 +53,7 @@ public class LostSoulModel extends HierarchicalModel<LostSoul> {
     }
 
     @Override
-    public void setupAnim(@Nonnull LostSoul entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(@Nonnull AbstractLostSoul entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
 
         this.animate(entity.stillAnimationState, LostSoulAnimation.LOST_SOUL_STILL, ageInTicks);

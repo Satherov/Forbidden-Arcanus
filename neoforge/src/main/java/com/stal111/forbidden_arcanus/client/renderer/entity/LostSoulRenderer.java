@@ -1,35 +1,29 @@
 package com.stal111.forbidden_arcanus.client.renderer.entity;
 
-import com.google.common.collect.Maps;
 import com.stal111.forbidden_arcanus.client.model.LostSoulModel;
-import com.stal111.forbidden_arcanus.common.entity.lostsoul.LostSoul;
-import net.minecraft.Util;
+import com.stal111.forbidden_arcanus.common.entity.lostsoul.AbstractLostSoul;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nonnull;
-import java.util.Map;
 
 /**
  * @author stal111
  * @since 2022-09-14
  */
-public class LostSoulRenderer extends MobRenderer<LostSoul, LostSoulModel> {
+public class LostSoulRenderer extends MobRenderer<AbstractLostSoul, LostSoulModel> {
 
-    private static final Map<LostSoul.Variant, ResourceLocation> TEXTURE_BY_TYPE = Util.make(Maps.newHashMap(), map -> {
-        for (LostSoul.Variant variant : LostSoul.Variant.values()) {
-            map.put(variant, variant.getTexture());
-        }
-    });
+    private final ResourceLocation texture;
 
-    public LostSoulRenderer(EntityRendererProvider.Context context) {
+    public LostSoulRenderer(EntityRendererProvider.Context context, ResourceLocation texture) {
         super(context, new LostSoulModel(context.bakeLayer(LostSoulModel.LAYER_LOCATION)), 0.0F);
+        this.texture = texture;
     }
 
     @Nonnull
     @Override
-    public ResourceLocation getTextureLocation(@Nonnull LostSoul entity) {
-        return TEXTURE_BY_TYPE.get(entity.getVariant());
+    public ResourceLocation getTextureLocation(@Nonnull AbstractLostSoul entity) {
+        return this.texture;
     }
 }
