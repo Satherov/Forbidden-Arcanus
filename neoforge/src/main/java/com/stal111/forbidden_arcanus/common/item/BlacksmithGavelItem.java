@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class BlacksmithGavelItem extends PickaxeItem implements RitualStarterItem {
 
-    private static final String TOOLTIP_KEY = Util.makeDescriptionId("tooltip", ForbiddenArcanus.location("remaining_ritual_uses"));
+    private static final String TOOLTIP_KEY = Util.makeDescriptionId("item", ForbiddenArcanus.location("blacksmith_gavel.remaining_ritual_uses"));
 
 
     public BlacksmithGavelItem(Tier tier, Properties properties) {

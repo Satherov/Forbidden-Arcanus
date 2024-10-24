@@ -315,6 +315,8 @@ public class LangProvider extends LanguageProvider {
         this.add("item", "smithing_template.darkstone_upgrade.base_slot_description", "Add armor, weapon, or tool");
         this.add("item", "smithing_template.darkstone_upgrade.ingredients", "Modifier Item");
 
+        this.add("item", "blacksmith_gavel.remaining_ritual_uses", "Remaining ritual uses: %s");
+
         this.add("upgrade", "darkstone_upgrade", "Apply Item Modifier");
 
         this.add("tooltip", "essence.storage_format", "%s / %s");
