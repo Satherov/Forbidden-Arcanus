@@ -1,7 +1,6 @@
 package com.stal111.forbidden_arcanus.data.model;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.gson.JsonElement;
 import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.common.block.DeskBlock;
 import com.stal111.forbidden_arcanus.common.block.HephaestusForgeBlock;
@@ -13,53 +12,39 @@ import com.stal111.forbidden_arcanus.data.FABlockFamilies;
 import net.minecraft.core.Direction;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.models.BlockModelGenerators;
-import net.minecraft.data.models.blockstates.*;
+import net.minecraft.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.data.models.blockstates.PropertyDispatch;
+import net.minecraft.data.models.blockstates.Variant;
+import net.minecraft.data.models.blockstates.VariantProperties;
 import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.valhelsia.valhelsia_core.datagen.model.BlockModelGenerator;
 
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 /**
  * @author stal111
  * @since 09.09.2023
  */
-public class ModBlockModels {
-
-    private final BlockModelGenerators generators;
-    private final Consumer<BlockStateGenerator> blockStateOutput;
-    private final BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput;
-
-    private final Consumer<Item> skippedAutoItemModels;
+public class ModBlockModels extends BlockModelGenerator {
 
     private final Map<Block, TexturedModel> texturedModels = ImmutableMap.<Block, TexturedModel>builder()
             .put(ModBlocks.CUT_SOULLESS_SANDSTONE.get(), TexturedModel.COLUMN.get(ModBlocks.CUT_SOULLESS_SANDSTONE.get()))
             .build();
 
-    private ModBlockModels(BlockModelGenerators generators, Consumer<Item> skippedAutoItemModels) {
-        this.generators = generators;
-        this.blockStateOutput = generators.blockStateOutput;
-        this.modelOutput = generators.modelOutput;
-        this.skippedAutoItemModels = skippedAutoItemModels;
-
-        this.generators.fullBlockModelCustomGenerators = ImmutableMap.<Block, BlockModelGenerators.BlockStateGeneratorSupplier>builder()
-                .put(ModBlocks.DARKSTONE.get(), BlockModelGenerators::createMirroredCubeGenerator)
-                .build();
+    public ModBlockModels(BlockModelGenerators defaultGenerators) {
+        super(defaultGenerators);
     }
 
-    public static void create(BlockModelGenerators generators, Consumer<Item> skippedAutoItemModels) {
-        new ModBlockModels(generators, skippedAutoItemModels).createModels();
-    }
+    @Override
+    protected void generate() {
+        var generators = this.getDefaultGenerators();
 
-    public void createModels() {
         FABlockFamilies.getAllFamilies()
                 .filter(BlockFamily::shouldGenerateModel)
                 .forEach(blockFamily -> this.family(blockFamily.getBaseBlock()).generateFor(blockFamily));
@@ -68,25 +53,25 @@ public class ModBlockModels {
         this.createSimpleFlatItemModel(ModBlocks.NIPA.get());
         this.createSimpleFlatItemModel(ModBlocks.ARCANE_DRAGON_EGG.get());
 
-        this.generators.createTrivialCube(ModBlocks.SOULLESS_SAND.get());
-        this.generators.createTrivialCube(ModBlocks.GILDED_CHISELED_POLISHED_DARKSTONE.get());
-        this.generators.createTrivialCube(ModBlocks.TILED_POLISHED_DARKSTONE_BRICKS.get());
-        this.generators.createTrivialCube(ModBlocks.QUANTUM_INJECTOR.get());
+        generators.createTrivialCube(ModBlocks.SOULLESS_SAND.get());
+        generators.createTrivialCube(ModBlocks.GILDED_CHISELED_POLISHED_DARKSTONE.get());
+        generators.createTrivialCube(ModBlocks.TILED_POLISHED_DARKSTONE_BRICKS.get());
+        generators.createTrivialCube(ModBlocks.QUANTUM_INJECTOR.get());
         this.createEmissiveLayerCube(ModBlocks.ARCANE_CRYSTAL_ORE.get(), "arcane_crystal_ore");
         this.createEmissiveLayerCube(ModBlocks.DEEPSLATE_ARCANE_CRYSTAL_ORE.get(), "arcane_crystal_ore");
         this.createEmissiveLayerCube(ModBlocks.RUNIC_STONE.get(), "runic_stone");
         this.createEmissiveLayerCube(ModBlocks.RUNIC_DEEPSLATE.get(), "runic_stone");
         this.createEmissiveLayerCube(ModBlocks.RUNIC_DARKSTONE.get(), "runic_stone");
-        this.generators.createTrivialCube(ModBlocks.STELLA_ARCANUM.get());
+        generators.createTrivialCube(ModBlocks.STELLA_ARCANUM.get());
         this.createEmissiveCube(ModBlocks.ARCANE_CRYSTAL_BLOCK.get());
-        this.generators.createTrivialCube(ModBlocks.CORRUPTED_ARCANE_CRYSTAL_BLOCK.get());
-        this.generators.createTrivialCube(ModBlocks.RUNE_BLOCK.get());
-        this.generators.createTrivialCube(ModBlocks.STELLARITE_BLOCK.get());
-        this.generators.createTrivialCube(ModBlocks.DEORUM_BLOCK.get());
-        this.generators.createTrivialCube(ModBlocks.OBSIDIANSTEEL_BLOCK.get());
-        this.generators.createTrivialCube(ModBlocks.AURUM_LEAVES.get());
-        this.generators.createTrivialCube(ModBlocks.NUGGETY_AURUM_LEAVES.get());
-        this.generators.createTrivialCube(ModBlocks.FUNGYSS_BLOCK.get());
+        generators.createTrivialCube(ModBlocks.CORRUPTED_ARCANE_CRYSTAL_BLOCK.get());
+        generators.createTrivialCube(ModBlocks.RUNE_BLOCK.get());
+        generators.createTrivialCube(ModBlocks.STELLARITE_BLOCK.get());
+        generators.createTrivialCube(ModBlocks.DEORUM_BLOCK.get());
+        generators.createTrivialCube(ModBlocks.OBSIDIANSTEEL_BLOCK.get());
+        generators.createTrivialCube(ModBlocks.AURUM_LEAVES.get());
+        generators.createTrivialCube(ModBlocks.NUGGETY_AURUM_LEAVES.get());
+        generators.createTrivialCube(ModBlocks.FUNGYSS_BLOCK.get());
 
         this.createForbiddenomicon(ModBlocks.FORBIDDENOMICON.get());
         this.createDesk(ModBlocks.DESK.get(), false);
@@ -110,20 +95,20 @@ public class ModBlockModels {
         ModModelTemplates.UTREM_JAR_ITEM.create(ModelLocationUtils.getModelLocation(ModBlocks.ESSENCE_UTREM_JAR.get().asItem()), TextureMapping.particle(ModBlocks.UTREM_JAR.get()), this.modelOutput);
         this.createPillar(ModBlocks.ARCANE_POLISHED_DARKSTONE_PILLAR.get());
         this.createNonTemplateModelBlock(ModBlocks.QUANTUM_CORE.get());
-        this.generators.createDoor(ModBlocks.DEORUM_DOOR.get());
-        this.generators.createTrapdoor(ModBlocks.DEORUM_TRAPDOOR.get());
-        this.generators.createAxisAlignedPillarBlockCustomModel(ModBlocks.DEORUM_CHAIN.get(), ModelLocationUtils.getModelLocation(ModBlocks.DEORUM_CHAIN.get()));
-        this.generators.createGlassBlocks(ModBlocks.DEORUM_GLASS.get(), ModBlocks.DEORUM_GLASS_PANE.get());
-        this.generators.createGlassBlocks(ModBlocks.RUNIC_GLASS.get(), ModBlocks.RUNIC_GLASS_PANE.get());
-        this.generators.createLantern(ModBlocks.DEORUM_LANTERN.get());
-        this.generators.createLantern(ModBlocks.DEORUM_SOUL_LANTERN.get());
-        this.generators.createPlant(ModBlocks.FUNGYSS.get(), ModBlocks.POTTED_FUNGYSS.get(), BlockModelGenerators.TintState.NOT_TINTED);
-        this.generators.createPlant(ModBlocks.AURUM_SAPLING.get(), ModBlocks.POTTED_AURUM_SAPLING.get(), BlockModelGenerators.TintState.NOT_TINTED);
-        this.generators.createPlant(ModBlocks.GROWING_EDELWOOD.get(), ModBlocks.POTTED_GROWING_EDELWOOD.get(), BlockModelGenerators.TintState.NOT_TINTED);
-        this.generators.createPlant(ModBlocks.YELLOW_ORCHID.get(), ModBlocks.POTTED_YELLOW_ORCHID.get(), BlockModelGenerators.TintState.NOT_TINTED);
-        this.generators.woodProvider(ModBlocks.FUNGYSS_STEM.get()).log(ModBlocks.FUNGYSS_STEM.get()).wood(ModBlocks.FUNGYSS_HYPHAE.get());
-        this.generators.woodProvider(ModBlocks.AURUM_LOG.get()).logWithHorizontal(ModBlocks.AURUM_LOG.get()).wood(ModBlocks.AURUM_WOOD.get());
-        this.generators.woodProvider(ModBlocks.STRIPPED_AURUM_LOG.get()).logWithHorizontal(ModBlocks.STRIPPED_AURUM_LOG.get()).wood(ModBlocks.STRIPPED_AURUM_WOOD.get());
+        generators.createDoor(ModBlocks.DEORUM_DOOR.get());
+        generators.createTrapdoor(ModBlocks.DEORUM_TRAPDOOR.get());
+        generators.createAxisAlignedPillarBlockCustomModel(ModBlocks.DEORUM_CHAIN.get(), ModelLocationUtils.getModelLocation(ModBlocks.DEORUM_CHAIN.get()));
+        generators.createGlassBlocks(ModBlocks.DEORUM_GLASS.get(), ModBlocks.DEORUM_GLASS_PANE.get());
+        generators.createGlassBlocks(ModBlocks.RUNIC_GLASS.get(), ModBlocks.RUNIC_GLASS_PANE.get());
+        generators.createLantern(ModBlocks.DEORUM_LANTERN.get());
+        generators.createLantern(ModBlocks.DEORUM_SOUL_LANTERN.get());
+        generators.createPlant(ModBlocks.FUNGYSS.get(), ModBlocks.POTTED_FUNGYSS.get(), BlockModelGenerators.TintState.NOT_TINTED);
+        generators.createPlant(ModBlocks.AURUM_SAPLING.get(), ModBlocks.POTTED_AURUM_SAPLING.get(), BlockModelGenerators.TintState.NOT_TINTED);
+        generators.createPlant(ModBlocks.GROWING_EDELWOOD.get(), ModBlocks.POTTED_GROWING_EDELWOOD.get(), BlockModelGenerators.TintState.NOT_TINTED);
+        generators.createPlant(ModBlocks.YELLOW_ORCHID.get(), ModBlocks.POTTED_YELLOW_ORCHID.get(), BlockModelGenerators.TintState.NOT_TINTED);
+        generators.woodProvider(ModBlocks.FUNGYSS_STEM.get()).log(ModBlocks.FUNGYSS_STEM.get()).wood(ModBlocks.FUNGYSS_HYPHAE.get());
+        generators.woodProvider(ModBlocks.AURUM_LOG.get()).logWithHorizontal(ModBlocks.AURUM_LOG.get()).wood(ModBlocks.AURUM_WOOD.get());
+        generators.woodProvider(ModBlocks.STRIPPED_AURUM_LOG.get()).logWithHorizontal(ModBlocks.STRIPPED_AURUM_LOG.get()).wood(ModBlocks.STRIPPED_AURUM_WOOD.get());
         this.createHollowLog(ModBlocks.EDELWOOD_LOG.get());
         this.createHollowLogWithFace(ModBlocks.CARVED_EDELWOOD_LOG.get());
         this.blockStateOutput.accept(createSimpleBlock(ModBlocks.EDELWOOD_BRANCH.get(), ModelLocationUtils.getModelLocation(ModBlocks.EDELWOOD_BRANCH.get())));
@@ -134,11 +119,11 @@ public class ModBlockModels {
 
     public BlockModelGenerators.BlockFamilyProvider family(Block block) {
         TexturedModel texturedmodel = this.texturedModels.getOrDefault(block, TexturedModel.CUBE.get(block));
-        return this.generators.new BlockFamilyProvider(texturedmodel.getMapping()).fullBlock(block, texturedmodel.getTemplate());
+        return this.getDefaultGenerators().new BlockFamilyProvider(texturedmodel.getMapping()).fullBlock(block, texturedmodel.getTemplate());
     }
 
     private BlockModelGenerators.BlockEntityModelGenerator blockEntityModels(ResourceLocation modelLocation, Block block) {
-        return this.generators.new BlockEntityModelGenerator(modelLocation, block);
+        return this.getDefaultGenerators().new BlockEntityModelGenerator(modelLocation, block);
     }
 
     private void createEmissiveCube(Block block) {

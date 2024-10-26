@@ -25,7 +25,7 @@ import java.util.concurrent.CompletableFuture;
 public class ModItemTagsProvider extends ValhelsiaItemTagsProvider {
 
     public ModItemTagsProvider(DataProviderContext context, CompletableFuture<TagLookup<Block>> blockTagsLookup) {
-        super(context.output(), context.lookupProvider(), blockTagsLookup);
+        super(context, blockTagsLookup);
     }
 
     @Override
@@ -54,6 +54,12 @@ public class ModItemTagsProvider extends ValhelsiaItemTagsProvider {
 
         this.tag(ModTags.Items.ETERNAL_INCOMPATIBLE);
         this.tag(ModTags.Items.FIERY_INCOMPATIBLE);
+        this.tag(ModTags.Items.MAGNETIZED_INCOMPATIBLE);
+        this.tag(ModTags.Items.DEMOLISHING_INCOMPATIBLE);
+        this.tag(ModTags.Items.AQUATIC_INCOMPATIBLE);
+        this.tag(ModTags.Items.SOULBOUND_INCOMPATIBLE);
+
+        this.tag(ModTags.Items.SOULBOUND_APPLICABLE).addTags(Tags.Items.TOOLS, Tags.Items.ARMORS);
 
         this.tag(ModTags.Items.CLIBANO_CREATES_SOUL_FIRE).add(ModItems.SOUL.get(), ModItems.CORRUPT_SOUL.get());
         this.tag(ModTags.Items.CLIBANO_CREATES_ENCHANTED_FIRE).add(ModItems.ENCHANTED_SOUL.get());

@@ -1,7 +1,6 @@
 package com.stal111.forbidden_arcanus.data.model;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.core.init.ModItems;
@@ -15,33 +14,23 @@ import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.valhelsia.valhelsia_core.api.common.registry.helper.item.ItemRegistryEntry;
-
-import java.util.function.BiConsumer;
-import java.util.function.Supplier;
+import net.valhelsia.valhelsia_core.datagen.model.ItemModelGenerator;
 
 /**
  * @author stal111
  * @since 17.09.2023
  */
-public class ModItemModels {
+public class ModItemModels extends ItemModelGenerator {
 
     private static final String ARMOR = "armor";
     private static final String TOOL = "tool";
 
-    private final ItemModelGenerators generators;
-    private final BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput;
-
-
-    public ModItemModels(ItemModelGenerators generators) {
-        this.generators = generators;
-        this.modelOutput = generators.output;
+    public ModItemModels(ItemModelGenerators defaultGenerators) {
+        super(defaultGenerators);
     }
 
-    public static void create(ItemModelGenerators generators) {
-        new ModItemModels(generators).createModels();
-    }
-
-    public void createModels() {
+    @Override
+    public void generate() {
         this.generateFlatItem(ModItems.SANITY_METER);
         this.generateFlatItem(ModItems.EDELWOOD_BUCKET);
         this.generateFlatItem(ModItems.EDELWOOD_WATER_BUCKET);
@@ -132,11 +121,11 @@ public class ModItemModels {
         this.generateFlatItem(ModItems.SMELTER_PRISM);
         this.generateFlatItem(ModItems.SOUL_BINDING_CRYSTAL);
 
-        ModModelTemplates.QUANTUM_CATCHER.create(ModelLocationUtils.getModelLocation(ModItems.QUANTUM_CATCHER.get()), ModTextureMapping.quantumCatcher(""), this.modelOutput);
+        ModModelTemplates.QUANTUM_CATCHER.create(ModelLocationUtils.getModelLocation(ModItems.QUANTUM_CATCHER.get()), ModTextureMapping.quantumCatcher(""), this.output);
         ModItems.DYED_QUANTUM_CATCHERS.forEach((color, registryEntry) -> {
-            ModModelTemplates.QUANTUM_CATCHER.create(ModelLocationUtils.getModelLocation(registryEntry.get()), ModTextureMapping.quantumCatcher("/" + color), this.modelOutput);
+            ModModelTemplates.QUANTUM_CATCHER.create(ModelLocationUtils.getModelLocation(registryEntry.get()), ModTextureMapping.quantumCatcher("/" + color), this.output);
         });
-        ModModelTemplates.QUANTUM_CATCHER.create(ModelLocationUtils.getModelLocation(ModItems.BOSS_CATCHER.get()), ModTextureMapping.quantumCatcher("/boss_catcher"), this.modelOutput);
+        ModModelTemplates.QUANTUM_CATCHER.create(ModelLocationUtils.getModelLocation(ModItems.BOSS_CATCHER.get()), ModTextureMapping.quantumCatcher("/boss_catcher"), this.output);
 
         var aurealTank0 = this.generateFlatItem("aureal_tank", ModItems.AUREAL_TANK, "_0", ModelTemplates.FLAT_ITEM);
         var aurealTank1 = this.generateFlatItem("aureal_tank", ModItems.AUREAL_TANK, "_1", ModelTemplates.FLAT_ITEM);
@@ -185,19 +174,19 @@ public class ModItemModels {
     }
 
     private ResourceLocation generateFlatItem(String folder, ItemRegistryEntry<? extends Item> item, ModelTemplate template) {
-        return template.create(ModelLocationUtils.getModelLocation(item.get()), TextureMapping.layer0(getItemTexture(item.get(), folder, "")), this.modelOutput);
+        return template.create(ModelLocationUtils.getModelLocation(item.get()), TextureMapping.layer0(getItemTexture(item.get(), folder, "")), this.output);
     }
 
     private ResourceLocation generateFlatItem(ItemRegistryEntry<? extends Item> item, ModelTemplate template) {
-        return template.create(ModelLocationUtils.getModelLocation(item.get()), TextureMapping.layer0(item.get()), this.modelOutput);
+        return template.create(ModelLocationUtils.getModelLocation(item.get()), TextureMapping.layer0(item.get()), this.output);
     }
 
     private ResourceLocation generateFlatItem(String folder, ItemRegistryEntry<? extends Item> item, String modelSuffix, ModelTemplate template) {
-        return template.create(ModLocationUtils.getItem(folder, item, modelSuffix), TextureMapping.layer0(getItemTexture(item.get(), folder, modelSuffix)), this.modelOutput);
+        return template.create(ModLocationUtils.getItem(folder, item, modelSuffix), TextureMapping.layer0(getItemTexture(item.get(), folder, modelSuffix)), this.output);
     }
 
     private ResourceLocation generateFlatItem(ItemRegistryEntry<Item> item, String modelSuffix, ModelTemplate template) {
-        return template.create(ModelLocationUtils.getModelLocation(item.get(), modelSuffix), TextureMapping.layer0(TextureMapping.getItemTexture(item.get(), modelSuffix)), this.modelOutput);
+        return template.create(ModelLocationUtils.getModelLocation(item.get(), modelSuffix), TextureMapping.layer0(TextureMapping.getItemTexture(item.get(), modelSuffix)), this.output);
     }
 
     public static ResourceLocation getItemTexture(Item item, String folder, String suffix) {
@@ -208,7 +197,7 @@ public class ModItemModels {
     }
 
     private void generateWithOverrides(String folder, Holder<Item> item, ModelPredicate... predicates) {
-        ModelTemplates.FLAT_ITEM.create(ModLocationUtils.getItem(item), TextureMapping.layer0(getItemTexture(item.value(), folder, "")), this.modelOutput, (modelLocation, map) -> {
+        ModelTemplates.FLAT_ITEM.create(ModLocationUtils.getItem(item), TextureMapping.layer0(getItemTexture(item.value(), folder, "")), this.output, (modelLocation, map) -> {
             JsonObject jsonObject = ModelTemplates.TWO_LAYERED_ITEM.createBaseTemplate(modelLocation, map);
             JsonArray jsonArray = new JsonArray();
 

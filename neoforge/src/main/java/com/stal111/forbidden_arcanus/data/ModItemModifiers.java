@@ -62,7 +62,7 @@ public class ModItemModifiers extends DatapackRegistryClass<ItemModifier> {
         var isToolPredicate = ItemPredicate.Builder.item().withSubPredicate(ValhelsiaItemSubPredicates.ANY_OF.get(), new ItemAnyOfPredicate(Map.of(ItemAbilityPredicate.TYPE, List.of(new ItemAbilityPredicate(ItemAbilities.PICKAXE_DIG), new ItemAbilityPredicate(ItemAbilities.AXE_DIG), new ItemAbilityPredicate(ItemAbilities.SHOVEL_DIG), new ItemAbilityPredicate(ItemAbilities.HOE_DIG))))).build();
         var magnetizedPredicate = ItemPredicate.Builder.item().of(ItemTags.FOOT_ARMOR).build();
         var aquaticPredicate = ItemPredicate.Builder.item().of(ItemTags.HEAD_ARMOR).build();
-        var soulBoundPredicate = ItemPredicate.Builder.item().build();
+        var soulBoundPredicate = ItemPredicate.Builder.item().of(ModTags.Items.SOULBOUND_APPLICABLE).build();
 
         register(ETERNAL, eternalPredicate, ModTags.Items.ETERNAL_INCOMPATIBLE, ModTags.Enchantments.ETERNAL_INCOMPATIBLE, HolderSet.direct(BuiltInRegistries.DATA_COMPONENT_TYPE.wrapAsHolder(DataComponents.DAMAGE), BuiltInRegistries.DATA_COMPONENT_TYPE.wrapAsHolder(DataComponents.MAX_DAMAGE)), createDisplay(ETERNAL, FastColor.ARGB32.color(255, 170, 181, 159), FastColor.ARGB32.color(255, 49, 57, 56)));
         register(FIERY, isToolPredicate, ModTags.Items.FIERY_INCOMPATIBLE, ModTags.Enchantments.FIERY_INCOMPATIBLE, createDisplay(FIERY, FastColor.ARGB32.color(255, 255, 143, 0), FastColor.ARGB32.color(255, 88, 6, 6)));

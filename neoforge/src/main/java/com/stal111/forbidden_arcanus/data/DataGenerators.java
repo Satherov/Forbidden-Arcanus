@@ -2,7 +2,8 @@ package com.stal111.forbidden_arcanus.data;
 
 import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.data.client.ModSoundsProvider;
-import com.stal111.forbidden_arcanus.data.model.ModModelProvider;
+import com.stal111.forbidden_arcanus.data.model.ModBlockModels;
+import com.stal111.forbidden_arcanus.data.model.ModItemModels;
 import com.stal111.forbidden_arcanus.data.particle.ParticleDataProvider;
 import com.stal111.forbidden_arcanus.data.recipes.*;
 import com.stal111.forbidden_arcanus.data.server.loot.*;
@@ -18,6 +19,7 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.valhelsia.valhelsia_core.datagen.DataProviderContext;
+import net.valhelsia.valhelsia_core.datagen.model.ValhelsiaModelProvider;
 import net.valhelsia.valhelsia_core.datagen.recipes.ValhelsiaRecipeProvider;
 
 import java.util.List;
@@ -38,14 +40,14 @@ public class DataGenerators {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
 
-        DataProviderContext context = new DataProviderContext(event.getGenerator().getPackOutput(), event.getLookupProvider(), ForbiddenArcanus.REGISTRY_MANAGER);
+        DataProviderContext context = new DataProviderContext(event.getGenerator().getPackOutput(), event.getLookupProvider(), ForbiddenArcanus.REGISTRY_MANAGER, event.getExistingFileHelper());
 
         // Client Providers
         //TODO
         //generator.addProvider(event.includeClient(), new ModBlockStateProvider(context));
         //generator.addProvider(event.includeClient(), new ModItemModelProvider(context));
 
-        generator.addProvider(event.includeClient(), new ModModelProvider(output));
+        generator.addProvider(event.includeClient(), new ValhelsiaModelProvider(context, ModBlockModels::new, ModItemModels::new));
         generator.addProvider(event.includeClient(), new LangProvider(context.output()));
         generator.addProvider(event.includeClient(), new ModSoundsProvider(context, fileHelper));
         generator.addProvider(event.includeServer(), new ParticleDataProvider(context));
@@ -55,7 +57,7 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), datapackBuiltinEntriesProvider);
 
         lookupProvider = datapackBuiltinEntriesProvider.getRegistryProvider();
-        context = new DataProviderContext(event.getGenerator().getPackOutput(), lookupProvider, ForbiddenArcanus.REGISTRY_MANAGER);
+        context = new DataProviderContext(event.getGenerator().getPackOutput(), lookupProvider, ForbiddenArcanus.REGISTRY_MANAGER, event.getExistingFileHelper());
 
         ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(context);
         generator.addProvider(event.includeServer(), blockTagsProvider);

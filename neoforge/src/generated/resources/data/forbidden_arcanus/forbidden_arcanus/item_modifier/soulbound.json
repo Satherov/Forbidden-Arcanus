@@ -11,5 +11,7 @@
   },
   "incompatible_enchantments": "#forbidden_arcanus:modifier/soulbound_incompatible",
   "incompatible_items": "#forbidden_arcanus:modifier/soulbound_incompatible",
-  "predicate": {}
+  "predicate": {
+    "items": "#forbidden_arcanus:modifier/soulbound_applicable"
+  }
 }

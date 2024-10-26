@@ -63,6 +63,8 @@ public class ModTags {
         public static final TagKey<Item> AQUATIC_INCOMPATIBLE = modTag("modifier/aquatic_incompatible");
         public static final TagKey<Item> SOULBOUND_INCOMPATIBLE = modTag("modifier/soulbound_incompatible");
 
+        public static final TagKey<Item> SOULBOUND_APPLICABLE = modTag("modifier/soulbound_applicable");
+
         public static final TagKey<Item> AUREAL_STORAGE_ENCHANTABLE = modTag("enchantable/aureal_storage");
 
         public static final TagKey<Item> CLIBANO_CREATES_SOUL_FIRE = modTag("clibano/creates_soul_fire");
