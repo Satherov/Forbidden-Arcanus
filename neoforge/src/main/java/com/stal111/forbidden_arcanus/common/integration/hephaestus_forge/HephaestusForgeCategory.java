@@ -4,6 +4,8 @@ import com.google.common.collect.ImmutableList;
 import com.stal111.forbidden_arcanus.common.block.entity.forge.HephaestusForgeLevel;
 import com.stal111.forbidden_arcanus.common.block.entity.forge.ritual.Ritual;
 import com.stal111.forbidden_arcanus.common.block.entity.forge.ritual.RitualInput;
+import com.stal111.forbidden_arcanus.common.block.entity.forge.ritual.RitualRequirements;
+import com.stal111.forbidden_arcanus.common.block.entity.forge.ritual.result.RitualResult;
 import com.stal111.forbidden_arcanus.common.item.enhancer.EnhancerDefinition;
 import com.stal111.forbidden_arcanus.core.init.ModBlocks;
 import it.unimi.dsi.fastutil.ints.IntIntPair;
@@ -30,7 +32,7 @@ import java.util.List;
  * @author stal111
  * @since 2023-06-05
  */
-public abstract class HephaestusForgeCategory implements IRecipeCategory<Ritual> {
+public abstract class HephaestusForgeCategory<T extends RitualResult> implements IRecipeCategory<Ritual> {
 
     private static final List<IntIntPair> INPUT_POSITIONS = ImmutableList.of(
             IntIntPair.of(63, 13),
@@ -79,16 +81,16 @@ public abstract class HephaestusForgeCategory implements IRecipeCategory<Ritual>
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull Ritual ritual, @NotNull IFocusGroup focusGroup) {
         this.addInputs(builder, ritual.inputs(), ritual.mainIngredient());
 
-        if (ritual.requirements() != null && this.displayEnhancers()) {
+        if (this.displayEnhancers()) {
             ritual.requirements().enhancers().ifPresent(holders -> {
                 this.addEnhancers(builder, holders);
             });
         }
 
-        this.buildRecipe(builder, ritual);
+        this.buildRecipe(builder, ritual.requirements(), (T) ritual.result());
     }
 
-    protected abstract void buildRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull Ritual ritual);
+    protected abstract void buildRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull RitualRequirements requirements, @NotNull T result);
 
     protected boolean displayEnhancers() {
         return true;

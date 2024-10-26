@@ -60,6 +60,10 @@ public class UpgradeTierResult extends RitualResult {
         return ItemStack.EMPTY;
     }
 
+    public int getResultTier() {
+        return this.resultTier;
+    }
+
     @Override
     public RitualResultType<? extends RitualResult> getType() {
         return ModRitualResultTypes.UPGRADE_TIER.get();

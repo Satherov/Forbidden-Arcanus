@@ -2,6 +2,8 @@ package com.stal111.forbidden_arcanus.common.integration.hephaestus_forge;
 
 import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.common.block.entity.forge.ritual.Ritual;
+import com.stal111.forbidden_arcanus.common.block.entity.forge.ritual.RitualRequirements;
+import com.stal111.forbidden_arcanus.common.block.entity.forge.ritual.result.UpgradeTierResult;
 import com.stal111.forbidden_arcanus.common.integration.ForbiddenArcanusJEIPlugin;
 import it.unimi.dsi.fastutil.ints.IntIntPair;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -15,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
  * @author stal111
  * @since 2023-06-05
  */
-public class UpgradeTierCategory extends HephaestusForgeCategory {
+public class UpgradeTierCategory extends HephaestusForgeCategory<UpgradeTierResult> {
 
     private static final String NAME = "hephaestus_forge_upgrading";
     private static final ResourceLocation TEXTURE = ForbiddenArcanus.location("textures/gui/jei/hephaestus_forge/forge_upgrading.png");
@@ -33,14 +35,14 @@ public class UpgradeTierCategory extends HephaestusForgeCategory {
     }
 
     @Override
-    protected void buildRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull Ritual ritual) {
-        int tier = ritual.requirements().tier().tier();
+    protected void buildRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull RitualRequirements requirements, @NotNull UpgradeTierResult result) {
+        int tier = requirements.tier().tier();
 
         builder.addSlot(RecipeIngredientRole.INPUT, REQUIRED_TIER_POSITION.firstInt(), REQUIRED_TIER_POSITION.secondInt())
                 .addItemStack(getForgeItem(tier - 1));
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, UPGRADED_TIER_POSITION.firstInt(), UPGRADED_TIER_POSITION.secondInt())
-                .addItemStack(getForgeItem(tier));
+                .addItemStack(getForgeItem(result.getResultTier() - 1));
     }
 
     @Override
