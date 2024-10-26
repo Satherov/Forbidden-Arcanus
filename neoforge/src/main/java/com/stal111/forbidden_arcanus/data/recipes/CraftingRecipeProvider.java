@@ -91,7 +91,7 @@ public class CraftingRecipeProvider extends RecipeSubProvider {
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GILDED_CHISELED_POLISHED_DARKSTONE.get(), builder -> builder.requires(ModBlocks.CHISELED_POLISHED_DARKSTONE.get()).requires(ModItems.DEORUM_NUGGET).unlockedBy("has_chiseled_polished_darkstone", has(ModBlocks.CHISELED_POLISHED_DARKSTONE.get())).unlockedBy("has_deorum_nugget", has(ModItems.DEORUM_NUGGET)));
         this.shapeless(RecipeCategory.MISC, ModItems.AQUATIC_DRAGON_SCALE.get(), builder -> builder.requires(ModItems.DRAGON_SCALE).requires(Items.PRISMARINE_SHARD).requires(Items.PRISMARINE_CRYSTALS).requires(ModItems.ARCANE_CRYSTAL_DUST).unlockedBy("has_dragon_scale", has(ModItems.DRAGON_SCALE)));
         this.shapeless(RecipeCategory.FOOD, ModItems.BAT_SOUP, builder -> builder.requires(Tags.Items.MUSHROOMS).requires(Items.NETHER_WART).requires(Items.BOWL).requires(ModItems.BAT_WING).unlockedBy("has_bat_wing", has(ModItems.BAT_WING)));
-        this.shapeless(RecipeCategory.MISC, Items.BLACK_DYE, 2, builder -> builder.requires(ModItems.EDELWOOD_OIL).requires(ModItems.EDELWOOD_OIL).unlockedBy("has_edelwood_oil", has(ModItems.EDELWOOD_OIL)));
+        this.shapeless(RecipeCategory.MISC, Items.BLACK_DYE, 2, builder -> builder.requires(ModItems.EDELWOOD_OIL).unlockedBy("has_edelwood_oil", has(ModItems.EDELWOOD_OIL)), "black_dye");
         this.shapeless(RecipeCategory.MISC, ModItems.ENDER_PEARL_FRAGMENT, 4, builder -> builder.requires(Items.ENDER_PEARL).unlockedBy("has_ender_pearl", has(Items.ENDER_PEARL)));
 
         //Smelting Recipes
