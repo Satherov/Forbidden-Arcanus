@@ -263,7 +263,6 @@ public class ModCreativeModeTabs implements RegistryClass {
                             output.accept(ModItems.IRON_BLACKSMITH_GAVEL.get());
                             output.accept(ModItems.DIAMOND_BLACKSMITH_GAVEL.get());
                             output.accept(ModItems.NETHERITE_BLACKSMITH_GAVEL.get());
-                            output.accept(ModItems.REINFORCED_DEORUM_BLACKSMITH_GAVEL.get());
                         });
             })
     );
