@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-26T11:32:34.2670713	Tags for minecraft:block mod id forbidden_arcanus
+// 1.21.1	2024-10-26T12:09:30.538837	Tags for minecraft:block mod id forbidden_arcanus
 ed23ebe15a1414e3c7311e3750ac9dc0e912d732 data/c/tags/block/fences/wooden.json
 0643e621e7d9a779b7b1be9df093f0e899494b43 data/c/tags/block/fence_gates/wooden.json
 9a47ee92a699961d6de23e80ee7a6baf035541bd data/c/tags/block/storage_blocks.json
@@ -7,6 +7,7 @@ ed23ebe15a1414e3c7311e3750ac9dc0e912d732 data/c/tags/block/fences/wooden.json
 7178fc65549c2cdfe3c0d34421efedf7c81a341f data/forbidden_arcanus/tags/block/darkstone_ore_replaceables.json
 0611649b247c64b861461321d4cc20337d569c68 data/forbidden_arcanus/tags/block/edelwood_logs.json
 26ca19a64b7305b1587e6eab631becb52fb1ed25 data/forbidden_arcanus/tags/block/fungyss_stems.json
+4537d87f4c6aa46c92855cb04d1b2dad47830afa data/forbidden_arcanus/tags/block/hephaestus_forges.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/forbidden_arcanus/tags/block/magical_farmland_blacklisted.json
 410a698c3c1ca7186a3b059d2fd4121f45aab362 data/forbidden_arcanus/tags/block/mysterywood_logs.json
 ec5f886acc1397ae55fe6faaca722b2a2cebb465 data/forbidden_arcanus/tags/block/rune_blocks.json
@@ -24,9 +25,9 @@ ce2508892f23ecc4a019953c279d5bba6c908716 data/minecraft/tags/block/doors.json
 a3ca36ef0752ec1bed14ca0fa88942f160c44b0b data/minecraft/tags/block/leaves.json
 281f7d96ae64a0fe6635eebd35d6399355196788 data/minecraft/tags/block/logs.json
 c9551f2da367b0c31ca0754eaef613b4207e60b4 data/minecraft/tags/block/logs_that_burn.json
-869517204094235374a6082a5aa9c9827c109403 data/minecraft/tags/block/mineable/pickaxe.json
+6195affb496d23823550755dee4891dd2d3dd308 data/minecraft/tags/block/mineable/pickaxe.json
 e11c52073acc9688a3d1d87ed5c426f99e5813a2 data/minecraft/tags/block/mineable/shovel.json
-03e58d146e5f300cd798f7422d60e69a1202238a data/minecraft/tags/block/needs_diamond_tool.json
+a84a4c59e0530b69750aa8d7a2e184e4c70da27d data/minecraft/tags/block/needs_diamond_tool.json
 f5e817be5db288101afc38ab4ee917799b5d90fe data/minecraft/tags/block/needs_iron_tool.json
 a36e2773b5baf7124871d28a30069e16562a7cac data/minecraft/tags/block/needs_stone_tool.json
 a16c7f48d13080ae1e744d6e5d28d7e177251346 data/minecraft/tags/block/planks.json

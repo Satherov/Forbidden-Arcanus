@@ -26,6 +26,7 @@ public class ModTags {
         public static final TagKey<Block> ARCANE_CRYSTAL_STORAGE_BLOCKS = forgeTag("storage_blocks/arcane_crystal");
         public static final TagKey<Block> STELLARITE_STORAGE_BLOCKS = forgeTag("storage_blocks/stellarite");
         public static final TagKey<Block> OBSIDIAN_STORAGE_BLOCKS = forgeTag("storage_blocks/obsidian");
+        public static final TagKey<Block> HEPHAESTUS_FORGES = modTag("hephaestus_forges");
 
         private static TagKey<Block> forgeTag(String name) {
             return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", name));
@@ -55,6 +56,7 @@ public class ModTags {
         public static final TagKey<Item> RUNIC_STONES = modTag("runic_stones");
         public static final TagKey<Item> RUNE_BLOCKS = modTag("rune_blocks");
         public static final TagKey<Item> ARCANE_CRYSTAL_ORES = modTag("arcane_crystal_ores");
+        public static final TagKey<Item> HEPHAESTUS_FORGES = modTag("hephaestus_forges");
 
         public static final TagKey<Item> ETERNAL_INCOMPATIBLE = modTag("modifier/eternal_incompatible");
         public static final TagKey<Item> FIERY_INCOMPATIBLE = modTag("modifier/fiery_incompatible");

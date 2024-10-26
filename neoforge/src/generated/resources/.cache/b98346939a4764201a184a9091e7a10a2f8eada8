@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-26T11:32:34.2700639	Tags for minecraft:item mod id forbidden_arcanus
+// 1.21.1	2024-10-26T12:09:30.5498564	Tags for minecraft:item mod id forbidden_arcanus
 ed23ebe15a1414e3c7311e3750ac9dc0e912d732 data/c/tags/item/fences/wooden.json
 0643e621e7d9a779b7b1be9df093f0e899494b43 data/c/tags/item/fence_gates/wooden.json
 4a2636aab0a6ff9f71559b543e92a4ab039254f7 data/c/tags/item/ingots.json
@@ -6,11 +6,12 @@ ed23ebe15a1414e3c7311e3750ac9dc0e912d732 data/c/tags/item/fences/wooden.json
 9a47ee92a699961d6de23e80ee7a6baf035541bd data/c/tags/item/storage_blocks.json
 15ddb20eec4f474e9a7277aa0e68dd069b704173 data/forbidden_arcanus/tags/item/arcane_crystal_ores.json
 0eeb55318c55e51648d2e850da000a6e461d6815 data/forbidden_arcanus/tags/item/blacksmith_gavel.json
-5594c25b676aa98458c6d54417101e266c4a55c8 data/forbidden_arcanus/tags/item/black_hole_unaffected.json
+833eb0467cddac3463790ded6592dd9cc0df034d data/forbidden_arcanus/tags/item/black_hole_unaffected.json
 eff722f81988b658b930e7e5f4af42a794eb2672 data/forbidden_arcanus/tags/item/clibano/creates_enchanted_fire.json
 248044db5d2fb658e1cc0140c81427a0718726e4 data/forbidden_arcanus/tags/item/clibano/creates_soul_fire.json
 0611649b247c64b861461321d4cc20337d569c68 data/forbidden_arcanus/tags/item/edelwood_logs.json
 26ca19a64b7305b1587e6eab631becb52fb1ed25 data/forbidden_arcanus/tags/item/fungyss_stems.json
+4537d87f4c6aa46c92855cb04d1b2dad47830afa data/forbidden_arcanus/tags/item/hephaestus_forges.json
 a5e30235f64ca727e45ad31a505dbf74f45d0173 data/forbidden_arcanus/tags/item/magical_farmland_blacklisted.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/forbidden_arcanus/tags/item/modifier/aquatic_incompatible.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/forbidden_arcanus/tags/item/modifier/demolishing_incompatible.json
