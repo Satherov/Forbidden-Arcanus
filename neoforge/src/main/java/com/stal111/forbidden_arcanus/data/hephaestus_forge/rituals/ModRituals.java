@@ -77,7 +77,7 @@ public class ModRituals extends DatapackRegistryClass<Ritual> {
         var seaPrism = this.requirements(EssencesDefinition.of(1000, 8, 2000, 0), builder -> builder.tier(TierPredicate.min(3)).enhancer(elementarium));
         var whirlwindPrism = this.requirements(EssencesDefinition.of(1000, 3, 2250, 0), builder -> builder.tier(TierPredicate.min(3)).enhancer(elementarium));
         var smelterPrism = this.requirements(EssencesDefinition.of(200, 4, 1250, 0), builder -> builder.enhancer(elementarium));
-        var ferroneticMixture = this.requirements(EssencesDefinition.of(100, 2, 1250, 0), UnaryOperator.identity());
+        var ferrogneticMixture = this.requirements(EssencesDefinition.of(100, 2, 1250, 0), UnaryOperator.identity());
         var quantumCatcher = this.requirements(EssencesDefinition.of(200, 5, 1200, 155), UnaryOperator.identity());
         var bossCatcher = this.requirements(EssencesDefinition.of(500, 10, 7500, 1200), builder -> builder.tier(TierPredicate.min(4)));
         var quantumInjector = this.requirements(EssencesDefinition.of(5000, 50, 3000, 1060), builder -> builder.tier(TierPredicate.min(3)));
@@ -93,7 +93,7 @@ public class ModRituals extends DatapackRegistryClass<Ritual> {
         this.register(SEA_PRISM, ModItems.SEA_PRISM.get(), Items.HEART_OF_THE_SEA, builder -> builder.input(Ingredient.of(Items.PRISMARINE_SHARD), 2).input(Ingredient.of(Items.TURTLE_SCUTE), 2).input(Ingredient.of(Items.LAPIS_LAZULI), 2).requirements(seaPrism));
         this.register(WHIRLWIND_PRISM, ModItems.WHIRLWIND_PRISM.get(), Blocks.WHITE_WOOL, builder -> builder.input(Ingredient.of(ModItems.BAT_WING)).input(Ingredient.of(Items.FEATHER), 2).input(Ingredient.of(Items.PHANTOM_MEMBRANE), 3).requirements(whirlwindPrism));
         this.register(SMELTER_PRISM, ModItems.SMELTER_PRISM.get(), ModBlocks.ARCANE_CRYSTAL_BLOCK.get(), builder -> builder.input(Ingredient.of(Items.COAL), 2).input(Ingredient.of(Items.BLAZE_POWDER), 4).requirements(smelterPrism));
-        this.register(FERROGNETIC_MIXTURE, ModItems.FERROGNETIC_MIXTURE.get(), Blocks.LODESTONE, builder -> builder.input(Ingredient.of(Items.CLAY_BALL), 2).input(Ingredient.of(ModItems.WAX), 2).input(Ingredient.of(Items.SLIME_BALL), 2).input(Ingredient.of(Items.IRON_INGOT)).requirements(ferroneticMixture));
+        this.register(FERROGNETIC_MIXTURE, ModItems.FERROGNETIC_MIXTURE.get(), Blocks.LODESTONE, builder -> builder.input(Ingredient.of(Items.CLAY_BALL), 2).input(Ingredient.of(ModItems.WAX), 2).input(Ingredient.of(Items.SLIME_BALL), 2).input(Ingredient.of(Items.IRON_INGOT)).requirements(ferrogneticMixture));
         this.register(QUANTUM_CATCHER, ModItems.QUANTUM_CATCHER.get(), ModBlocks.QUANTUM_CORE.get(), builder -> builder.input(Ingredient.of(ModItems.SPAWNER_SCRAP), 4).requirements(quantumCatcher));
         this.register(BOSS_CATCHER, ModItems.BOSS_CATCHER.get(), ModItems.QUANTUM_CATCHER.get(), builder -> builder.input(Ingredient.of(Items.NETHER_STAR)).input(Ingredient.of(ModItems.STELLARITE_PIECE), 3).requirements(bossCatcher));
         this.register(QUANTUM_INJECTOR, ModBlocks.QUANTUM_INJECTOR.get(), ModItems.MUNDABITUR_DUST.get(), builder -> builder.input(Ingredient.of(ModBlocks.QUANTUM_CORE.get()), 4).requirements(quantumInjector));
