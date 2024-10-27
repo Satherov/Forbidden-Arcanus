@@ -15,6 +15,7 @@ import com.stal111.forbidden_arcanus.core.init.ModRecipeSerializers;
 import com.stal111.forbidden_arcanus.core.init.ModRecipeTypes;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -39,7 +40,7 @@ public record ClibanoRecipe(String group,
 
     public static final ClibanoCookingTimes DEFAULT_COOKING_TIMES = ClibanoCookingTimes.of(100);
 
-    public boolean matches(@NotNull ClibanoRecipeInput recipeInput, @NotNull Level level, List<EnhancerDefinition> enhancers) {
+    public boolean matches(@NotNull ClibanoRecipeInput recipeInput, @NotNull Level level, HolderSet<EnhancerDefinition> enhancers) {
         if (!enhancerMatches(enhancers)) {
             return false;
         }
@@ -47,8 +48,8 @@ public record ClibanoRecipe(String group,
         return this.matches(recipeInput, level);
     }
 
-    private boolean enhancerMatches(List<EnhancerDefinition> enhancers) {
-        return this.requiredEnhancer.isEmpty() || enhancers.contains(this.requiredEnhancer.get().value());
+    private boolean enhancerMatches(HolderSet<EnhancerDefinition> enhancers) {
+        return this.requiredEnhancer.isEmpty() || enhancers.contains(this.requiredEnhancer.get());
     }
 
     @DoNotCall

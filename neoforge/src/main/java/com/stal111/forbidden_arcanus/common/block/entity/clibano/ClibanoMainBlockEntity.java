@@ -18,9 +18,7 @@ import com.stal111.forbidden_arcanus.core.init.ModBlockEntities;
 import com.stal111.forbidden_arcanus.core.init.ModRecipeTypes;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -133,7 +131,7 @@ public class ClibanoMainBlockEntity extends ValhelsiaContainerBlockEntity<Cliban
     private boolean wasLit = false;
 
     private ClibanoSmeltLogic logic = new DefaultSmeltLogic(this, null, null);
-    private @Nullable EnhancerDefinition enhancer;
+    private @Nullable Holder<EnhancerDefinition> enhancer;
 
     public ClibanoMainBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CLIBANO_MAIN.get(), pos, state, ClibanoMenu.SLOT_COUNT, (slot, stack) -> {
@@ -145,7 +143,7 @@ public class ClibanoMainBlockEntity extends ValhelsiaContainerBlockEntity<Cliban
 
             return !slot.equals(ClibanoMenu.RESULT_SLOTS.getFirst()) && !slot.equals(ClibanoMenu.RESULT_SLOTS.getSecond());
         });
-        this.quickCheck = new CachedRecipeCheck(() -> this.enhancer != null ? List.of(this.enhancer) : Collections.emptyList());
+        this.quickCheck = new CachedRecipeCheck(() -> this.enhancer != null ? HolderSet.direct(this.enhancer) : HolderSet.empty());
     }
 
     @Override
@@ -422,7 +420,7 @@ public class ClibanoMainBlockEntity extends ValhelsiaContainerBlockEntity<Cliban
         this.soulTime = SOUL_DURATION;
 
         if (this.enhancer != null) {
-            this.enhancer.getEffects(EnhancerTarget.CLIBANO).forEach(enhancerEffect -> {
+            this.enhancer.value().getEffects(EnhancerTarget.CLIBANO).forEach(enhancerEffect -> {
                 if (enhancerEffect instanceof MultiplySoulDurationEffect effect) {
                     this.soulTime = effect.getModifiedValue(this.soulTime);
                 }
@@ -459,8 +457,8 @@ public class ClibanoMainBlockEntity extends ValhelsiaContainerBlockEntity<Cliban
         }
     }
 
-    private @Nullable EnhancerDefinition updateEnhancer() {
-        return EnhancerHelper.getEnhancer(this.level.registryAccess(), this.getStack(ClibanoMenu.ENHANCER_SLOT)).orElse(null);
+    private @Nullable Holder<EnhancerDefinition> updateEnhancer() {
+        return EnhancerHelper.getEnhancerHolder(this.level.registryAccess(), this.getStack(ClibanoMenu.ENHANCER_SLOT)).orElse(null);
     }
 
     @Override
