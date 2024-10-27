@@ -59,7 +59,7 @@ public record ItemModifier(
     }
 
     public boolean isValidItem(ItemStack stack) {
-        if (stack.is(this.incompatibleItems) || !this.predicate.test(stack)) {
+        if (stack.is(this.incompatibleItems) || !this.predicate.test(stack) || ModifierHelper.hasModifier(stack)) {
             return false;
         }
 

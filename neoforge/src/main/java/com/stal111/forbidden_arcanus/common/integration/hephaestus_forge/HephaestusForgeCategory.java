@@ -82,9 +82,7 @@ public abstract class HephaestusForgeCategory<T extends RitualResult> implements
         this.addInputs(builder, ritual.inputs(), ritual.mainIngredient());
 
         if (this.displayEnhancers()) {
-            ritual.requirements().enhancers().ifPresent(holders -> {
-                this.addEnhancers(builder, holders);
-            });
+            this.addEnhancers(builder, ritual.requirements().enhancers());
         }
 
         this.buildRecipe(builder, ritual.requirements(), (T) ritual.result());
