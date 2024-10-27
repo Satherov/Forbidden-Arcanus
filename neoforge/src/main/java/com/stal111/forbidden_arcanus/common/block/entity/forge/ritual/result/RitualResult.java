@@ -10,9 +10,9 @@ import net.minecraft.world.level.Level;
  * @author stal111
  * @since 2023-02-05
  */
-public abstract class RitualResult {
+public interface RitualResult {
 
-    public static final Codec<RitualResult> DIRECT_CODEC = Codec.lazyInitialized(FARegistries.RITUAL_RESULT_TYPE_REGISTRY::byNameCodec)
+    Codec<RitualResult> DIRECT_CODEC = Codec.lazyInitialized(FARegistries.RITUAL_RESULT_TYPE_REGISTRY::byNameCodec)
             .dispatch(RitualResult::getType, RitualResultType::codec);
 
     /**
@@ -23,10 +23,10 @@ public abstract class RitualResult {
      * @param forgeTier the tier of the Forge
      * @return the result ItemStack of the ritual
      */
-    public abstract ItemStack apply(Level level, BlockPos pos, int forgeTier);
+    ItemStack apply(Level level, BlockPos pos, int forgeTier);
 
     /**
      * @return the type which serializes and deserializes this result
      */
-    public abstract RitualResultType<? extends RitualResult> getType();
+    RitualResultType<? extends RitualResult> getType();
 }

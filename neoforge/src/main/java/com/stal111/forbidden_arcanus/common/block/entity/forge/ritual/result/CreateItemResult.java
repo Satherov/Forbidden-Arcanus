@@ -11,27 +11,15 @@ import net.minecraft.world.level.Level;
  * @author stal111
  * @since 2023-02-05
  */
-public class CreateItemResult extends RitualResult {
+public record CreateItemResult(ItemStack result) implements RitualResult {
 
     public static final MapCodec<CreateItemResult> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            ItemStack.CODEC.fieldOf("result_item").forGetter(result -> {
-                return result.result;
-            })
+            ItemStack.CODEC.fieldOf("result_item").forGetter(CreateItemResult::result)
     ).apply(instance, CreateItemResult::new));
-
-    private final ItemStack result;
-
-    public CreateItemResult(ItemStack result) {
-        this.result = result;
-    }
 
     @Override
     public ItemStack apply(Level level, BlockPos pos, int forgeTier) {
         return this.result.copy();
-    }
-
-    public ItemStack getResult() {
-        return this.result;
     }
 
     @Override

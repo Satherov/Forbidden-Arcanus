@@ -40,7 +40,7 @@ public class SmithingCategory extends HephaestusForgeCategory<CreateItemResult> 
         TierPredicate tierPredicate = requirements.tier();
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_POSITION.firstInt(), OUTPUT_POSITION.secondInt())
-                .addItemStack(result.getResult());
+                .addItemStack(result.result());
 
         builder.addSlot(RecipeIngredientRole.RENDER_ONLY, FORGE_TIER_POSITION.firstInt(), FORGE_TIER_POSITION.secondInt())
                 .addItemStack(getForgeItem(tierPredicate.tier() - 1))

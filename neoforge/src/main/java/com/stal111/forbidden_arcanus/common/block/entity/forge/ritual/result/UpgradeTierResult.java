@@ -21,7 +21,7 @@ import java.util.Map;
  * @author stal111
  * @since 2023-02-05
  */
-public class UpgradeTierResult extends RitualResult {
+public record UpgradeTierResult(int resultTier) implements RitualResult {
 
     //TODO
     private static final Map<Integer, BlockRegistryEntry<HephaestusForgeBlock>> FORGE_TIERS = ImmutableMap.of(
@@ -33,14 +33,8 @@ public class UpgradeTierResult extends RitualResult {
     );
 
     public static final MapCodec<UpgradeTierResult> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            ExtraCodecs.intRange(1, 5).fieldOf("result_tier").forGetter(result -> result.resultTier)
+            ExtraCodecs.intRange(1, 5).fieldOf("result_tier").forGetter(UpgradeTierResult::resultTier)
     ).apply(instance, UpgradeTierResult::new));
-
-    private final int resultTier;
-
-    public UpgradeTierResult(int resultTier) {
-        this.resultTier = resultTier;
-    }
 
     @Override
     public ItemStack apply(Level level, BlockPos pos, int forgeTier) {
@@ -58,10 +52,6 @@ public class UpgradeTierResult extends RitualResult {
         }
 
         return ItemStack.EMPTY;
-    }
-
-    public int getResultTier() {
-        return this.resultTier;
     }
 
     @Override

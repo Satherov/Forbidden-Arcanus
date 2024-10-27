@@ -42,7 +42,7 @@ public class UpgradeTierCategory extends HephaestusForgeCategory<UpgradeTierResu
                 .addItemStack(getForgeItem(tier - 1));
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, UPGRADED_TIER_POSITION.firstInt(), UPGRADED_TIER_POSITION.secondInt())
-                .addItemStack(getForgeItem(result.getResultTier() - 1));
+                .addItemStack(getForgeItem(result.resultTier() - 1));
     }
 
     @Override
