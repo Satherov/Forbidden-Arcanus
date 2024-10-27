@@ -35,7 +35,7 @@ public record ApplyModifierRecipe(Ingredient template,
         if (ModifierHelper.hasModifier(base) || !this.isTemplateIngredient(recipeInput.template())) {
             return false;
         }
-        return this.modifier.value().canItemContainModifier(base, level.registryAccess()) && this.isAdditionIngredient(recipeInput.addition());
+        return this.modifier.value().isValidItem(base) && this.isAdditionIngredient(recipeInput.addition());
     }
 
     @NotNull

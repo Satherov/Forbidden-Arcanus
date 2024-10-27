@@ -6,7 +6,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.stal111.forbidden_arcanus.core.registry.FARegistries;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistryCodecs;
 import net.minecraft.core.component.DataComponentType;
@@ -59,18 +58,14 @@ public record ItemModifier(
         }
     }
 
-    public boolean canItemContainModifier(ItemStack stack, HolderLookup.Provider lookupProvider) {
-        if (!this.isValidItem(stack)) {
+    public boolean isValidItem(ItemStack stack) {
+        if (stack.is(this.incompatibleItems) || !this.predicate.test(stack)) {
             return false;
         }
 
         var enchantments = stack.getTagEnchantments().keySet();
 
         return this.incompatibleEnchantments.stream().noneMatch(enchantments::contains);
-    }
-
-    public boolean isValidItem(ItemStack stack) {
-        return !stack.is(this.incompatibleItems) && this.predicate.test(stack);
     }
 
     public record DisplaySettings(Component name, ResourceLocation texture, Pair<Integer, Integer> tooltipColor) {
