@@ -8,25 +8,21 @@
   "effects": [
     {
       "type": "forbidden_arcanus:multiply_required_essence",
-      "conditions": [],
       "essence_type": "aureal",
       "multiplier": 0.0
     },
     {
       "type": "forbidden_arcanus:multiply_required_essence",
-      "conditions": [],
       "essence_type": "souls",
       "multiplier": 0.0
     },
     {
       "type": "forbidden_arcanus:multiply_required_essence",
-      "conditions": [],
       "essence_type": "blood",
       "multiplier": 0.0
     },
     {
       "type": "forbidden_arcanus:multiply_required_essence",
-      "conditions": [],
       "essence_type": "experience",
       "multiplier": 0.0
     }

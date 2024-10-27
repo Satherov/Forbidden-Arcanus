@@ -10,6 +10,7 @@ import com.stal111.forbidden_arcanus.common.block.pedestal.effect.PedestalEffect
 import com.stal111.forbidden_arcanus.common.entity.darktrader.DarkTraderVariant;
 import com.stal111.forbidden_arcanus.common.item.enhancer.EnhancerDefinition;
 import com.stal111.forbidden_arcanus.common.item.enhancer.condition.EffectConditionType;
+import com.stal111.forbidden_arcanus.common.item.enhancer.effect.EnhancerEffect;
 import com.stal111.forbidden_arcanus.common.item.enhancer.effect.EnhancerEffectType;
 import com.stal111.forbidden_arcanus.common.item.modifier.ItemModifier;
 import com.stal111.forbidden_arcanus.common.item.mundabitur.MundabiturInteraction;
@@ -42,7 +43,7 @@ public class FARegistries {
 
     public static final Registry<RitualResultType<?>> RITUAL_RESULT_TYPE_REGISTRY = FARegistries.makeSyncedRegistry(RITUAL_RESULT_TYPE);
     public static final Registry<HephaestusForgeInput> FORGE_INPUT_REGISTRY = FARegistries.makeSyncedRegistry(FORGE_INPUT);
-    public static final Registry<EnhancerEffectType<?>> ENHANCER_EFFECT_REGISTRY = FARegistries.makeRegistry(ENHANCER_EFFECT);
+    public static final Registry<EnhancerEffectType<? extends EnhancerEffect>> ENHANCER_EFFECT_REGISTRY = FARegistries.makeRegistry(ENHANCER_EFFECT);
     public static final Registry<EffectConditionType<?>> ENHANCER_EFFECT_CONDITION_REGISTRY = FARegistries.makeRegistry(ENHANCER_EFFECT_CONDITION);
     public static final Registry<DarkTraderVariant> DARK_TRADER_VARIANT_REGISTRY = FARegistries.makeSyncedRegistry(DARK_TRADER_VARIANT);
     public static final Registry<MundabiturInteraction<?>> MUNDABITUR_INTERACTION_REGISTRY = FARegistries.makeSyncedRegistry(MUNDABITUR_INTERACTION);

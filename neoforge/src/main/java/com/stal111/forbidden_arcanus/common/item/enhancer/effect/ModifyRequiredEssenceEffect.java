@@ -5,35 +5,18 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.stal111.forbidden_arcanus.common.block.entity.forge.essence.EssenceModifier;
 import com.stal111.forbidden_arcanus.common.block.entity.forge.essence.EssenceType;
-import com.stal111.forbidden_arcanus.common.item.enhancer.condition.EffectCondition;
 import com.stal111.forbidden_arcanus.core.init.other.ModEnhancerEffects;
-
-import java.util.List;
 
 /**
  * @author stal111
  * @since 2023-02-19
  */
-public class ModifyRequiredEssenceEffect extends ValueModifierEffect<Integer> implements EssenceModifier {
+public record ModifyRequiredEssenceEffect(EssenceType essenceType, int value) implements ValueModifierEffect<Integer>, EssenceModifier {
 
     public static final MapCodec<ModifyRequiredEssenceEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            EnhancerEffect.conditionsCodec(),
-            EssenceType.CODEC.fieldOf("essence_type").forGetter(effect -> {
-                return effect.essenceType;
-            }),
-            Codec.INT.fieldOf("value").forGetter(effect -> {
-                return effect.value;
-            })
+            EssenceType.CODEC.fieldOf("essence_type").forGetter(ModifyRequiredEssenceEffect::essenceType),
+            Codec.INT.fieldOf("value").forGetter(ModifyRequiredEssenceEffect::value)
     ).apply(instance, ModifyRequiredEssenceEffect::new));
-
-    private final EssenceType essenceType;
-    private final int value;
-
-    public ModifyRequiredEssenceEffect(List<EffectCondition> conditions, EssenceType essenceType, int value) {
-        super(conditions);
-        this.essenceType = essenceType;
-        this.value = value;
-    }
 
     @Override
     public Integer getModifiedValue(Integer originalValue) {
