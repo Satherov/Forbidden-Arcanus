@@ -7,28 +7,19 @@ import com.stal111.forbidden_arcanus.common.block.entity.forge.essence.EssencesD
 import com.stal111.forbidden_arcanus.common.item.enhancer.EnhancerDefinition;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Optional;
 
 /**
  * @author stal111
  * @since 2023-04-29
  */
-public record RitualRequirements(EssencesDefinition essences, TierPredicate tier, Optional<HolderSet<EnhancerDefinition>> enhancers) {
+public record RitualRequirements(EssencesDefinition essences, TierPredicate tier, HolderSet<EnhancerDefinition> enhancers) {
 
-    public static final RitualRequirements NONE = new RitualRequirements(EssencesDefinition.EMPTY, TierPredicate.ANY, Optional.empty());
+    public static final RitualRequirements NONE = new RitualRequirements(EssencesDefinition.EMPTY, TierPredicate.ANY, HolderSet.empty());
 
     public static final MapCodec<RitualRequirements> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
-            EssencesDefinition.CODEC.fieldOf("essences").forGetter(ritual -> {
-                return ritual.essences;
-            }),
-            TierPredicate.CODEC.forGetter(requirements -> {
-                return requirements.tier;
-            }),
-            EnhancerDefinition.LIST_CODEC.optionalFieldOf("enhancers").forGetter(requirements -> {
-                return requirements.enhancers;
-            })
+            EssencesDefinition.CODEC.fieldOf("essences").forGetter(RitualRequirements::essences),
+            TierPredicate.CODEC.forGetter(RitualRequirements::tier),
+            EnhancerDefinition.LIST_CODEC.optionalFieldOf("enhancers", HolderSet.empty()).forGetter(RitualRequirements::enhancers)
     ).apply(instance, RitualRequirements::new));
 
     public static RitualRequirements.Builder builder(EssencesDefinition essences) {
@@ -40,19 +31,13 @@ public record RitualRequirements(EssencesDefinition essences, TierPredicate tier
             return false;
         }
 
-        for (Holder<EnhancerDefinition> enhancer : this.enhancers.orElse(HolderSet.empty())) {
-            if (!enhancers.contains(enhancer)) {
-                return false;
-            }
-        }
-
-        return true;
+        return this.enhancers.stream().allMatch(enhancers::contains);
     }
 
     public static class Builder {
         private final EssencesDefinition essences;
         private TierPredicate tier = TierPredicate.ANY;
-        private @Nullable HolderSet<EnhancerDefinition> enhancers;
+        private HolderSet<EnhancerDefinition> enhancers = HolderSet.empty();
 
         private Builder(EssencesDefinition essences) {
             this.essences = essences;
@@ -74,7 +59,7 @@ public record RitualRequirements(EssencesDefinition essences, TierPredicate tier
         }
 
         public RitualRequirements build() {
-            return new RitualRequirements(this.essences, this.tier, Optional.ofNullable(this.enhancers));
+            return new RitualRequirements(this.essences, this.tier, this.enhancers);
         }
     }
 }
