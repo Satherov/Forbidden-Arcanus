@@ -5,9 +5,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.ClibanoFireType;
-import com.stal111.forbidden_arcanus.common.block.entity.clibano.residue.ResidueChance;
 import com.stal111.forbidden_arcanus.common.item.crafting.ClibanoRecipe;
-import com.stal111.forbidden_arcanus.common.item.enhancer.EnhancerDefinition;
 import com.stal111.forbidden_arcanus.core.init.ModBlocks;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -23,7 +21,6 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -115,47 +112,41 @@ public class ClibanoCombustionCategory implements IRecipeCategory<ClibanoRecipe>
             builder.addSlot(INPUT, 55, 24).addIngredients(recipe.getIngredients().get(1));
         }
 
-        TagKey<Item> tagKey = recipe.getRequiredFireType().getTagKey();
+        TagKey<Item> tagKey = recipe.requiredFireType().getTagKey();
 
         if (tagKey != null) {
             builder.addSlot(RENDER_ONLY, 12, 60).addIngredients(Ingredient.of(tagKey));
         }
 
-        RegistryAccess registryAccess = Minecraft.getInstance().level.registryAccess();
-        Holder<EnhancerDefinition> enhancer = recipe.getRequiredEnhancer();
-
-        if (enhancer != null) {
+        recipe.requiredEnhancer().ifPresent(enhancer -> {
             builder.addSlot(CATALYST, 12, 24).addItemStack(enhancer.value().displayItem().value().getDefaultInstance());
-        }
+        });
+
+        RegistryAccess registryAccess = Minecraft.getInstance().level.registryAccess();
 
         builder.addSlot(OUTPUT, 97, 35).addItemStack(recipe.getResultItem(registryAccess));
     }
 
-    private IDrawableAnimated getArrow(ClibanoRecipe recipe) {
-        int cookTime = recipe.getCookingTime(recipe.getRequiredFireType());
-        if (cookTime <= 0) {
-            cookTime = ClibanoRecipe.DEFAULT_COOKING_TIME;
-        }
-        return this.cachedArrows.getUnchecked(cookTime);
+    private IDrawableAnimated getArrow(int cookingTime) {
+        return this.cachedArrows.getUnchecked(cookingTime);
     }
 
     @Override
     public void draw(@NotNull ClibanoRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        this.animatedFlames.get(recipe.getRequiredFireType()).draw(guiGraphics, 48, 43);
+        this.animatedFlames.get(recipe.requiredFireType()).draw(guiGraphics, 48, 43);
 
         if (!recipe.isDoubleRecipe()) {
             guiGraphics.blit(TEXTURE, 54, 23, 224, 0, 18, 18);
         }
 
-        IDrawableAnimated arrow = this.getArrow(recipe);
+        IDrawableAnimated arrow = this.getArrow(recipe.getDefaultCookingTime());
         arrow.draw(guiGraphics, 74, 43);
 
-        this.drawExperience(recipe, guiGraphics, 12);
-        this.drawCookTime(recipe, guiGraphics, 79);
+        this.drawExperience(recipe.experience(), guiGraphics, 12);
+        this.drawCookTime(recipe.getDefaultCookingTime(), guiGraphics, 79);
     }
 
-    protected void drawExperience(ClibanoRecipe recipe, GuiGraphics guiGraphics, int y) {
-        float experience = recipe.getExperience();
+    protected void drawExperience(float experience, GuiGraphics guiGraphics, int y) {
         if (experience > 0) {
             Component experienceString = Component.translatable("gui.jei.category.smelting.experience", experience);
             Minecraft minecraft = Minecraft.getInstance();
@@ -166,10 +157,9 @@ public class ClibanoCombustionCategory implements IRecipeCategory<ClibanoRecipe>
         }
     }
 
-    protected void drawCookTime(ClibanoRecipe recipe, GuiGraphics guiGraphics, int y) {
-        int cookTime = recipe.getCookingTime(recipe.getRequiredFireType());
-        if (cookTime > 0) {
-            int cookTimeSeconds = cookTime / 20;
+    protected void drawCookTime(int cookingTime, GuiGraphics guiGraphics, int y) {
+        if (cookingTime > 0) {
+            int cookTimeSeconds = cookingTime / 20;
             Component timeString = Component.translatable("gui.jei.category.smelting.time.seconds", cookTimeSeconds);
             Minecraft minecraft = Minecraft.getInstance();
             Font font = minecraft.font;
@@ -182,17 +172,13 @@ public class ClibanoCombustionCategory implements IRecipeCategory<ClibanoRecipe>
     @Override
     public void getTooltip(@NotNull ITooltipBuilder tooltip, @NotNull ClibanoRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
         if (mouseX >= 92 && mouseY >= 59 && mouseX <= 117 && mouseY <= 65) {
-            ResidueChance chance = recipe.getResidueChance();
-
-            if (chance == null) {
-                return;
-            }
-
-            tooltip.add(chance.type().value().name().copy()
-                    .append(" ")
-                    .append(Component.translatable("jei.forbidden_arcanus.clibanoCombustion.residue"))
-                    .append(" (" + chance.chance() * 100 +"%)")
-            );
+            recipe.residueChance().ifPresent(chance -> {
+                tooltip.add(chance.type().value().name().copy()
+                        .append(" ")
+                        .append(Component.translatable("jei.forbidden_arcanus.clibanoCombustion.residue"))
+                        .append(" (" + chance.chance() * 100 +"%)")
+                );
+            });
         }
     }
 }

@@ -2,6 +2,7 @@ package com.stal111.forbidden_arcanus.data.recipes.builder;
 
 import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
+import com.stal111.forbidden_arcanus.common.block.entity.clibano.ClibanoCookingTimes;
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.ClibanoFireType;
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.residue.ResidueChance;
 import com.stal111.forbidden_arcanus.common.item.crafting.ClibanoRecipe;
@@ -26,6 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * @author stal111
@@ -112,7 +114,7 @@ public class ClibanoRecipeBuilder implements RecipeBuilder {
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement$builder::addCriterion);
 
-        ClibanoRecipe recipe = new ClibanoRecipe(Objects.requireNonNullElse(this.group, ""), this.bookCategory, this.ingredients, this.stackResult, this.experience, this.cookingTime, this.residueChance, this.requiredFireType, this.requiredEnhancer);
+        ClibanoRecipe recipe = new ClibanoRecipe(Objects.requireNonNullElse(this.group, ""), this.bookCategory, this.ingredients, this.stackResult, this.experience, ClibanoCookingTimes.of(this.cookingTime), Optional.ofNullable(this.residueChance), this.requiredFireType, Optional.ofNullable(this.requiredEnhancer));
 
         recipeOutput.accept(id, recipe, advancement$builder.build(id.withPrefix("recipes/" + this.category.getFolderName() + "/")));
     }

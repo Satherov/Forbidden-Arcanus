@@ -43,7 +43,7 @@ public abstract class ClibanoSmeltLogic {
         if (recipeHolder != null) {
             int oldDuration = this.cookingDuration[slot];
 
-            this.cookingDuration[slot] = recipeHolder.value().getCookingTime(fireType);
+            this.cookingDuration[slot] = recipeHolder.value().cookingTimes().get(fireType);
             this.cookingProgress[slot] = (int) (((float) this.cookingProgress[slot] / oldDuration) * this.cookingDuration[slot]);
         }
     }

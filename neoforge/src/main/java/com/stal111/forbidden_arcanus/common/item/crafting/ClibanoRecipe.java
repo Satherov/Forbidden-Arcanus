@@ -6,6 +6,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.stal111.forbidden_arcanus.common.block.entity.clibano.ClibanoCookingTimes;
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.ClibanoFireType;
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.residue.ResidueChance;
 import com.stal111.forbidden_arcanus.common.item.enhancer.EnhancerDefinition;
@@ -23,73 +24,40 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.util.RecipeMatcher;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-/**
- * Clibano Recipe <br>
- * Forbidden Arcanus - com.stal111.forbidden_arcanus.common.item.crafting.ClibanoRecipe
- *
- * @author stal111
- * @version 1.19 - 2.1.0
- * @since 2022-05-28
- */
-public class ClibanoRecipe implements Recipe<ClibanoRecipeInput> {
+public record ClibanoRecipe(String group,
+                            CookingBookCategory category,
+                            Either<Ingredient, Pair<Ingredient, Ingredient>> ingredients,
+                            ItemStack result,
+                            float experience,
+                            ClibanoCookingTimes cookingTimes,
+                            Optional<ResidueChance> residueChance,
+                            ClibanoFireType requiredFireType,
+                            Optional<Holder<EnhancerDefinition>> requiredEnhancer) implements Recipe<ClibanoRecipeInput> {
 
-    public static final int DEFAULT_COOKING_TIME = 100;
-
-    private final Map<ClibanoFireType, Integer> cookingTimes = new EnumMap<>(ClibanoFireType.class);
-
-    protected final CookingBookCategory category;
-    private final String group;
-
-    private final Either<Ingredient, Pair<Ingredient, Ingredient>> ingredients;
-    private final ItemStack result;
-
-    private final float experience;
-    private final int cookingTime;
-
-    private final @Nullable ResidueChance residueChance;
-
-    /**
-     * The minimum fire type that needs to be present to start this recipe.
-     */
-    private final ClibanoFireType requiredFireType;
-
-    private final @Nullable Holder<EnhancerDefinition> requiredEnhancer;
-
-    public ClibanoRecipe(String group, CookingBookCategory category, Either<Ingredient, Pair<Ingredient, Ingredient>> ingredients, ItemStack result, float experience, int cookingTime, @Nullable ResidueChance residueChance, ClibanoFireType requiredFireType, @Nullable Holder<EnhancerDefinition> requiredEnhancer) {
-        this.group = group;
-        this.category = category;
-        this.ingredients = ingredients;
-        this.result = result;
-        this.experience = experience;
-        this.cookingTime = cookingTime;
-        this.residueChance = residueChance;
-        this.requiredFireType = requiredFireType;
-        this.requiredEnhancer = requiredEnhancer;
-
-        for (ClibanoFireType fireType : ClibanoFireType.values()) {
-            this.cookingTimes.put(fireType, (int) (cookingTime / fireType.getCookingSpeedMultiplier()));
-        }
-    }
+    public static final ClibanoCookingTimes DEFAULT_COOKING_TIMES = ClibanoCookingTimes.of(100);
 
     public boolean matches(@NotNull ClibanoRecipeInput recipeInput, @NotNull Level level, List<EnhancerDefinition> enhancers) {
-        if (this.getRequiredEnhancer() != null && !enhancers.contains(this.getRequiredEnhancer().value())) {
+        if (!enhancerMatches(enhancers)) {
             return false;
         }
 
-        List<ItemStack> inputs = new ArrayList<>(recipeInput.getInputs());
-        var list = this.ingredients.map(List::of, pair -> List.of(pair.getFirst(), pair.getSecond()));
+        return this.matches(recipeInput, level);
+    }
 
-        return RecipeMatcher.findMatches(inputs, list) != null;
+    private boolean enhancerMatches(List<EnhancerDefinition> enhancers) {
+        return this.requiredEnhancer.isEmpty() || enhancers.contains(this.requiredEnhancer.get().value());
     }
 
     @DoNotCall
     @Override
     public boolean matches(@NotNull ClibanoRecipeInput recipeInput, @NotNull Level level) {
-        return this.matches(recipeInput, level, Collections.emptyList());
+        List<ItemStack> inputs = new ArrayList<>(recipeInput.getInputs());
+        var list = this.ingredients.map(List::of, pair -> List.of(pair.getFirst(), pair.getSecond()));
+
+        return RecipeMatcher.findMatches(inputs, list) != null;
     }
 
     @Override
@@ -112,26 +80,8 @@ public class ClibanoRecipe implements Recipe<ClibanoRecipeInput> {
         return this.ingredients.map(ingredient -> NonNullList.of(Ingredient.EMPTY, ingredient), pair -> NonNullList.of(Ingredient.EMPTY, pair.getFirst(), pair.getSecond()));
     }
 
-    /**
-     * Gets the cooking time for the given fire type.
-     *
-     * @param fireType the ClibanoFireType currently in use
-     * @return the correct cookingTime for the given fire type
-     */
-    public int getCookingTime(ClibanoFireType fireType) {
-        return this.cookingTimes.get(fireType);
-    }
-
-    public @Nullable ResidueChance getResidueChance() {
-        return this.residueChance;
-    }
-
-    public ClibanoFireType getRequiredFireType() {
-        return this.requiredFireType;
-    }
-
-    public @Nullable Holder<EnhancerDefinition> getRequiredEnhancer() {
-        return this.requiredEnhancer;
+    public int getDefaultCookingTime() {
+        return this.cookingTimes.get(this.requiredFireType);
     }
 
     public float getExperience() {
@@ -139,7 +89,7 @@ public class ClibanoRecipe implements Recipe<ClibanoRecipeInput> {
     }
 
     public boolean isDoubleRecipe() {
-        return this.getIngredients().size() == 2;
+        return this.ingredients.right().isPresent();
     }
 
     @NotNull
@@ -161,18 +111,16 @@ public class ClibanoRecipe implements Recipe<ClibanoRecipeInput> {
     public static class Serializer implements RecipeSerializer<ClibanoRecipe> {
 
         private static final MapCodec<ClibanoRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),
-                CookingBookCategory.CODEC.fieldOf("category").orElse(CookingBookCategory.MISC).forGetter(recipe -> recipe.category),
-                Codec.either(Ingredient.CODEC_NONEMPTY, Codec.mapPair(Ingredient.MAP_CODEC_NONEMPTY.fieldOf("first"), Ingredient.MAP_CODEC_NONEMPTY.fieldOf("second")).codec()).fieldOf("ingredients").forGetter(recipe -> recipe.ingredients),
-                ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
-                Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(recipe -> recipe.experience),
-                Codec.INT.fieldOf("cooking_time").orElse(ClibanoRecipe.DEFAULT_COOKING_TIME).forGetter(recipe -> recipe.cookingTime),
-                ResidueChance.CODEC.optionalFieldOf("residue").forGetter(recipe -> Optional.ofNullable(recipe.residueChance)),
-                ClibanoFireType.CODEC.fieldOf("fire_type").orElse(ClibanoFireType.FIRE).forGetter(recipe -> recipe.requiredFireType),
-                EnhancerDefinition.REFERENCE_CODEC.optionalFieldOf("enhancer").forGetter(recipe -> Optional.ofNullable(recipe.requiredEnhancer))
-        ).apply(instance, (s, category, ingredients, stack, experience, cooking_time, residue, fireType, enhancer) -> {
-            return new ClibanoRecipe(s, category, ingredients, stack, experience, cooking_time, residue.orElse(null), fireType, enhancer.orElse(null));
-        }));
+                Codec.STRING.optionalFieldOf("group", "").forGetter(ClibanoRecipe::group),
+                CookingBookCategory.CODEC.fieldOf("category").orElse(CookingBookCategory.MISC).forGetter(ClibanoRecipe::category),
+                Codec.either(Ingredient.CODEC_NONEMPTY, Codec.mapPair(Ingredient.MAP_CODEC_NONEMPTY.fieldOf("first"), Ingredient.MAP_CODEC_NONEMPTY.fieldOf("second")).codec()).fieldOf("ingredients").forGetter(ClibanoRecipe::ingredients),
+                ItemStack.STRICT_CODEC.fieldOf("result").forGetter(ClibanoRecipe::result),
+                Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(ClibanoRecipe::experience),
+                ClibanoCookingTimes .CODEC.fieldOf("cooking_time").orElse(ClibanoRecipe.DEFAULT_COOKING_TIMES).forGetter(ClibanoRecipe::cookingTimes),
+                ResidueChance.CODEC.optionalFieldOf("residue").forGetter(ClibanoRecipe::residueChance),
+                ClibanoFireType.CODEC.fieldOf("fire_type").orElse(ClibanoFireType.FIRE).forGetter(ClibanoRecipe::requiredFireType),
+                EnhancerDefinition.REFERENCE_CODEC.optionalFieldOf("enhancer").forGetter(ClibanoRecipe::requiredEnhancer)
+        ).apply(instance, ClibanoRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, ClibanoRecipe> STREAM_CODEC = ByteBufCodecs.fromCodecWithRegistries(CODEC.codec());
 

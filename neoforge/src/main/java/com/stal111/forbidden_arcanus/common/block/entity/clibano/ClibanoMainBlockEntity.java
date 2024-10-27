@@ -5,7 +5,6 @@ import com.stal111.forbidden_arcanus.common.block.entity.clibano.logic.ClibanoAc
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.logic.ClibanoSmeltLogic;
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.logic.DefaultSmeltLogic;
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.logic.DoubleSmeltLogic;
-import com.stal111.forbidden_arcanus.common.block.entity.clibano.residue.ResidueChance;
 import com.stal111.forbidden_arcanus.common.inventory.clibano.ClibanoMenu;
 import com.stal111.forbidden_arcanus.common.item.crafting.ClibanoRecipe;
 import com.stal111.forbidden_arcanus.common.item.crafting.ClibanoRecipeInput;
@@ -275,7 +274,7 @@ public class ClibanoMainBlockEntity extends ValhelsiaContainerBlockEntity<Cliban
 
         ItemStack stack = recipe.value().getResultItem(this.level.registryAccess());
 
-        if (stack.isEmpty() || (this.soulTime == 0 ? this.nextFireType : this.fireType).ordinal() < recipe.value().getRequiredFireType().ordinal()) {
+        if (stack.isEmpty() || (this.soulTime == 0 ? this.nextFireType : this.fireType).ordinal() < recipe.value().requiredFireType().ordinal()) {
             return false;
         }
 
@@ -342,7 +341,7 @@ public class ClibanoMainBlockEntity extends ValhelsiaContainerBlockEntity<Cliban
 
     @Override
     public int getCookingTime(RecipeHolder<ClibanoRecipe> recipe) {
-        return recipe.value().getCookingTime(this.fireType);
+        return recipe.value().cookingTimes().get(this.fireType);
     }
 
     /**
@@ -356,15 +355,15 @@ public class ClibanoMainBlockEntity extends ValhelsiaContainerBlockEntity<Cliban
             return;
         }
 
-        ResidueChance chance = recipe.getResidueChance();
+        recipe.residueChance().ifPresent(chance -> {
+            if (random.nextDouble() < chance.chance()) {
+                this.residuesStorage.increaseType(chance.type(), 1);
 
-        if (chance != null && random.nextDouble() < chance.chance()) {
-            this.residuesStorage.increaseType(chance.type(), 1);
-
-            if (this.level instanceof ServerLevel serverLevel) {
-                PacketDistributor.sendToPlayersTrackingChunk(serverLevel, new ChunkPos(this.getBlockPos()), new SetClibanoResiduesPayload(this.residuesStorage));
+                if (this.level instanceof ServerLevel serverLevel) {
+                    PacketDistributor.sendToPlayersTrackingChunk(serverLevel, new ChunkPos(this.getBlockPos()), new SetClibanoResiduesPayload(this.residuesStorage));
+                }
             }
-        }
+        });
     }
 
     /**
