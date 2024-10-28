@@ -6,16 +6,13 @@ import com.stal111.forbidden_arcanus.common.block.entity.clibano.ClibanoMainBloc
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.ResiduesStorage;
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.residue.ResidueType;
 import com.stal111.forbidden_arcanus.common.inventory.EnhancerSlot;
-import com.stal111.forbidden_arcanus.common.item.enhancer.EnhancerHelper;
 import com.stal111.forbidden_arcanus.common.item.crafting.ClibanoRecipe;
+import com.stal111.forbidden_arcanus.common.item.enhancer.EnhancerHelper;
 import com.stal111.forbidden_arcanus.core.init.ModBlocks;
 import com.stal111.forbidden_arcanus.core.init.ModRecipeTypes;
 import com.stal111.forbidden_arcanus.core.init.other.ModMenuTypes;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.RegistryOps;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -57,8 +54,8 @@ public class ClibanoMenu extends AbstractContainerMenu {
 
     private final MenuCreationContext<ClibanoMainBlockEntity, IItemHandler> context;
 
-    public ClibanoMenu(int id, Inventory inventory, FriendlyByteBuf buffer) {
-        this(id, new ItemStackHandler(SLOT_COUNT), new SimpleContainerData(ClibanoMainBlockEntity.DATA_COUNT), buffer.readWithCodecTrusted(RegistryOps.create(NbtOps.INSTANCE, Minecraft.getInstance().level.registryAccess()), ResiduesStorage.MAP_CODEC), MenuCreationContext.of(inventory));
+    public ClibanoMenu(int id, Inventory inventory, RegistryFriendlyByteBuf buffer) {
+        this(id, new ItemStackHandler(SLOT_COUNT), new SimpleContainerData(ClibanoMainBlockEntity.DATA_COUNT), ResiduesStorage.STREAM_CODEC.decode(buffer).getResidueTypeAmountMap(), MenuCreationContext.of(inventory));
     }
 
     public ClibanoMenu(int containerId, ItemStackHandler handler, ContainerData containerData, Map<Holder<ResidueType>, Integer> residueData, MenuCreationContext<ClibanoMainBlockEntity, IItemHandler> context) {

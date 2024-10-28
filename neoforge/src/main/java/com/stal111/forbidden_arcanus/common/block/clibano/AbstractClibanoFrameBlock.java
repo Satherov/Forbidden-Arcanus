@@ -7,8 +7,6 @@ import com.stal111.forbidden_arcanus.common.block.entity.clibano.ClibanoMainBloc
 import com.stal111.forbidden_arcanus.common.block.entity.clibano.ResiduesStorage;
 import com.stal111.forbidden_arcanus.core.init.other.ModPOITypes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
@@ -71,7 +69,7 @@ public abstract class AbstractClibanoFrameBlock extends Block implements EntityB
 
                 if (blockEntity instanceof ClibanoMainBlockEntity clibanoMainBlockEntity) {
                     player.openMenu(clibanoMainBlockEntity, buffer -> {
-                        buffer.writeWithCodec(RegistryOps.create(NbtOps.INSTANCE, level.registryAccess()), ResiduesStorage.MAP_CODEC, clibanoMainBlockEntity.getResiduesStorage().getResidueTypeAmountMap());
+                        ResiduesStorage.STREAM_CODEC.encode(buffer, clibanoMainBlockEntity.getResiduesStorage());
                     });
                 }
             });
