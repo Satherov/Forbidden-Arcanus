@@ -1,6 +1,5 @@
 package com.stal111.forbidden_arcanus.common.block.properties;
 
-import com.stal111.forbidden_arcanus.common.block.PillarBlock;
 import net.minecraft.util.StringRepresentable;
 
 import javax.annotation.Nonnull;

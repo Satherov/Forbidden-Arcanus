@@ -64,7 +64,7 @@ public class ResearchScreen extends AbstractContainerScreen<ResearchDeskMenu> {
             y += 28;
         }
 
-        this.selectedTabButton = this.tabButtons.get(0);
+        this.selectedTabButton = this.tabButtons.getFirst();
 
         this.setTab(this.selectedTabButton.getCategory().createTab(this.width, this.height));
     }

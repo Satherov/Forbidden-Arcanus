@@ -55,6 +55,6 @@ public class DoubleSmeltLogic extends ClibanoSmeltLogic {
 
     @Override
     public void updateRecipes(List<RecipeHolder<ClibanoRecipe>> recipeHolders) {
-        this.recipe = recipeHolders.isEmpty() ? null : recipeHolders.get(0);
+        this.recipe = recipeHolders.isEmpty() ? null : recipeHolders.getFirst();
     }
 }

@@ -25,7 +25,7 @@ public class EntityEssenceProvider<T extends LivingEntity> implements EssencePro
         map.put(EssenceType.EXPERIENCE, ModAttachmentTypes.EXPERIENCE.get());
     });
 
-    T entity;
+    final T entity;
 
     public EntityEssenceProvider(T entity) {
         this.entity = entity;

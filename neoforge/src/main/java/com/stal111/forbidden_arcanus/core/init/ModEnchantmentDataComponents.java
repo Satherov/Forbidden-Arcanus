@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ModEnchantmentDataComponents {
 
-    public static MappedRegistryHelper<DataComponentType<?>> HELPER = ForbiddenArcanus.REGISTRY_MANAGER.getHelper(Registries.ENCHANTMENT_EFFECT_COMPONENT_TYPE);
+    public static final MappedRegistryHelper<DataComponentType<?>> HELPER = ForbiddenArcanus.REGISTRY_MANAGER.getHelper(Registries.ENCHANTMENT_EFFECT_COMPONENT_TYPE);
 
     public static final RegistryEntry<DataComponentType<?>, DataComponentType<List<ConditionalEffect<EnchantmentValueEffect>>>> LOST_SOUL_SPAWN_CHANCE = HELPER.register("lost_soul_spawn_chance", () -> DataComponentType.<List<ConditionalEffect<EnchantmentValueEffect>>>builder().persistent(ConditionalEffect.codec(EnchantmentValueEffect.CODEC, LootContextParamSets.ENCHANTED_ITEM).listOf()).build());
 }

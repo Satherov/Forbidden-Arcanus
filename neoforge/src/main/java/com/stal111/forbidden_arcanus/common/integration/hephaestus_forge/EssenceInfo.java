@@ -32,11 +32,7 @@ public record EssenceInfo(IDrawableStatic drawable, EssenceType type, int posX, 
     }
 
     public boolean shouldDisplayTooltip(double mouseX, double mouseY) {
-        if (mouseX >= this.posX && mouseY >= this.posY && mouseX <=this. posX + SIZE && mouseY <= this.posY + SIZE) {
-            return true;
-        }
-
-        return false;
+        return mouseX >= this.posX && mouseY >= this.posY && mouseX <= this.posX + SIZE && mouseY <= this.posY + SIZE;
     }
 
     public Component getTooltip(EssencesDefinition definition) {

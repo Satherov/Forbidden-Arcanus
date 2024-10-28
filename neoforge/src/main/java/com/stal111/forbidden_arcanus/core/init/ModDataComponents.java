@@ -24,7 +24,7 @@ import net.valhelsia.valhelsia_core.api.common.registry.helper.MappedRegistryHel
  */
 public class ModDataComponents {
 
-    public static MappedRegistryHelper<DataComponentType<?>> HELPER = ForbiddenArcanus.REGISTRY_MANAGER.getHelper(Registries.DATA_COMPONENT_TYPE);
+    public static final MappedRegistryHelper<DataComponentType<?>> HELPER = ForbiddenArcanus.REGISTRY_MANAGER.getHelper(Registries.DATA_COMPONENT_TYPE);
 
     public static final RegistryEntry<DataComponentType<?>, DataComponentType<Holder<ItemModifier>>> ITEM_MODIFIER = HELPER.register("modifier", () -> DataComponentType.<Holder<ItemModifier>>builder().persistent(ItemModifier.CODEC).networkSynchronized(ItemModifier.STREAM_CODEC).build());
     public static final RegistryEntry<DataComponentType<?>, DataComponentType<EssenceData>> ESSENCE_DATA = HELPER.register("essence_data", () -> DataComponentType.<EssenceData>builder().persistent(EssenceData.CODEC).networkSynchronized(EssenceData.STREAM_CODEC).build());

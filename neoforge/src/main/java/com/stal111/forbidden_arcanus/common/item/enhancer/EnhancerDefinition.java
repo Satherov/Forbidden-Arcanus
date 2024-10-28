@@ -9,6 +9,7 @@ import com.stal111.forbidden_arcanus.core.registry.FARegistries;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentSerialization;
@@ -49,7 +50,7 @@ public record EnhancerDefinition(Map<EnhancerTarget, Component> description, Hol
 
     @SafeVarargs
     public static EnhancerDefinition create(Map<EnhancerTarget, Component> description, Item item, ConditionalEnhancerEffect<EnhancerEffect>... effects) {
-        return new EnhancerDefinition(description, item.builtInRegistryHolder(), List.of(effects));
+        return new EnhancerDefinition(description, BuiltInRegistries.ITEM.wrapAsHolder(item), List.of(effects));
     }
 
     public Stream<? extends EnhancerEffect> getEffects(EnhancerTarget target) {
