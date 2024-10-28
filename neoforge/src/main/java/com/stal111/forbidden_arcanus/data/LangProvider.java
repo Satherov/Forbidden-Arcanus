@@ -316,6 +316,9 @@ public class LangProvider extends LanguageProvider {
         this.add("item", "smithing_template.darkstone_upgrade.ingredients", "Modifier Item");
 
         this.add("item", "blacksmith_gavel.remaining_ritual_uses", "Remaining ritual uses: %s");
+        this.add("item", "toggle_state", "(Right-Click to toggle)");
+        this.add("item", "toggle_state.activated", "Activated");
+        this.add("item", "toggle_state.deactivated", "Deactivated");
 
         this.add("upgrade", "darkstone_upgrade", "Apply Item Modifier");
 

@@ -8,15 +8,16 @@
     "AccessorFireBlock",
     "BubbleColumnBlockMixin",
     "ItemEntityMixin",
-    "PlayerMixin",
     "LivingEntityMixin",
+    "PlayerMixin",
     "ServerPlayerGameModeMixin"
   ],
   "client": [
     "GlowParticleAccessor",
     "LevelRendererAccessor",
     "MultiPlayerGameModeMixin",
-    "ScreenMixin"
+    "ScreenMixin",
+    "client.MinecraftMixin"
   ],
   "injectors": {
     "defaultRequire": 1

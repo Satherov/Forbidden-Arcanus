@@ -24,7 +24,7 @@ public abstract class LivingEntityMixin {
 
     @Inject(at = @At(value = "HEAD"), method = "hasEffect", cancellable = true)
     public void forbiddenArcanus_hasEffect$preventFireDamage(Holder<MobEffect> effect, CallbackInfoReturnable<Boolean> cir) {
-        if (effect == MobEffects.FIRE_RESISTANCE) {
+        if (effect.is(MobEffects.FIRE_RESISTANCE)) {
             ItemStack stack = this.getItemBySlot(EquipmentSlot.HEAD);
 
             if (stack.getItem() instanceof ObsidianSkullItem skullItem && skullItem.getType().shouldProtect((LivingEntity) (Object) this)) {

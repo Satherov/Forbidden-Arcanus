@@ -1,10 +1,8 @@
 package com.stal111.forbidden_arcanus.util;
 
 import com.google.common.collect.Maps;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.level.LevelReader;
@@ -14,8 +12,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.scores.PlayerTeam;
-import net.minecraft.world.scores.Scoreboard;
 
 public class ModUtils {
 
@@ -24,24 +20,7 @@ public class ModUtils {
         AxeItem.STRIPPABLES.put(block, strippedBlock);
     }
 
-    public static PlayerTeam createTeam(Scoreboard scoreboard, String name, ChatFormatting color) {
-        if (scoreboard.getTeamNames().contains(name)) {
-            return scoreboard.getPlayerTeam(name);
-        } else {
-            PlayerTeam team = scoreboard.addPlayerTeam(name);
-            team.setDisplayName(Component.literal(name));
-            team.setColor(color);
-            return team;
-        }
-    }
-
-    public static void removeTeam(Scoreboard scoreboard, PlayerTeam team) {
-        if (scoreboard.getTeamNames().contains(team.getName())) {
-            scoreboard.removePlayerTeam(team);
-        }
-    }
-
-//    public static Collection<Recipe<?>> getRecipesByOutput(ItemStack targetOutput, Collection<RecipeSerializer<?>> recipeSerializer) {
+    //    public static Collection<Recipe<?>> getRecipesByOutput(ItemStack targetOutput, Collection<RecipeSerializer<?>> recipeSerializer) {
 //        return Minecraft.getInstance().level.getRecipeManager().getRecipes().stream()
 //                .filter(r -> {
 //                    boolean flag = false;

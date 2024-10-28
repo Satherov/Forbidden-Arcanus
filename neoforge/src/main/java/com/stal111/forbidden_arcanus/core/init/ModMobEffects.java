@@ -5,14 +5,13 @@ import com.stal111.forbidden_arcanus.common.effect.SpectralEyeEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.valhelsia.valhelsia_core.api.common.registry.RegistryClass;
 import net.valhelsia.valhelsia_core.api.common.registry.RegistryEntry;
 import net.valhelsia.valhelsia_core.api.common.registry.helper.MappedRegistryHelper;
 
 /**
  * @author stal111
  */
-public class ModMobEffects implements RegistryClass {
+public class ModMobEffects {
 
     public static final MappedRegistryHelper<MobEffect> HELPER = ForbiddenArcanus.REGISTRY_MANAGER.getHelper(Registries.MOB_EFFECT);
 

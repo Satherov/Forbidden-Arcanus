@@ -20,7 +20,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.component.TooltipProvider;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -76,6 +76,7 @@ public record StoredEntity(CustomData data) implements TooltipProvider {
         return new StoredEntity(CustomData.of(tag));
     }
 
+    @Nullable
     public Entity createEntity(Level level) {
         return EntityType.loadEntityRecursive(this.data.copyTag(), level, Function.identity());
     }
@@ -89,7 +90,7 @@ public record StoredEntity(CustomData data) implements TooltipProvider {
     }
 
     @Override
-    public void addToTooltip(Item.@NotNull TooltipContext context, @NotNull Consumer<Component> consumer, @NotNull TooltipFlag flag) {
+    public void addToTooltip(Item.TooltipContext context, Consumer<Component> consumer, TooltipFlag flag) {
         this.getEntityType().map(type -> Component.translatable(type.getDescriptionId())).ifPresent(type -> {
             MutableComponent component = this.getDisplayName()
                     .map(name -> Component.translatable(STORED_ENTITY_WITH_NAME_KEY, type, name))

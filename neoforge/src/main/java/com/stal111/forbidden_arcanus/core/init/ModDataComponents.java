@@ -4,6 +4,7 @@ import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.common.essence.EssenceData;
 import com.stal111.forbidden_arcanus.common.essence.EssenceStorage;
 import com.stal111.forbidden_arcanus.common.item.component.StoredEntity;
+import com.stal111.forbidden_arcanus.common.item.component.ToggleableState;
 import com.stal111.forbidden_arcanus.common.item.enhancer.EnhancerDefinition;
 import com.stal111.forbidden_arcanus.common.item.modifier.ItemModifier;
 import com.stal111.forbidden_arcanus.core.registry.FARegistries;
@@ -36,5 +37,6 @@ public class ModDataComponents {
     public static final RegistryEntry<DataComponentType<?>, DataComponentType<Integer>> RITUAL_USES = HELPER.register("ritual_uses", () -> DataComponentType.<Integer>builder().persistent(ExtraCodecs.POSITIVE_INT).build());
     public static final RegistryEntry<DataComponentType<?>, DataComponentType<Integer>> REMAINING_RITUAL_USES = HELPER.register("remaining_ritual_uses", () -> DataComponentType.<Integer>builder().persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT).build());
     public static final RegistryEntry<DataComponentType<?>, DataComponentType<ResourceKey<EnhancerDefinition>>> ENHANCER = HELPER.register("enhancer", () -> DataComponentType.<ResourceKey<EnhancerDefinition>>builder().persistent(ResourceKey.codec(FARegistries.ENHANCER_DEFINITION)).networkSynchronized(ResourceKey.streamCodec(FARegistries.ENHANCER_DEFINITION)).build());
+    public static final RegistryEntry<DataComponentType<?>, DataComponentType<ToggleableState>> TOGGLEABLE_STATE = HELPER.register("toggleable_state", () -> DataComponentType.<ToggleableState>builder().persistent(ToggleableState.CODEC).networkSynchronized(ToggleableState.STREAM_CODEC).build());
 
 }

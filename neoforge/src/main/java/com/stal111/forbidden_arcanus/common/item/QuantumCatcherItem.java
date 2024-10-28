@@ -23,7 +23,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -41,7 +40,6 @@ public class QuantumCatcherItem extends Item {
         this.blacklistedEntities = blacklistedEntities;
     }
 
-    @NotNull
     @Override
     public InteractionResult useOn(UseOnContext context) {
         ItemStack stack = context.getItemInHand();
@@ -146,10 +144,8 @@ public class QuantumCatcherItem extends Item {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> components, @NotNull TooltipFlag flag) {
-        getData(stack).ifPresent(storedEntity -> {
-            storedEntity.addToTooltip(context, components::add, flag);
-        });
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
+        stack.addToTooltip(ModDataComponents.STORED_ENTITY, context, components::add, flag);
     }
 
     private static Optional<StoredEntity> getData(ItemStack stack) {
