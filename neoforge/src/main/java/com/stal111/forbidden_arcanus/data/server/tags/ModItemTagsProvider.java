@@ -51,6 +51,7 @@ public class ModItemTagsProvider extends ValhelsiaItemTagsProvider {
         this.tag(ModTags.Items.BLACK_HOLE_UNAFFECTED).add(ModItems.STELLARITE_PIECE.get(), ModBlocks.STELLARITE_BLOCK.get().asItem(), ModBlocks.STELLA_ARCANUM.get().asItem(), ModItems.ETERNAL_STELLA.get(), ModItems.DARK_NETHER_STAR.get(), Items.NETHER_STAR, Items.BEDROCK, Items.OBSIDIAN, Items.CRYING_OBSIDIAN, Items.ENCHANTING_TABLE, Items.END_PORTAL_FRAME, Items.ENDER_CHEST, Items.RESPAWN_ANCHOR).addTag(ModTags.Items.HEPHAESTUS_FORGES);
         this.tag(ModTags.Items.EXPLOSION_RESISTANT).add(Items.NETHER_STAR, ModItems.DARK_NETHER_STAR.get(), ModItems.STELLARITE_PIECE.get(), ModItems.ETERNAL_STELLA.get(), ModBlocks.STELLARITE_BLOCK.get().asItem());
         this.tag(Tags.Items.SEEDS).add(ModItems.GOLDEN_ORCHID_SEEDS.get());
+        this.tag(Tags.Items.MUSHROOMS).add(ModBlocks.FUNGYSS.get().asItem());
 
         this.tag(ModTags.Items.ETERNAL_INCOMPATIBLE);
         this.tag(ModTags.Items.FIERY_INCOMPATIBLE);
@@ -66,6 +67,16 @@ public class ModItemTagsProvider extends ValhelsiaItemTagsProvider {
 
         this.tag(ItemTags.STONE_TOOL_MATERIALS).add(ModBlocks.DARKSTONE.get().asItem());
         this.tag(ItemTags.STONE_CRAFTING_MATERIALS).add(ModBlocks.DARKSTONE.get().asItem());
+
+        this.tag(ModTags.Items.GEMS_ARCANE_CRYSTAL).add(ModItems.ARCANE_CRYSTAL.get());
+        this.tag(ModTags.Items.GEMS_CORRUPTED_ARCANE_CRYSTAL).add(ModItems.CORRUPTED_ARCANE_CRYSTAL.get());
+        this.tag(Tags.Items.GEMS).addTag(ModTags.Items.GEMS_ARCANE_CRYSTAL).addTag(ModTags.Items.GEMS_CORRUPTED_ARCANE_CRYSTAL);
+
+        this.tag(ModTags.Items.NUGGETS_DEORUM).add(ModItems.DEORUM_NUGGET.get());
+        this.tag(Tags.Items.NUGGETS).addTag(ModTags.Items.NUGGETS_DEORUM);
+
+        this.tag(ItemTags.BOATS).add(ModItems.AURUM_BOAT.get(), ModItems.EDELWOOD_BOAT.get());
+        this.tag(ItemTags.CHEST_BOATS).add(ModItems.AURUM_CHEST_BOAT.get(), ModItems.EDELWOOD_CHEST_BOAT.get());
 
         this.copy(ModTags.Blocks.FUNGYSS_STEMS, ModTags.Items.FUNGYSS_STEMS);
         this.copy(ModTags.Blocks.MYSTERYWOOD_LOGS, ModTags.Items.MYSTERYWOOD_LOGS);
@@ -91,10 +102,11 @@ public class ModItemTagsProvider extends ValhelsiaItemTagsProvider {
         this.copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
         this.copy(BlockTags.LEAVES, ItemTags.LEAVES);
         this.copy(BlockTags.SMALL_FLOWERS, ItemTags.SMALL_FLOWERS);
-        this.copy(ModTags.Blocks.DEORUM_STORAGE_BLOCKS, ModTags.Items.DEORUM_STORAGE_BLOCKS);
-        this.copy(ModTags.Blocks.ARCANE_CRYSTAL_STORAGE_BLOCKS, ModTags.Items.ARCANE_CRYSTAL_STORAGE_BLOCKS);
-        this.copy(ModTags.Blocks.STELLARITE_STORAGE_BLOCKS, ModTags.Items.STELLARITE_STORAGE_BLOCKS);
-        this.copy(ModTags.Blocks.OBSIDIANSTEEL_STORAGE_BLOCKS, ModTags.Items.OBSIDIANSTEEL_STORAGE_BLOCKS);
+        this.copy(ModTags.Blocks.STORAGE_BLOCKS_DEORUM, ModTags.Items.STORAGE_BLOCKS_DEORUM);
+        this.copy(ModTags.Blocks.STORAGE_BLOCKS_ARCANE_CRYSTAL, ModTags.Items.STORAGE_BLOCKS_ARCANE_CRYSTAL);
+        this.copy(ModTags.Blocks.STORAGE_BLOCKS_CORRUPTED_ARCANE_CRYSTAL, ModTags.Items.STORAGE_BLOCKS_CORRUPTED_ARCANE_CRYSTAL);
+        this.copy(ModTags.Blocks.STORAGE_BLOCKS_STELLARITE, ModTags.Items.STORAGE_BLOCKS_STELLARITE);
+        this.copy(ModTags.Blocks.STORAGE_BLOCKS_OBSIDIANSTEEL, ModTags.Items.STORAGE_BLOCKS_OBSIDIANSTEEL);
         this.copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
         this.copy(ModTags.Blocks.HEPHAESTUS_FORGES, ModTags.Items.HEPHAESTUS_FORGES);
         this.copy(ModTags.Blocks.ORES_ARCANE_CRYSTAL, ModTags.Items.ORES_ARCANE_CRYSTAL);
@@ -103,5 +115,9 @@ public class ModItemTagsProvider extends ValhelsiaItemTagsProvider {
         this.copy(Tags.Blocks.ORES, Tags.Items.ORES);
         this.copy(Tags.Blocks.ORES_IN_GROUND_STONE, Tags.Items.ORES_IN_GROUND_STONE);
         this.copy(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE, Tags.Items.ORES_IN_GROUND_DEEPSLATE);
+        this.copy(Tags.Blocks.GLASS_BLOCKS, Tags.Items.GLASS_BLOCKS);
+        this.copy(Tags.Blocks.GLASS_BLOCKS_COLORLESS, Tags.Items.GLASS_BLOCKS_COLORLESS);
+        this.copy(Tags.Blocks.GLASS_PANES, Tags.Items.GLASS_PANES);
+        this.copy(Tags.Blocks.GLASS_PANES_COLORLESS, Tags.Items.GLASS_PANES_COLORLESS);
     }
 }

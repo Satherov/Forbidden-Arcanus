@@ -1,6 +1,6 @@
 {
-  "replace": false,
   "values": [
+    "forbidden_arcanus:deorum_glass_pane",
     "forbidden_arcanus:runic_glass_pane"
   ]
 }

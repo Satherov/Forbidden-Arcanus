@@ -21,10 +21,13 @@ public class ModTags {
         public static final TagKey<Block> RUNE_BLOCKS = modTag("rune_blocks");
         public static final TagKey<Block> ARCANE_CRYSTAL_ORES = modTag("arcane_crystal_ores");
         public static final TagKey<Block> DARKSTONE_ORE_REPLACEABLES = modTag("darkstone_ore_replaceables");
-        public static final TagKey<Block> DEORUM_STORAGE_BLOCKS = commonTag("storage_blocks/deorum");
-        public static final TagKey<Block> ARCANE_CRYSTAL_STORAGE_BLOCKS = commonTag("storage_blocks/arcane_crystal");
-        public static final TagKey<Block> STELLARITE_STORAGE_BLOCKS = commonTag("storage_blocks/stellarite");
-        public static final TagKey<Block> OBSIDIANSTEEL_STORAGE_BLOCKS = commonTag("storage_blocks/obsidiansteel");
+
+        public static final TagKey<Block> STORAGE_BLOCKS_DEORUM = commonTag("storage_blocks/deorum");
+        public static final TagKey<Block> STORAGE_BLOCKS_ARCANE_CRYSTAL = commonTag("storage_blocks/arcane_crystal");
+        public static final TagKey<Block> STORAGE_BLOCKS_CORRUPTED_ARCANE_CRYSTAL = commonTag("storage_blocks/corrupted_arcane_crystal");
+        public static final TagKey<Block> STORAGE_BLOCKS_STELLARITE = commonTag("storage_blocks/stellarite");
+        public static final TagKey<Block> STORAGE_BLOCKS_OBSIDIANSTEEL = commonTag("storage_blocks/obsidiansteel");
+
         public static final TagKey<Block> HEPHAESTUS_FORGES = modTag("hephaestus_forges");
         public static final TagKey<Block> ORES_ARCANE_CRYSTAL = commonTag("ores/arcane_crystal");
         public static final TagKey<Block> ORES_RUNIC = commonTag("ores/runic");
@@ -70,14 +73,20 @@ public class ModTags {
         public static final TagKey<Item> CLIBANO_CREATES_SOUL_FIRE = modTag("clibano/creates_soul_fire");
         public static final TagKey<Item> CLIBANO_CREATES_ENCHANTED_FIRE = modTag("clibano/creates_enchanted_fire");
 
-        public static final TagKey<Item> DEORUM_STORAGE_BLOCKS = commonTag("storage_blocks/deorum");
-        public static final TagKey<Item> ARCANE_CRYSTAL_STORAGE_BLOCKS = commonTag("storage_blocks/arcane_crystal");
-        public static final TagKey<Item> STELLARITE_STORAGE_BLOCKS = commonTag("storage_blocks/stellarite");
-        public static final TagKey<Item> OBSIDIANSTEEL_STORAGE_BLOCKS = commonTag("storage_blocks/obsidiansteel");
+        public static final TagKey<Item> STORAGE_BLOCKS_DEORUM = commonTag("storage_blocks/deorum");
+        public static final TagKey<Item> STORAGE_BLOCKS_ARCANE_CRYSTAL = commonTag("storage_blocks/arcane_crystal");
+        public static final TagKey<Item> STORAGE_BLOCKS_CORRUPTED_ARCANE_CRYSTAL = commonTag("storage_blocks/corrupted_arcane_crystal");
+        public static final TagKey<Item> STORAGE_BLOCKS_STELLARITE = commonTag("storage_blocks/stellarite");
+        public static final TagKey<Item> STORAGE_BLOCKS_OBSIDIANSTEEL = commonTag("storage_blocks/obsidiansteel");
 
         public static final TagKey<Item> ORES_ARCANE_CRYSTAL = commonTag("ores/arcane_crystal");
         public static final TagKey<Item> ORES_RUNIC = commonTag("ores/runic");
         public static final TagKey<Item> ORES_STELLARITE = commonTag("ores/stellarite");
+
+        public static final TagKey<Item> GEMS_ARCANE_CRYSTAL = commonTag("gems/arcane_crystal");
+        public static final TagKey<Item> GEMS_CORRUPTED_ARCANE_CRYSTAL = commonTag("gems/corrupted_arcane_crystal");
+
+        public static final TagKey<Item> NUGGETS_DEORUM = commonTag("nuggets/deorum");
 
         private static TagKey<Item> commonTag(String name) {
             return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", name));

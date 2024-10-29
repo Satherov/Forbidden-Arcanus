@@ -54,7 +54,7 @@ public class ModBlockTagsProvider extends ValhelsiaBlockTagsProvider {
         //TODO
         //this.tag(BlockTags.STANDING_SIGNS).add(ModBlocks.FUNGYSS_SIGN.getFirst().get(), ModBlocks.CHERRY_SIGN.getFirst().get(), ModBlocks.AURUM_SIGN.getFirst().get(), ModBlocks.EDELWOOD_SIGN.getFirst().get());
         //this.tag(BlockTags.WALL_SIGNS).add(ModBlocks.FUNGYSS_SIGN.getSecond().get(), ModBlocks.CHERRY_SIGN.getSecond().get(), ModBlocks.AURUM_SIGN.getSecond().get(), ModBlocks.EDELWOOD_SIGN.getSecond().get());
-        this.tag(BlockTags.SAPLINGS).add(ModBlocks.AURUM_SAPLING.get());
+        this.tag(BlockTags.SAPLINGS).add(ModBlocks.AURUM_SAPLING.get(), ModBlocks.GROWING_EDELWOOD.get());
         this.tag(BlockTags.LEAVES).add(ModBlocks.AURUM_LEAVES.get(), ModBlocks.NUGGETY_AURUM_LEAVES.get());
         this.tag(BlockTags.SMALL_FLOWERS).add(ModBlocks.YELLOW_ORCHID.get());
         this.tag(ModTags.Blocks.DARKSTONE_ORE_REPLACEABLES).add(ModBlocks.DARKSTONE.get());
@@ -64,12 +64,13 @@ public class ModBlockTagsProvider extends ValhelsiaBlockTagsProvider {
         //TODO
         //this.tag(ValhelsiaTags.Blocks.OFFSET_RENDERING).add(ModBlocks.CHERRY_LEAF_CARPET.get());
 
-        this.tag(ModTags.Blocks.DEORUM_STORAGE_BLOCKS).add(ModBlocks.DEORUM_BLOCK.get());
-        this.tag(ModTags.Blocks.ARCANE_CRYSTAL_STORAGE_BLOCKS).add(ModBlocks.ARCANE_CRYSTAL_BLOCK.get());
-        this.tag(ModTags.Blocks.STELLARITE_STORAGE_BLOCKS).add(ModBlocks.STELLARITE_BLOCK.get());
-        this.tag(ModTags.Blocks.OBSIDIANSTEEL_STORAGE_BLOCKS).add(ModBlocks.OBSIDIANSTEEL_BLOCK.get());
+        this.tag(ModTags.Blocks.STORAGE_BLOCKS_DEORUM).add(ModBlocks.DEORUM_BLOCK.get());
+        this.tag(ModTags.Blocks.STORAGE_BLOCKS_ARCANE_CRYSTAL).add(ModBlocks.ARCANE_CRYSTAL_BLOCK.get());
+        this.tag(ModTags.Blocks.STORAGE_BLOCKS_CORRUPTED_ARCANE_CRYSTAL).add(ModBlocks.CORRUPTED_ARCANE_CRYSTAL_BLOCK.get());
+        this.tag(ModTags.Blocks.STORAGE_BLOCKS_STELLARITE).add(ModBlocks.STELLARITE_BLOCK.get());
+        this.tag(ModTags.Blocks.STORAGE_BLOCKS_OBSIDIANSTEEL).add(ModBlocks.OBSIDIANSTEEL_BLOCK.get());
 
-        this.tag(Tags.Blocks.STORAGE_BLOCKS).addTags(ModTags.Blocks.DEORUM_STORAGE_BLOCKS, ModTags.Blocks.ARCANE_CRYSTAL_STORAGE_BLOCKS, ModTags.Blocks.STELLARITE_STORAGE_BLOCKS, ModTags.Blocks.OBSIDIANSTEEL_STORAGE_BLOCKS);
+        this.tag(Tags.Blocks.STORAGE_BLOCKS).addTags(ModTags.Blocks.STORAGE_BLOCKS_DEORUM, ModTags.Blocks.STORAGE_BLOCKS_ARCANE_CRYSTAL, ModTags.Blocks.STORAGE_BLOCKS_CORRUPTED_ARCANE_CRYSTAL, ModTags.Blocks.STORAGE_BLOCKS_STELLARITE, ModTags.Blocks.STORAGE_BLOCKS_OBSIDIANSTEEL);
 
         this.tag(ModTags.Blocks.ORES_ARCANE_CRYSTAL).add(ModBlocks.ARCANE_CRYSTAL_ORE.get(), ModBlocks.DEEPSLATE_ARCANE_CRYSTAL_ORE.get());
         this.tag(ModTags.Blocks.ORES_RUNIC).add(ModBlocks.RUNIC_STONE.get(), ModBlocks.RUNIC_DEEPSLATE.get(), ModBlocks.RUNIC_DARKSTONE.get());
@@ -78,6 +79,11 @@ public class ModBlockTagsProvider extends ValhelsiaBlockTagsProvider {
         this.tag(Tags.Blocks.ORES_IN_GROUND_STONE).add(ModBlocks.ARCANE_CRYSTAL_ORE.get(), ModBlocks.RUNIC_STONE.get(), ModBlocks.STELLA_ARCANUM.get());
         this.tag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE).add(ModBlocks.DEEPSLATE_ARCANE_CRYSTAL_ORE.get(), ModBlocks.RUNIC_DEEPSLATE.get(), ModBlocks.STELLA_ARCANUM.get());
         this.tag(BlockTags.BASE_STONE_OVERWORLD).add(ModBlocks.DARKSTONE.get());
+
+        this.tag(Tags.Blocks.GLASS_BLOCKS).add(ModBlocks.DEORUM_GLASS.get(), ModBlocks.RUNIC_GLASS.get());
+        this.tag(Tags.Blocks.GLASS_BLOCKS_COLORLESS).add(ModBlocks.DEORUM_GLASS.get(), ModBlocks.RUNIC_GLASS.get());
+        this.tag(Tags.Blocks.GLASS_PANES).add(ModBlocks.DEORUM_GLASS_PANE.get(), ModBlocks.RUNIC_GLASS_PANE.get());
+        this.tag(Tags.Blocks.GLASS_PANES_COLORLESS).add(ModBlocks.DEORUM_GLASS_PANE.get(), ModBlocks.RUNIC_GLASS_PANE.get());
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.DEORUM_CHAIN.get(), ModBlocks.STELLA_ARCANUM.get(), ModBlocks.OBSIDIANSTEEL_BLOCK.get(), ModBlocks.DEORUM_BLOCK.get(), ModBlocks.STELLARITE_BLOCK.get(), ModBlocks.SOULLESS_SANDSTONE.get(), ModBlocks.CUT_SOULLESS_SANDSTONE.get(), ModBlocks.POLISHED_SOULLESS_SANDSTONE.get(), ModBlocks.SOULLESS_SANDSTONE_SLAB.get(), ModBlocks.CUT_SOULLESS_SANDSTONE_SLAB.get(), ModBlocks.POLISHED_SOULLESS_SANDSTONE_SLAB.get(), ModBlocks.SOULLESS_SANDSTONE_STAIRS.get(), ModBlocks.POLISHED_SOULLESS_SANDSTONE_STAIRS.get(), ModBlocks.DEORUM_DOOR.get(), ModBlocks.DARKSTONE.get(), ModBlocks.DARKSTONE_SLAB.get(), ModBlocks.DARKSTONE_STAIRS.get(), ModBlocks.POLISHED_DARKSTONE.get(), ModBlocks.POLISHED_DARKSTONE_SLAB.get(), ModBlocks.POLISHED_DARKSTONE_STAIRS.get(), ModBlocks.POLISHED_DARKSTONE_PRESSURE_PLATE.get(), ModBlocks.POLISHED_DARKSTONE_BUTTON.get(), ModBlocks.CHISELED_POLISHED_DARKSTONE.get(), ModBlocks.GILDED_CHISELED_POLISHED_DARKSTONE.get(), ModBlocks.POLISHED_DARKSTONE_BRICKS.get(), ModBlocks.POLISHED_DARKSTONE_BRICK_SLAB.get(), ModBlocks.POLISHED_DARKSTONE_BRICK_STAIRS.get(), ModBlocks.CRACKED_POLISHED_DARKSTONE_BRICKS.get(), ModBlocks.ARCANE_POLISHED_DARKSTONE.get(), ModBlocks.ARCANE_POLISHED_DARKSTONE_SLAB.get(), ModBlocks.ARCANE_POLISHED_DARKSTONE_STAIRS.get(), ModBlocks.CHISELED_ARCANE_POLISHED_DARKSTONE.get(), ModBlocks.ARCANE_POLISHED_DARKSTONE_PILLAR.get(), ModBlocks.DARKSTONE_PEDESTAL.get(), ModBlocks.MAGNETIZED_DARKSTONE_PEDESTAL.get(), ModBlocks.TILED_POLISHED_DARKSTONE_BRICKS.get(), ModBlocks.CLIBANO_CORE.get(), ModBlocks.CLIBANO_SIDE_HORIZONTAL.get(), ModBlocks.CLIBANO_SIDE_VERTICAL.get(), ModBlocks.CLIBANO_CORNER.get(), ModBlocks.CLIBANO_CENTER.get(), ModBlocks.CLIBANO_MAIN_PART.get(), ModBlocks.DEORUM_LANTERN.get(), ModBlocks.DEORUM_SOUL_LANTERN.get())
