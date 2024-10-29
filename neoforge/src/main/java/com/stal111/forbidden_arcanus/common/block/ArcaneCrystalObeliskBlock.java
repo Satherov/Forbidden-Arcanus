@@ -159,26 +159,6 @@ public class ArcaneCrystalObeliskBlock extends Block implements SimpleWaterlogge
         return stateDown.is(this);
     }
 
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        LocalPlayer player = Minecraft.getInstance().player;
-
-        if (player != null && state.getValue(PART) != ObeliskPart.LOWER) {
-            if (!player.getInventory().contains(ModItems.Stacks.LENS_OF_VERITATIS)) {
-                return;
-            }
-
-            double j = 0.6D * random.nextFloat();
-            double k = 0.6D * random.nextFloat();
-            double posX = pos.getX() + 0.5D + (random.nextBoolean() ? j : -j);
-            double posY = (float) pos.getY() + 0.1D + random.nextFloat() / 2;
-            double posZ = pos.getZ() + 0.5D + (random.nextBoolean() ? k : -k);
-            double ySpeed = ((double) random.nextFloat() - 0.4D) * 0.1D;
-
-            level.addParticle(ModParticles.AUREAL_MOTE.get(), posX, posY, posZ, 0, ySpeed, 0);
-        }
-    }
-
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {

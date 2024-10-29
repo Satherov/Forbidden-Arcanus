@@ -47,7 +47,6 @@ public class CraftingRecipeProvider extends RecipeSubProvider {
 
         //Shaped Recipes
         this.shaped(RecipeCategory.TOOLS, ModItems.SANITY_METER, builder -> builder.pattern("AXA").pattern("X#X").pattern("AXA").define('X', Tags.Items.INGOTS_GOLD).define('#', Tags.Items.ENDER_PEARLS).define('A', ModItems.ARCANE_CRYSTAL_DUST).unlockedBy(this, RecipePart.of(Tags.Items.INGOTS_GOLD)));
-        this.shaped(RecipeCategory.TOOLS, ModItems.LENS_OF_VERITATIS, builder -> builder.pattern(" # ").pattern("#X#").pattern("S# ").define('#', ModItems.SPAWNER_SCRAP).define('X', ModItems.ARCANE_CRYSTAL).define('S', Tags.Items.RODS_WOODEN).unlockedBy(this, ModItems.ARCANE_CRYSTAL));
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.UTREM_JAR.get(), builder -> builder.pattern("#X#").pattern("# #").pattern("###").define('#', Tags.Items.GLASS_BLOCKS_COLORLESS).define('X', ModBlocks.EDELWOOD_PLANKS.get()).unlockedBy(this, RecipePart.of(Tags.Items.GLASS_BLOCKS_COLORLESS)));
         this.shaped(RecipeCategory.MISC, ModItems.ARCANE_CRYSTAL_DUST, builder -> builder.pattern("###").pattern("###").pattern("###").define('#', ModItems.ARCANE_CRYSTAL_DUST_SPECK).unlockedBy(this, ModItems.ARCANE_CRYSTAL_DUST_SPECK));
         this.shaped(RecipeCategory.TOOLS, ModItems.SOUL_EXTRACTOR, builder -> builder.pattern("U  ").pattern("##X").pattern("Q  ").define('U', ModBlocks.UTREM_JAR.get()).define('#', Blocks.NETHER_BRICKS).define('X', Blocks.QUARTZ_BLOCK).define('Q', Items.QUARTZ).unlockedBy(this, ModBlocks.UTREM_JAR.get()));

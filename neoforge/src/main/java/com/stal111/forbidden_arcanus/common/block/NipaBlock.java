@@ -115,20 +115,6 @@ public class NipaBlock extends BushBlock implements EntityBlock {
         super.neighborChanged(state, level, pos, block, fromPos, isMoving);
     }
 
-    @Override
-    public void animateTick(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
-        if (Objects.requireNonNull(Minecraft.getInstance().player).getInventory().contains(ModItems.Stacks.LENS_OF_VERITATIS)) {
-            double j = 0.4D * random.nextFloat();
-            double k = 0.4D * random.nextFloat();
-            double posX = pos.getX() + 0.5D + (random.nextBoolean() ? j : -j);
-            double posY = (float) pos.getY() + 0.1D + random.nextFloat() / 2.5;
-            double posZ = pos.getZ() + 0.5D + (random.nextBoolean() ? k : -k);
-            double ySpeed = ((double) random.nextFloat() - 0.4D) * 0.1D;
-
-            level.addParticle(ModParticles.AUREAL_MOTE.get(), posX, posY, posZ, 0, ySpeed, 0);
-        }
-    }
-
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@Nonnull Level level, @Nonnull BlockState state, @Nonnull BlockEntityType<T> blockEntityType) {

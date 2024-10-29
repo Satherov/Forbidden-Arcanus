@@ -243,7 +243,6 @@ public class LangProvider extends LanguageProvider {
         this.addItem(ModItems.SPAWNER_SCRAP, "Spawner Scrap");
         this.addItem(ModItems.SANITY_METER, "Sanity Meter");
         this.addItem(ModItems.AUREAL_TANK, "Aureal Tank");
-        this.addItem(ModItems.LENS_OF_VERITATIS, "Lens of Veritatis");
         this.addItem(ModItems.EDELWOOD_BUCKET, "Edelwood Bucket");
         this.addItem(ModItems.EDELWOOD_WATER_BUCKET, "Edelwood Water Bucket");
         this.addItem(ModItems.EDELWOOD_LAVA_BUCKET, "Edelwood Lava Bucket");

@@ -200,7 +200,6 @@ public class ModCreativeModeTabs implements RegistryClass {
                             output.accept(EssenceHelper.createStorageItem(ModItems.AUREAL_TANK.get(), EssenceType.AUREAL, 0, AurealTankItem.MAX_CAPACITY));
                             output.accept(EssenceHelper.createStorageItem(ModItems.AUREAL_TANK.get(), EssenceType.AUREAL, AurealTankItem.MAX_CAPACITY, AurealTankItem.MAX_CAPACITY));
 
-                            output.accept(ModItems.LENS_OF_VERITATIS.get());
                             output.accept(ModBlocks.OBSIDIAN_SKULL.getSkull());
                             output.accept(ModBlocks.CRACKED_OBSIDIAN_SKULL.getSkull());
                             output.accept(ModBlocks.FRAGMENTED_OBSIDIAN_SKULL.getSkull());
