@@ -50,7 +50,6 @@ public class ModBlockModels extends BlockModelGenerator {
                 .forEach(blockFamily -> this.family(blockFamily.getBaseBlock()).generateFor(blockFamily));
 
         this.createSimpleFlatItemModel(ModBlocks.DEORUM_CHAIN.get());
-        this.createSimpleFlatItemModel(ModBlocks.NIPA.get());
         this.createSimpleFlatItemModel(ModBlocks.ARCANE_DRAGON_EGG.get());
 
         generators.createTrivialCube(ModBlocks.SOULLESS_SAND.get());

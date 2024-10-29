@@ -4,7 +4,6 @@ import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.tags.BiomeTagsProvider;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.valhelsia.valhelsia_core.datagen.DataProviderContext;
@@ -27,10 +26,5 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
     protected void addTags(@NotNull HolderLookup.Provider provider) {
         this.tag(ModTags.Biomes.IS_PLAINS).add(Biomes.PLAINS, Biomes.SNOWY_PLAINS, Biomes.SUNFLOWER_PLAINS, Biomes.MEADOW);
         this.tag(ModTags.Biomes.IS_DESERT).add(Biomes.DESERT);
-
-        this.tag(ModTags.Biomes.HAS_NIPA).addTag(ModTags.Biomes.IS_PLAINS).addTag(BiomeTags.IS_FOREST).addTag(BiomeTags.IS_TAIGA);
-        this.tag(ModTags.Biomes.HAS_NIPA_ALWAYS_FLOATING).addTag(ModTags.Biomes.HAS_NIPA).addTag(BiomeTags.IS_OCEAN).addTag(ModTags.Biomes.IS_DESERT);
-
-        this.tag(ModTags.Biomes.SPAWNS_CORRUPT_LOST_SOUL).add(Biomes.SOUL_SAND_VALLEY);
     }
 }

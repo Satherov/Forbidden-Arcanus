@@ -23,7 +23,5 @@ public class CompostableRegistry {
         HELPER.register03(ModBlocks.AURUM_SAPLING.get());
         HELPER.register065(ModBlocks.YELLOW_ORCHID.get());
         HELPER.register03(ModItems.GOLDEN_ORCHID_SEEDS.get());
-        HELPER.register065(ModBlocks.NIPA.get());
-
     }
 }

@@ -180,7 +180,6 @@ public class LangProvider extends LanguageProvider {
         this.addBlock(ModBlocks.EDELWOOD_PRESSURE_PLATE, "Edelwood Pressure Plate");
         this.addBlock(ModBlocks.EDELWOOD_LADDER, "Edelwood Ladder");
         this.addBlock(ModBlocks.ARCANE_DRAGON_EGG, "Arcane Dragon Egg");
-        this.addBlock(ModBlocks.NIPA, "Nipa");
         this.addBlock(ModBlocks.DEORUM_CHAIN, "Deorum Chain");
         this.addBlock(ModBlocks.YELLOW_ORCHID, "Yellow Orchid");
         this.addBlock(ModBlocks.MAGICAL_FARMLAND, "Magical Farmland");

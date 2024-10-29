@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-29T12:32:36.2791036	Model Definitions
+// 1.21.1	2024-10-29T12:48:05.7086056	Model Definitions
 34ad95938d26fabd02ada3d848eea405894667d7 assets/forbidden_arcanus/blockstates/arcane_crystal_block.json
 5c7ff49b4565c2b9aa7e79629685cfdad6a408aa assets/forbidden_arcanus/blockstates/arcane_crystal_obelisk.json
 1a89b2964d08308be3317bac20e12091320695d5 assets/forbidden_arcanus/blockstates/arcane_crystal_ore.json
@@ -586,7 +586,6 @@ c8b9b74767ac5bb88d3b8d76d393ec6f6d3bf366 assets/forbidden_arcanus/models/item/mo
 d1033225b0ab83432add5ef215dfbdc74d1bab70 assets/forbidden_arcanus/models/item/mortem_leggings.json
 0b3c13998f4ed2ec0629b40463badb561f6cae53 assets/forbidden_arcanus/models/item/mundabitur_dust.json
 89d410db6ca383130c25bde5e9a27f8be3e31538 assets/forbidden_arcanus/models/item/netherite_blacksmith_gavel.json
-5b97eb8ff44b5e8a000452b229aaf4765a6ddbe2 assets/forbidden_arcanus/models/item/nipa.json
 d19a453c003492397cc9101eca9431b8a416db5d assets/forbidden_arcanus/models/item/nuggety_aurum_leaves.json
 86ce2e390cb871480db6fd6ae6eb75294cbd1a59 assets/forbidden_arcanus/models/item/obsidiansteel_block.json
 1278c5216e7f38859e46149783fc6fe18550f490 assets/forbidden_arcanus/models/item/obsidiansteel_ingot.json

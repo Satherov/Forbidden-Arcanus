@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-27T22:28:43.2571762	Registries
+// 1.21.1	2024-10-29T12:48:05.7729854	Registries
 94ac5c9945617db040611ba809c52fa6bd6581cf data/forbidden_arcanus/enchantment/soul_looting.json
 5dae7d2918859d0c001de5f1ba9afef12e45c807 data/forbidden_arcanus/forbidden_arcanus/enhancer/definition/artisan_relic.json
 4852b696f02e7470be56e62e97c6106737bd808b data/forbidden_arcanus/forbidden_arcanus/enhancer/definition/crescent_moon.json
@@ -72,6 +72,3 @@ b6214f230224e6f832b424008b9ffe1c359b22b6 data/forbidden_arcanus/worldgen/placed_
 3bf8f093791edfa9c5718bd1afdd97e54d9a7edb data/forbidden_arcanus/worldgen/placed_feature/runic_stone_lower.json
 79cbbbe46e35d74f411763cbfbc0f179a7a2dd4a data/forbidden_arcanus/worldgen/placed_feature/stella_arcanum.json
 51191bd7bc1c9fd48acd5df1852f957830cc9c77 data/forbidden_arcanus/worldgen/placed_feature/yellow_orchid.json
-7100ab05b0c28277a52916440f5c64b0fdf556d6 data/forbidden_arcanus/worldgen/structure/nipa.json
-6de5908fcf771c50509dec0c3c0508e9a1bb9916 data/forbidden_arcanus/worldgen/structure/nipa_floating.json
-e9e4e1bc5894b5b6c6629c539ce63eac09b02903 data/forbidden_arcanus/worldgen/structure_set/nipas.json

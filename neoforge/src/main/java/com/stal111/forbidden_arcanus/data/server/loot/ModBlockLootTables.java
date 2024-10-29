@@ -130,7 +130,6 @@ public class ModBlockLootTables extends ValhelsiaBlockLootTables {
         this.dropSelf(ModBlocks.AURUM_PRESSURE_PLATE.get());
         this.dropSelf(ModBlocks.EDELWOOD_PRESSURE_PLATE.get());
         this.dropSelf(ModBlocks.ARCANE_DRAGON_EGG.get());
-        this.dropSelf(ModBlocks.NIPA.get());
         this.dropSelf(ModBlocks.DEORUM_CHAIN.get());
         this.dropSelf(ModBlocks.YELLOW_ORCHID.get());
         this.dropSelf(ModBlocks.GOLDEN_ORCHID.get());

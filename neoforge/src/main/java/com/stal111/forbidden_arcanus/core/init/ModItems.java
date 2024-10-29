@@ -145,8 +145,4 @@ public class ModItems implements RegistryClass {
     public static final ItemRegistryEntry<Item> MORTEM_LEGGINGS = HELPER.register("mortem_leggings", () -> new ArmorItem(FAArmorMaterials.MORTEM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
     public static final ItemRegistryEntry<Item> MORTEM_BOOTS = HELPER.register("mortem_boots", () -> new ArmorItem(FAArmorMaterials.MORTEM, ArmorItem.Type.BOOTS, new Item.Properties()));
 
-    public static class Stacks {
-
-        public static final ItemStack ARCANE_CRYSTAL_DUST_SPECK = new ItemStack(ModItems.ARCANE_CRYSTAL_DUST_SPECK.get());
-    }
 }

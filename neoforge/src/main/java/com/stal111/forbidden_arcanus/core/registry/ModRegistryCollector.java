@@ -42,9 +42,7 @@ public class ModRegistryCollector extends RegistryCollector {
         this.addBlockHelper(ModBlocks.class);
         this.addItemHelper(ModItems.class);
         this.addMappedHelper(Registries.ENTITY_TYPE, EntityRegistryHelper::new, ModEntities.class);
-        this.addMappedHelper(Registries.STRUCTURE_TYPE, ModStructureTypes.class);
         this.addMappedHelper(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, ModLootModifiers.class);
-        this.addMappedHelper(Registries.STRUCTURE_PIECE, ModStructurePieces.class);
         this.addMappedHelper(Registries.SOUND_EVENT, ModSounds.class);
         this.addMappedHelper(Registries.PARTICLE_TYPE, ModParticles.class);
         this.addMappedHelper(Registries.MEMORY_MODULE_TYPE, ModMemoryModules.class);
@@ -71,8 +69,6 @@ public class ModRegistryCollector extends RegistryCollector {
         this.addMappedHelper(FARegistries.MUNDABITUR_INTERACTION, MundabiturInteractions.class);
         this.addMappedHelper(FARegistries.PEDESTAL_EFFECT, PedestalEffects.class);
 
-        this.addDatapackHelper(Registries.STRUCTURE, ModStructures::new);
-        this.addDatapackHelper(Registries.STRUCTURE_SET, ModStructureSets::new);
         this.addDatapackHelper(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::new, ModVegetationFeatures::new);
         this.addDatapackHelper(Registries.PLACED_FEATURE, ModCavePlacements::new, ModOrePlacements::new, ModTreePlacements::new, ModVegetationPlacements::new);
         this.addDatapackHelper(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::new);

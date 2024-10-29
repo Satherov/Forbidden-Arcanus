@@ -142,7 +142,6 @@ public class ModCreativeModeTabs implements RegistryClass {
                             output.accept(ModBlocks.AURUM_PRESSURE_PLATE.get());
                             output.accept(ModBlocks.EDELWOOD_PRESSURE_PLATE.get());
                             output.accept(ModBlocks.ARCANE_DRAGON_EGG.get());
-                            output.accept(ModBlocks.NIPA.get());
                             output.accept(ModBlocks.DEORUM_CHAIN.get());
                             output.accept(ModBlocks.YELLOW_ORCHID.get());
                             output.accept(ModBlocks.MAGICAL_FARMLAND.get());
