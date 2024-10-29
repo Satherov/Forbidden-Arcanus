@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#forge:nuggets/deorum"
+            "items": "#c:nuggets/deorum"
           }
         ]
       },

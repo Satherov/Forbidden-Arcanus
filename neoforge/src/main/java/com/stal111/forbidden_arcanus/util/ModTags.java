@@ -21,36 +21,32 @@ public class ModTags {
         public static final TagKey<Block> RUNE_BLOCKS = modTag("rune_blocks");
         public static final TagKey<Block> ARCANE_CRYSTAL_ORES = modTag("arcane_crystal_ores");
         public static final TagKey<Block> DARKSTONE_ORE_REPLACEABLES = modTag("darkstone_ore_replaceables");
-        public static final TagKey<Block> DEORUM_STORAGE_BLOCKS = forgeTag("storage_blocks/deorum");
-        public static final TagKey<Block> ARCANE_CRYSTAL_STORAGE_BLOCKS = forgeTag("storage_blocks/arcane_crystal");
-        public static final TagKey<Block> STELLARITE_STORAGE_BLOCKS = forgeTag("storage_blocks/stellarite");
-        public static final TagKey<Block> OBSIDIAN_STORAGE_BLOCKS = forgeTag("storage_blocks/obsidian");
+        public static final TagKey<Block> DEORUM_STORAGE_BLOCKS = commonTag("storage_blocks/deorum");
+        public static final TagKey<Block> ARCANE_CRYSTAL_STORAGE_BLOCKS = commonTag("storage_blocks/arcane_crystal");
+        public static final TagKey<Block> STELLARITE_STORAGE_BLOCKS = commonTag("storage_blocks/stellarite");
+        public static final TagKey<Block> OBSIDIAN_STORAGE_BLOCKS = commonTag("storage_blocks/obsidian");
         public static final TagKey<Block> HEPHAESTUS_FORGES = modTag("hephaestus_forges");
 
-        private static TagKey<Block> forgeTag(String name) {
-            return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", name));
+        private static TagKey<Block> commonTag(String name) {
+            return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", name));
         }
 
         private static TagKey<Block> modTag(String name) {
             return TagKey.create(Registries.BLOCK, ForbiddenArcanus.location(name));
         }
-
-        private static TagKey<Block> vanillaTag(String name) {
-            return TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace(name));
-        }
     }
 
     public static class Items {
         public static final TagKey<Item> BLACK_HOLE_UNAFFECTED = modTag("black_hole_unaffected");
-        public static final TagKey<Item> EXPLOSION_RESISTANT = forgeTag("explosion_resistant");
+        public static final TagKey<Item> EXPLOSION_RESISTANT = commonTag("explosion_resistant");
         public static final TagKey<Item> OBSIDIAN_SKULLS = modTag("obsidian_skulls");
         public static final TagKey<Item> FUNGYSS_STEMS = modTag("fungyss_stems");
         public static final TagKey<Item> MYSTERYWOOD_LOGS = modTag("mysterywood_logs");
         public static final TagKey<Item> EDELWOOD_LOGS = modTag("edelwood_logs");
         public static final TagKey<Item> BLACKSMITH_GAVEL = modTag("blacksmith_gavel");
-        public static final TagKey<Item> DEORUM_INGOTS = forgeTag("ingots/deorum");
-        public static final TagKey<Item> DEORUM_NUGGETS = forgeTag("nuggets/deorum");
-        public static final TagKey<Item> OBSIDIAN_INGOTS = forgeTag("ingots/obsidian");
+        public static final TagKey<Item> DEORUM_INGOTS = commonTag("ingots/deorum");
+        public static final TagKey<Item> DEORUM_NUGGETS = commonTag("nuggets/deorum");
+        public static final TagKey<Item> OBSIDIAN_INGOTS = commonTag("ingots/obsidian");
         public static final TagKey<Item> MAGICAL_FARMLAND_BLACKLISTED = modTag("magical_farmland_blacklisted");
         public static final TagKey<Item> RUNIC_STONES = modTag("runic_stones");
         public static final TagKey<Item> RUNE_BLOCKS = modTag("rune_blocks");
@@ -71,14 +67,14 @@ public class ModTags {
         public static final TagKey<Item> CLIBANO_CREATES_SOUL_FIRE = modTag("clibano/creates_soul_fire");
         public static final TagKey<Item> CLIBANO_CREATES_ENCHANTED_FIRE = modTag("clibano/creates_enchanted_fire");
 
-        public static final TagKey<Item> DEORUM_STORAGE_BLOCKS = forgeTag("storage_blocks/deorum");
-        public static final TagKey<Item> ARCANE_CRYSTAL_STORAGE_BLOCKS = forgeTag("storage_blocks/arcane_crystal");
-        public static final TagKey<Item> STELLARITE_STORAGE_BLOCKS = forgeTag("storage_blocks/stellarite");
-        public static final TagKey<Item> OBSIDIAN_STORAGE_BLOCKS = forgeTag("storage_blocks/obsidian");
+        public static final TagKey<Item> DEORUM_STORAGE_BLOCKS = commonTag("storage_blocks/deorum");
+        public static final TagKey<Item> ARCANE_CRYSTAL_STORAGE_BLOCKS = commonTag("storage_blocks/arcane_crystal");
+        public static final TagKey<Item> STELLARITE_STORAGE_BLOCKS = commonTag("storage_blocks/stellarite");
+        public static final TagKey<Item> OBSIDIAN_STORAGE_BLOCKS = commonTag("storage_blocks/obsidian");
 
 
-        private static TagKey<Item> forgeTag(String name) {
-            return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", name));
+        private static TagKey<Item> commonTag(String name) {
+            return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", name));
         }
 
         private static TagKey<Item> modTag(String name) {

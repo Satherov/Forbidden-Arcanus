@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "#": {
-      "tag": "forge:nuggets/deorum"
+      "tag": "c:nuggets/deorum"
     },
     "X": {
-      "tag": "forge:ingots/deorum"
+      "tag": "c:ingots/deorum"
     }
   },
   "pattern": [

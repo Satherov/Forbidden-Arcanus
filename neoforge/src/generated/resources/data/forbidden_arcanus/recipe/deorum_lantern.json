@@ -6,7 +6,7 @@
       "item": "minecraft:torch"
     },
     "X": {
-      "tag": "forge:nuggets/deorum"
+      "tag": "c:nuggets/deorum"
     }
   },
   "pattern": [

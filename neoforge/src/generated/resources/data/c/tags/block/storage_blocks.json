@@ -1,8 +1,8 @@
 {
   "values": [
-    "#forge:storage_blocks/deorum",
-    "#forge:storage_blocks/arcane_crystal",
-    "#forge:storage_blocks/stellarite",
-    "#forge:storage_blocks/obsidian"
+    "#c:storage_blocks/deorum",
+    "#c:storage_blocks/arcane_crystal",
+    "#c:storage_blocks/stellarite",
+    "#c:storage_blocks/obsidian"
   ]
 }
