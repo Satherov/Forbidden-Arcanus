@@ -71,5 +71,5 @@ dependencies {
 
     implementation("net.valhelsia:valhelsia_core-neoforge-${minecraft_version}:${valhelsia_core_version}")
 
-    implementation(interfaceInjectionData("net.valhelsia:dataforge:${dataforge_version}")!!)
+    //implementation(interfaceInjectionData("net.valhelsia:dataforge:${dataforge_version}")!!)
 }

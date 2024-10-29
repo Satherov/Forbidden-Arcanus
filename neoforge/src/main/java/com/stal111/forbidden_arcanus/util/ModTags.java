@@ -7,7 +7,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class ModTags {
@@ -110,19 +109,6 @@ public class ModTags {
 
         private static TagKey<Enchantment> modTag(String name) {
             return TagKey.create(Registries.ENCHANTMENT, ForbiddenArcanus.location(name));
-        }
-    }
-
-    public static class Biomes {
-        public static final TagKey<Biome> IS_PLAINS = forgeTag("is_plains");
-        public static final TagKey<Biome> IS_DESERT = forgeTag("is_desert");
-
-        private static TagKey<Biome> forgeTag(String name) {
-            return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath("forge", name));
-        }
-
-        private static TagKey<Biome> modTag(String name) {
-            return TagKey.create(Registries.BIOME, ForbiddenArcanus.location(name));
         }
     }
 }
