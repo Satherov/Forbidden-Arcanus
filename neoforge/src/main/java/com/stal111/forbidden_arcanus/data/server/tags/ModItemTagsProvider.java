@@ -64,6 +64,9 @@ public class ModItemTagsProvider extends ValhelsiaItemTagsProvider {
         this.tag(ModTags.Items.CLIBANO_CREATES_SOUL_FIRE).add(ModItems.SOUL.get(), ModItems.CORRUPT_SOUL.get());
         this.tag(ModTags.Items.CLIBANO_CREATES_ENCHANTED_FIRE).add(ModItems.ENCHANTED_SOUL.get());
 
+        this.tag(ItemTags.STONE_TOOL_MATERIALS).add(ModBlocks.DARKSTONE.get().asItem());
+        this.tag(ItemTags.STONE_CRAFTING_MATERIALS).add(ModBlocks.DARKSTONE.get().asItem());
+
         this.copy(ModTags.Blocks.FUNGYSS_STEMS, ModTags.Items.FUNGYSS_STEMS);
         this.copy(ModTags.Blocks.MYSTERYWOOD_LOGS, ModTags.Items.MYSTERYWOOD_LOGS);
         this.copy(ModTags.Blocks.EDELWOOD_LOGS, ModTags.Items.EDELWOOD_LOGS);
@@ -94,5 +97,11 @@ public class ModItemTagsProvider extends ValhelsiaItemTagsProvider {
         this.copy(ModTags.Blocks.OBSIDIANSTEEL_STORAGE_BLOCKS, ModTags.Items.OBSIDIANSTEEL_STORAGE_BLOCKS);
         this.copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
         this.copy(ModTags.Blocks.HEPHAESTUS_FORGES, ModTags.Items.HEPHAESTUS_FORGES);
+        this.copy(ModTags.Blocks.ORES_ARCANE_CRYSTAL, ModTags.Items.ORES_ARCANE_CRYSTAL);
+        this.copy(ModTags.Blocks.ORES_RUNIC, ModTags.Items.ORES_RUNIC);
+        this.copy(ModTags.Blocks.ORES_STELLARITE, ModTags.Items.ORES_STELLARITE);
+        this.copy(Tags.Blocks.ORES, Tags.Items.ORES);
+        this.copy(Tags.Blocks.ORES_IN_GROUND_STONE, Tags.Items.ORES_IN_GROUND_STONE);
+        this.copy(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE, Tags.Items.ORES_IN_GROUND_DEEPSLATE);
     }
 }

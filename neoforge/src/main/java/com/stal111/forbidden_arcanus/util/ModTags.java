@@ -26,6 +26,9 @@ public class ModTags {
         public static final TagKey<Block> STELLARITE_STORAGE_BLOCKS = commonTag("storage_blocks/stellarite");
         public static final TagKey<Block> OBSIDIANSTEEL_STORAGE_BLOCKS = commonTag("storage_blocks/obsidiansteel");
         public static final TagKey<Block> HEPHAESTUS_FORGES = modTag("hephaestus_forges");
+        public static final TagKey<Block> ORES_ARCANE_CRYSTAL = commonTag("ores/arcane_crystal");
+        public static final TagKey<Block> ORES_RUNIC = commonTag("ores/runic");
+        public static final TagKey<Block> ORES_STELLARITE = commonTag("ores/stellarite");
 
         private static TagKey<Block> commonTag(String name) {
             return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", name));
@@ -72,6 +75,9 @@ public class ModTags {
         public static final TagKey<Item> STELLARITE_STORAGE_BLOCKS = commonTag("storage_blocks/stellarite");
         public static final TagKey<Item> OBSIDIANSTEEL_STORAGE_BLOCKS = commonTag("storage_blocks/obsidiansteel");
 
+        public static final TagKey<Item> ORES_ARCANE_CRYSTAL = commonTag("ores/arcane_crystal");
+        public static final TagKey<Item> ORES_RUNIC = commonTag("ores/runic");
+        public static final TagKey<Item> ORES_STELLARITE = commonTag("ores/stellarite");
 
         private static TagKey<Item> commonTag(String name) {
             return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", name));

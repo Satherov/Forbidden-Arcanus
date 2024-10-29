@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-29T13:31:39.2910104	Tags for minecraft:item mod id forbidden_arcanus
+// 1.21.1	2024-10-29T15:50:26.5962651	Tags for minecraft:item mod id forbidden_arcanus
 2572dfc3ed16dc52c40839dfeb364036bf3314be data/c/tags/item/explosion_resistant.json
 ed23ebe15a1414e3c7311e3750ac9dc0e912d732 data/c/tags/item/fences/wooden.json
 0643e621e7d9a779b7b1be9df093f0e899494b43 data/c/tags/item/fence_gates/wooden.json
@@ -6,6 +6,12 @@ b854dcf974feb77c43775267d04fd6759ba8816f data/c/tags/item/ingots.json
 238635bd5dd1c15728e03bd1774ab8343944a8b5 data/c/tags/item/ingots/deorum.json
 0d4b957112a35b9712ca2728004c934f1b488ddd data/c/tags/item/ingots/obsidiansteel.json
 7c2fa587c6bcbc4afb7882a02044ed5435a29f2c data/c/tags/item/nuggets/deorum.json
+da592e1a235a155dfeb386236d5fc824489270bf data/c/tags/item/ores.json
+15ddb20eec4f474e9a7277aa0e68dd069b704173 data/c/tags/item/ores/arcane_crystal.json
+321796da77cb8905e7a9b8b3c8413298f0cb9bfe data/c/tags/item/ores/runic.json
+5a72be9c06f4519c620cdeda659ccccd0dfcc558 data/c/tags/item/ores/stellarite.json
+fc1d22e637a8c93c504c9d76b6a2873851fd6406 data/c/tags/item/ores_in_ground/deepslate.json
+7b6d96f3c12a58b462463ab2438564a96cf7db64 data/c/tags/item/ores_in_ground/stone.json
 6529c1b5741e0d61a30d3957253c488859843df8 data/c/tags/item/seeds.json
 3edf1957dd17bf71cb077fe2129130218639f3a6 data/c/tags/item/storage_blocks.json
 09957d67edabb535833ace6cdc1345b60d228657 data/c/tags/item/storage_blocks/arcane_crystal.json
@@ -41,6 +47,8 @@ f80b42c15e715a6f1efd91c02594720b7da2ddeb data/minecraft/tags/item/pickaxes.json
 a16c7f48d13080ae1e744d6e5d28d7e177251346 data/minecraft/tags/item/planks.json
 5bb0d891062facc905907fc2a2e830548570301b data/minecraft/tags/item/saplings.json
 9e9500e769cd5c0703ef99e4a2a0df188529f697 data/minecraft/tags/item/small_flowers.json
+7178fc65549c2cdfe3c0d34421efedf7c81a341f data/minecraft/tags/item/stone_crafting_materials.json
+7178fc65549c2cdfe3c0d34421efedf7c81a341f data/minecraft/tags/item/stone_tool_materials.json
 8444fa480fdb1b147e132ca4416af4e96e7bcc0b data/minecraft/tags/item/trapdoors.json
 3935b55b1e06b607bf6546db483f8101b38e36af data/minecraft/tags/item/wooden_buttons.json
 b82fa755a76929d169a9aa374ec0a6fdcd7df2c6 data/minecraft/tags/item/wooden_doors.json
