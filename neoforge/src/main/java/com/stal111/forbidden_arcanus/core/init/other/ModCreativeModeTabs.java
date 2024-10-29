@@ -193,7 +193,6 @@ public class ModCreativeModeTabs implements RegistryClass {
                             output.accept(ModItems.QUANTUM_CATCHER.get());
                             ModItems.DYED_QUANTUM_CATCHERS.forEach((color, registryEntry) -> output.accept(registryEntry.get()));
                             output.accept(ModItems.BOSS_CATCHER.get());
-                            output.accept(ModItems.SANITY_METER.get());
 
                             output.accept(EssenceHelper.createStorageItem(ModItems.AUREAL_TANK.get(), EssenceType.AUREAL, 0, AurealTankItem.DEFAULT_CAPACITY));
                             output.accept(EssenceHelper.createStorageItem(ModItems.AUREAL_TANK.get(), EssenceType.AUREAL, AurealTankItem.DEFAULT_CAPACITY, AurealTankItem.DEFAULT_CAPACITY));

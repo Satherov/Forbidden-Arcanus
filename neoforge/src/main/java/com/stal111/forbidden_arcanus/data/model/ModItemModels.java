@@ -31,7 +31,6 @@ public class ModItemModels extends ItemModelGenerator {
 
     @Override
     public void generate() {
-        this.generateFlatItem(ModItems.SANITY_METER);
         this.generateFlatItem(ModItems.EDELWOOD_BUCKET);
         this.generateFlatItem(ModItems.EDELWOOD_WATER_BUCKET);
         this.generateFlatItem(ModItems.EDELWOOD_LAVA_BUCKET);

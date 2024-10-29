@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-26T11:36:41.86745	Model Definitions
+// 1.21.1	2024-10-29T12:32:36.2791036	Model Definitions
 34ad95938d26fabd02ada3d848eea405894667d7 assets/forbidden_arcanus/blockstates/arcane_crystal_block.json
 5c7ff49b4565c2b9aa7e79629685cfdad6a408aa assets/forbidden_arcanus/blockstates/arcane_crystal_obelisk.json
 1a89b2964d08308be3317bac20e12091320695d5 assets/forbidden_arcanus/blockstates/arcane_crystal_ore.json
@@ -620,7 +620,6 @@ b8de30767e199fb3f89fea2500259f3d381aca91 assets/forbidden_arcanus/models/item/re
 9785534629f4ed91a0132eb8a521b08e1156e8b2 assets/forbidden_arcanus/models/item/runic_glass.json
 2b47b3ba9d03d9f255cbd882a86961f5237d5f97 assets/forbidden_arcanus/models/item/runic_glass_pane.json
 7a0b3ec194169d359a86eba974ea76047419e627 assets/forbidden_arcanus/models/item/runic_stone.json
-61cf897499ef2f79a64e34b84d7766c4243812f1 assets/forbidden_arcanus/models/item/sanity_meter.json
 4c104f7fa4f5580997a218fdfd34983d05fd8ab8 assets/forbidden_arcanus/models/item/sea_prism.json
 aec87092ae2fe7e3dd46fd75e14d02ce5a3ee10f assets/forbidden_arcanus/models/item/silver_dragon_scale.json
 eae04d975a1d16f72493bdf412a45e4c830b03bd assets/forbidden_arcanus/models/item/smelter_prism.json

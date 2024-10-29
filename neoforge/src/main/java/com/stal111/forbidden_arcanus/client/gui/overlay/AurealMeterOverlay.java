@@ -4,7 +4,6 @@ import com.mojang.blaze3d.platform.Window;
 import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.common.block.entity.forge.essence.EssenceType;
 import com.stal111.forbidden_arcanus.common.essence.EssenceHelper;
-import com.stal111.forbidden_arcanus.core.init.ModItems;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -12,8 +11,6 @@ import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Collections;
 
 public class AurealMeterOverlay implements LayeredDraw.Layer {
 
@@ -33,7 +30,7 @@ public class AurealMeterOverlay implements LayeredDraw.Layer {
         Window window = Minecraft.getInstance().getWindow();
         Player player = Minecraft.getInstance().player;
 
-        if (player == null || !player.getInventory().hasAnyOf(Collections.singleton(ModItems.SANITY_METER.get()))) {
+        if (player == null) {
             return;
         }
 

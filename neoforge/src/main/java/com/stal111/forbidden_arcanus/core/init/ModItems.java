@@ -76,7 +76,6 @@ public class ModItems implements RegistryClass {
     public static final ItemRegistryEntry<Item> DIVINE_PACT = HELPER.register("divine_pact", () -> new Item(new Item.Properties().component(ModDataComponents.ENHANCER.value(), ModEnhancerDefinitions.DIVINE_PACT)));
     public static final ItemRegistryEntry<Item> MALEDICTUS_PACT = HELPER.register("maledictus_pact", () -> new Item(new Item.Properties().component(ModDataComponents.ENHANCER.value(), ModEnhancerDefinitions.MALEDICTUS_PACT)));
 
-    public static final ItemRegistryEntry<Item> SANITY_METER = HELPER.register("sanity_meter", () -> new SanityMeterItem(new Item.Properties().stacksTo(1)));
     public static final ItemRegistryEntry<Item> AUREAL_TANK = HELPER.register("aureal_tank", () -> new AurealTankItem(new Item.Properties().stacksTo(1).component(ModDataComponents.ESSENCE_STORAGE, AurealTankItem.DEFAULT_DATA)));
 
     public static final ItemRegistryEntry<BlockItem> UTREM_JAR = HELPER.register("utrem_jar", () -> new BlockItem(ModBlocks.UTREM_JAR.get(), new Item.Properties()));
@@ -148,7 +147,6 @@ public class ModItems implements RegistryClass {
 
     public static class Stacks {
 
-        public static final ItemStack SANITY_METER = new ItemStack(ModItems.SANITY_METER.get());
         public static final ItemStack ARCANE_CRYSTAL_DUST_SPECK = new ItemStack(ModItems.ARCANE_CRYSTAL_DUST_SPECK.get());
     }
 }
