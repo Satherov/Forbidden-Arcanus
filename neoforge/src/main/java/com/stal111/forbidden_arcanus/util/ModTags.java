@@ -24,7 +24,7 @@ public class ModTags {
         public static final TagKey<Block> DEORUM_STORAGE_BLOCKS = commonTag("storage_blocks/deorum");
         public static final TagKey<Block> ARCANE_CRYSTAL_STORAGE_BLOCKS = commonTag("storage_blocks/arcane_crystal");
         public static final TagKey<Block> STELLARITE_STORAGE_BLOCKS = commonTag("storage_blocks/stellarite");
-        public static final TagKey<Block> OBSIDIAN_STORAGE_BLOCKS = commonTag("storage_blocks/obsidian");
+        public static final TagKey<Block> OBSIDIANSTEEL_STORAGE_BLOCKS = commonTag("storage_blocks/obsidiansteel");
         public static final TagKey<Block> HEPHAESTUS_FORGES = modTag("hephaestus_forges");
 
         private static TagKey<Block> commonTag(String name) {
@@ -46,7 +46,7 @@ public class ModTags {
         public static final TagKey<Item> BLACKSMITH_GAVEL = modTag("blacksmith_gavel");
         public static final TagKey<Item> DEORUM_INGOTS = commonTag("ingots/deorum");
         public static final TagKey<Item> DEORUM_NUGGETS = commonTag("nuggets/deorum");
-        public static final TagKey<Item> OBSIDIAN_INGOTS = commonTag("ingots/obsidian");
+        public static final TagKey<Item> OBSIDIANSTEEL_INGOTS = commonTag("ingots/obsidiansteel");
         public static final TagKey<Item> MAGICAL_FARMLAND_BLACKLISTED = modTag("magical_farmland_blacklisted");
         public static final TagKey<Item> RUNIC_STONES = modTag("runic_stones");
         public static final TagKey<Item> RUNE_BLOCKS = modTag("rune_blocks");
@@ -70,7 +70,7 @@ public class ModTags {
         public static final TagKey<Item> DEORUM_STORAGE_BLOCKS = commonTag("storage_blocks/deorum");
         public static final TagKey<Item> ARCANE_CRYSTAL_STORAGE_BLOCKS = commonTag("storage_blocks/arcane_crystal");
         public static final TagKey<Item> STELLARITE_STORAGE_BLOCKS = commonTag("storage_blocks/stellarite");
-        public static final TagKey<Item> OBSIDIAN_STORAGE_BLOCKS = commonTag("storage_blocks/obsidian");
+        public static final TagKey<Item> OBSIDIANSTEEL_STORAGE_BLOCKS = commonTag("storage_blocks/obsidiansteel");
 
 
         private static TagKey<Item> commonTag(String name) {
