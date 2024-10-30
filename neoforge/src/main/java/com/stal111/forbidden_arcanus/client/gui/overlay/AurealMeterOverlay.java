@@ -4,6 +4,7 @@ import com.mojang.blaze3d.platform.Window;
 import com.stal111.forbidden_arcanus.ForbiddenArcanus;
 import com.stal111.forbidden_arcanus.common.block.entity.forge.essence.EssenceType;
 import com.stal111.forbidden_arcanus.common.essence.EssenceHelper;
+import com.stal111.forbidden_arcanus.core.init.ModDataComponents;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -30,7 +31,7 @@ public class AurealMeterOverlay implements LayeredDraw.Layer {
         Window window = Minecraft.getInstance().getWindow();
         Player player = Minecraft.getInstance().player;
 
-        if (player == null) {
+        if (player == null || !player.getMainHandItem().has(ModDataComponents.SHOWS_AUREAL_METER.get())) {
             return;
         }
 

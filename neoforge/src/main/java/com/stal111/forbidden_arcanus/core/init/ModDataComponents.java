@@ -12,8 +12,10 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.ExtraCodecs;
+import net.minecraft.util.Unit;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.valhelsia.valhelsia_core.api.common.registry.RegistryEntry;
@@ -38,5 +40,6 @@ public class ModDataComponents {
     public static final RegistryEntry<DataComponentType<?>, DataComponentType<Integer>> REMAINING_RITUAL_USES = HELPER.register("remaining_ritual_uses", () -> DataComponentType.<Integer>builder().persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT).build());
     public static final RegistryEntry<DataComponentType<?>, DataComponentType<ResourceKey<EnhancerDefinition>>> ENHANCER = HELPER.register("enhancer", () -> DataComponentType.<ResourceKey<EnhancerDefinition>>builder().persistent(ResourceKey.codec(FARegistries.ENHANCER_DEFINITION)).networkSynchronized(ResourceKey.streamCodec(FARegistries.ENHANCER_DEFINITION)).build());
     public static final RegistryEntry<DataComponentType<?>, DataComponentType<ToggleableState>> TOGGLEABLE_STATE = HELPER.register("toggleable_state", () -> DataComponentType.<ToggleableState>builder().persistent(ToggleableState.CODEC).networkSynchronized(ToggleableState.STREAM_CODEC).build());
+    public static final RegistryEntry<DataComponentType<?>, DataComponentType<Unit>> SHOWS_AUREAL_METER = HELPER.register("shows_aureal_meter", () -> DataComponentType.<Unit>builder().persistent(Unit.CODEC).networkSynchronized(StreamCodec.unit(Unit.INSTANCE)).build());
 
 }

@@ -15,6 +15,7 @@ import com.stal111.forbidden_arcanus.data.enhancer.ModEnhancerDefinitions;
 import com.stal111.forbidden_arcanus.util.ModTags;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Unit;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
@@ -65,9 +66,9 @@ public class ModItems implements RegistryClass {
     public static final ItemRegistryEntry<FerrogneticMixtureItem> FERROGNETIC_MIXTURE = HELPER.register("ferrognetic_mixture", () -> new FerrogneticMixtureItem(new Item.Properties()));
     public static final ItemRegistryEntry<Item> SOUL_BINDING_CRYSTAL = HELPER.register("soul_binding_crystal", () -> new Item(new Item.Properties()));
     public static final ItemRegistryEntry<Item> SPAWNER_SCRAP = HELPER.register("spawner_scrap", () -> new Item(new Item.Properties()));
-    public static final ItemRegistryEntry<Item> QUANTUM_CATCHER = HELPER.register("quantum_catcher", () -> new QuantumCatcherItem(ModTags.EntityTypes.QUANTUM_CATCHER_BLACKLISTED, new Item.Properties()));
-    public static final ItemEntrySet<QuantumCatcherItem, DyeColor> DYED_QUANTUM_CATCHERS = HELPER.registerColorEntrySet("quantum_catcher", dyeColor -> new QuantumCatcherItem(ModTags.EntityTypes.QUANTUM_CATCHER_BLACKLISTED, new Item.Properties()));
-    public static final ItemRegistryEntry<Item> BOSS_CATCHER = HELPER.register("boss_catcher", () -> new QuantumCatcherItem(ModTags.EntityTypes.BOSS_CATCHER_BLACKLISTED, new Item.Properties()));
+    public static final ItemRegistryEntry<Item> QUANTUM_CATCHER = HELPER.register("quantum_catcher", () -> new QuantumCatcherItem(ModTags.EntityTypes.QUANTUM_CATCHER_BLACKLISTED, new Item.Properties().component(ModDataComponents.SHOWS_AUREAL_METER.get(), Unit.INSTANCE)));
+    public static final ItemEntrySet<QuantumCatcherItem, DyeColor> DYED_QUANTUM_CATCHERS = HELPER.registerColorEntrySet("quantum_catcher", dyeColor -> new QuantumCatcherItem(ModTags.EntityTypes.QUANTUM_CATCHER_BLACKLISTED, new Item.Properties().component(ModDataComponents.SHOWS_AUREAL_METER.get(), Unit.INSTANCE)));
+    public static final ItemRegistryEntry<Item> BOSS_CATCHER = HELPER.register("boss_catcher", () -> new QuantumCatcherItem(ModTags.EntityTypes.BOSS_CATCHER_BLACKLISTED, new Item.Properties().component(ModDataComponents.SHOWS_AUREAL_METER.get(), Unit.INSTANCE)));
     public static final ItemRegistryEntry<Item> ARTISAN_RELIC = HELPER.register("artisan_relic", () -> new Item(new Item.Properties().component(ModDataComponents.ENHANCER.value(), ModEnhancerDefinitions.ARTISAN_RELIC)));
     public static final ItemRegistryEntry<Item> CRESCENT_MOON = HELPER.register("crescent_moon", () -> new Item(new Item.Properties().component(ModDataComponents.ENHANCER.value(), ModEnhancerDefinitions.CRESCENT_MOON)));
     public static final ItemRegistryEntry<Item> CRIMSON_STONE = HELPER.register("crimson_stone", () -> new Item(new Item.Properties().component(ModDataComponents.ENHANCER.value(), ModEnhancerDefinitions.CRIMSON_STONE)));
@@ -81,8 +82,8 @@ public class ModItems implements RegistryClass {
     public static final ItemRegistryEntry<BlockItem> UTREM_JAR = HELPER.register("utrem_jar", () -> new BlockItem(ModBlocks.UTREM_JAR.get(), new Item.Properties()));
     public static final ItemRegistryEntry<BlockItem> ESSENCE_UTREM_JAR = HELPER.register("essence_utrem_jar", () -> new BlockItem(ModBlocks.ESSENCE_UTREM_JAR.get(), new Item.Properties().component(ModDataComponents.EMPTY_ITEM, ModItems.UTREM_JAR)));
 
-    public static final ItemRegistryEntry<AurealBottleItem> AUREAL_BOTTLE = HELPER.register("aureal_bottle", () -> new AurealBottleItem(new Item.Properties().stacksTo(16).component(ModDataComponents.ESSENCE_DATA, EssenceData.of(EssenceType.AUREAL, 35))));
-    public static final ItemRegistryEntry<SplashAurealBottleItem> SPLASH_AUREAL_BOTTLE = HELPER.register("splash_aureal_bottle", () -> new SplashAurealBottleItem(new Item.Properties().stacksTo(16).component(ModDataComponents.ESSENCE_DATA, EssenceData.of(EssenceType.AUREAL, 30))));
+    public static final ItemRegistryEntry<AurealBottleItem> AUREAL_BOTTLE = HELPER.register("aureal_bottle", () -> new AurealBottleItem(new Item.Properties().stacksTo(16).component(ModDataComponents.ESSENCE_DATA, EssenceData.of(EssenceType.AUREAL, 35)).component(ModDataComponents.SHOWS_AUREAL_METER.get(), Unit.INSTANCE)));
+    public static final ItemRegistryEntry<SplashAurealBottleItem> SPLASH_AUREAL_BOTTLE = HELPER.register("splash_aureal_bottle", () -> new SplashAurealBottleItem(new Item.Properties().stacksTo(16).component(ModDataComponents.ESSENCE_DATA, EssenceData.of(EssenceType.AUREAL, 30)).component(ModDataComponents.SHOWS_AUREAL_METER.get(), Unit.INSTANCE)));
     public static final ItemRegistryEntry<Item> ARCANE_CRYSTAL_DUST_SPECK = HELPER.register("arcane_crystal_dust_speck", () -> new Item(new Item.Properties()));
     public static final ItemRegistryEntry<ArcaneBoneMealItem> ARCANE_BONE_MEAL = HELPER.register("arcane_bone_meal", () -> new ArcaneBoneMealItem(new Item.Properties()));
     public static final ItemRegistryEntry<Item> TEST_TUBE = HELPER.register("test_tube", () -> new Item(new Item.Properties().stacksTo(1)));
