@@ -6,6 +6,6 @@ import net.minecraft.world.phys.EntityHitResult;
  * @author stal111
  * @since 12.05.2024
  */
-public abstract class EntityFlyingLabel implements FlyingLabel<EntityHitResult> {
+public interface EntityFlyingLabel extends FlyingLabel<EntityHitResult> {
 
 }

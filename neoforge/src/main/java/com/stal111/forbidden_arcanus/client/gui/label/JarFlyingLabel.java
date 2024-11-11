@@ -17,7 +17,7 @@ import net.minecraft.world.phys.BlockHitResult;
  * @author stal111
  * @since 08.05.2024
  */
-public class JarFlyingLabel extends BlockFlyingLabel {
+public class JarFlyingLabel implements BlockFlyingLabel {
 
     private static final String ESSENCE_FORMAT = "tooltip.forbidden_arcanus.essence.storage_format";
     private static final int ICON_SIZE = 12;

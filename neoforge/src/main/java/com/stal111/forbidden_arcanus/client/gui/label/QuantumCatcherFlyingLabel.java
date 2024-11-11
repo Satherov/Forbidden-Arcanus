@@ -20,7 +20,7 @@ import net.minecraft.world.phys.EntityHitResult;
  * @author stal111
  * @since 12.05.2024
  */
-public class QuantumCatcherFlyingLabel extends EntityFlyingLabel {
+public class QuantumCatcherFlyingLabel implements EntityFlyingLabel {
 
     private static final int ICON_SIZE = 12;
 

@@ -6,6 +6,6 @@ import net.minecraft.world.phys.BlockHitResult;
  * @author stal111
  * @since 08.05.2024
  */
-public abstract class BlockFlyingLabel implements FlyingLabel<BlockHitResult> {
+public interface BlockFlyingLabel extends FlyingLabel<BlockHitResult> {
 
 }
