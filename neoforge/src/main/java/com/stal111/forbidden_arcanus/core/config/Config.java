@@ -19,8 +19,6 @@ public class Config {
 	static {
 		ItemConfig.init(COMMON_BUILDER);
 		BlockConfig.init(COMMON_BUILDER);
-		RenderingConfig.init(CLIENT_BUILDER);
-		AurealConfig.init(COMMON_BUILDER);
 
 		COMMON_CONFIG = COMMON_BUILDER.build();
 		CLIENT_CONFIG = CLIENT_BUILDER.build();
